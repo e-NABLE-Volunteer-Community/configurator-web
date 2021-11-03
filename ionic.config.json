@@ -1,0 +1,7 @@
+{
+  "name": "e-NABLE Device Configurator",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
