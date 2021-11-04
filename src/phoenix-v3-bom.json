@@ -1,0 +1,84 @@
+{
+  "name": "Phoenix v3",
+  "documentId": "4e6716f856bd5bd0d01da59c",
+  "workspaceId": "e32b5f430e3c0c6a75c86af7",
+  "materials": {
+    "PIN-A": {
+      "count": 4
+    },
+    "PIN-C": {
+      "count": 1
+    },
+    "PIN-D": {
+      "count": 1
+    },
+    "PIN-E": {
+      "count": 1
+    },
+    "PIN-F": {
+      "count": 2
+    },
+    "Distal": {
+      "count": 5
+    },
+    "Proximal": {
+      "instances": [
+        {
+          "name": "Thumb",
+          "parameters": {
+            "Proximal_Band_Post_Angle": "20 deg",
+            "Length": "20 mm",
+            "Width": "7 mm"
+          }
+        },
+        {
+          "name": "Pointer",
+          "parameters": {
+            "Proximal_Band_Post_Angle": "0.5 deg",
+            "Length": "23 mm",
+            "Width": "5.5 mm"
+          }
+        },
+        {
+          "name": "Index",
+          "parameters": {
+            "Proximal_Band_Post_Angle": "0.5 deg",
+            "Length": "23 mm",
+            "Width": "5.5 mm"
+          }
+        },
+        {
+          "name": "Ring",
+          "parameters": {
+            "Proximal_Band_Post_Angle": "0.5 deg",
+            "Length": "23 mm",
+            "Width": "5.5 mm"
+          }
+        },
+        {
+          "name": "Pinky",
+          "parameters": {
+            "Proximal_Band_Post_Angle": "0.5 deg",
+            "Length": "21 mm",
+            "Width": "5 mm"
+          }
+        }
+      ]
+    },
+    "Right Palm": {
+      "count": 1
+    },
+    "ARM-GUARD": {
+      "count": 1
+    },
+    "Tensioner Block": {
+      "count": 1
+    },
+    "Tensioner": {
+      "count": 3
+    },
+    "Washer": {
+      "count": 2
+    }
+  }
+}
