@@ -14,14 +14,15 @@ import { IfMobile, IfNotMobile } from "../../components/responsive/breakpoints";
 import { Route } from "react-router-dom";
 import { useActiveMeasurementSet } from "../../core/hooks/measurements";
 import { Switch, useLocation } from "react-router";
-import phoenixBom from "../../phoenix-v3-bom.json";
-import fileDownload from "js-file-download";
 import { NewMeasurements } from "./NewMeasurements";
 import { MeasurementsList } from "./MeasurementsList";
 import { isLoading } from "../../core/stores/utils";
+import { useApp } from "../../core/stores/app";
+import * as R from "ramda";
 
 const MeasurementsDetails: VFC = () => {
   const activeMeasurementSet = useActiveMeasurementSet();
+  const download = useApp(R.prop("download"));
 
   if (isLoading(activeMeasurementSet)) return <>Loading...</>; // TODO: Loading
   if (!activeMeasurementSet) return <>Select Measurements</>;
@@ -38,21 +39,10 @@ const MeasurementsDetails: VFC = () => {
       >
         <IonText>Wrist Circumference: 20.0 cm</IonText>
         <IonText>Other Measurement: 15.0 mm</IonText>
-        <IonButton onClick={download}>Generate STLs</IonButton>
+        {/*<IonButton onClick={download}>Generate STLs</IonButton>*/}
       </div>
     </IonContent>
   );
-};
-
-const download = async () => {
-  const res = await fetch("http://localhost:3007/generate", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(phoenixBom),
-  });
-  fileDownload(await res.blob(), "generated.zip");
 };
 
 const TabletDesktopView: VFC = () => {

@@ -1,0 +1,42 @@
+{
+  "name": "Device 1",
+  "location": {
+    "type": "Fusion360",
+    "dir": "device1"
+  },
+  "materials": {
+    "Test1": {
+      "instances": [
+        {
+          "name": "Widget_1",
+          "parameters": {
+            "diam": "34 mm"
+          }
+        }
+      ]
+    },
+    "Test2": {
+      "instances": [
+        {
+          "name": "Widget_2",
+          "parameters": {
+            "x": "10 mm",
+            "y": "20 mm",
+            "z": "30 mm"
+          }
+        },
+        {
+          "name": "Widget_3",
+          "parameters": {
+            "x": "10 mm",
+            "y": "10 mm",
+            "z": "10 mm"
+          }
+        }
+      ]
+    },
+    "Test3": {
+      "count": 2
+    }
+  }
+}

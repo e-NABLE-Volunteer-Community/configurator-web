@@ -1,7 +1,10 @@
 {
   "name": "Phoenix v3",
-  "documentId": "4e6716f856bd5bd0d01da59c",
-  "workspaceId": "e32b5f430e3c0c6a75c86af7",
+  "location": {
+    "type": "Onshape",
+    "documentId": "4e6716f856bd5bd0d01da59c",
+    "workspaceId": "e32b5f430e3c0c6a75c86af7"
+  },
   "materials": {
     "PIN-A": {
       "count": 4

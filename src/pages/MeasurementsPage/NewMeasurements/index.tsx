@@ -8,8 +8,11 @@ import {
   IonItem,
   IonLabel,
 } from "@ionic/react";
+import { useHistory } from "react-router-dom";
 
 export const NewMeasurements: VFC = () => {
+  const history = useHistory();
+  const done = () => history.replace("/measurements");
   return (
     <Swiper
       spaceBetween={50}
@@ -39,6 +42,11 @@ export const NewMeasurements: VFC = () => {
             <IonButton>Prev</IonButton>
             <IonButton>Next</IonButton>
           </IonButtons>
+        </form>
+      </SwiperSlide>
+      <SwiperSlide>
+        <form className="ion-padding">
+          <IonButton onClick={done}>Done</IonButton>
         </form>
       </SwiperSlide>
     </Swiper>
