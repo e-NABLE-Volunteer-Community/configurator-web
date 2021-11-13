@@ -1,49 +1,42 @@
-import { IonInput, IonLabel } from "@ionic/react";
+import { IonInput, IonItem, IonLabel, IonText } from "@ionic/react";
 import { useState, VFC } from "react";
-import {
-  useSetViewMeasurements,
-  useViewMeasurements,
-} from "../../../../core/stores/app";
-import { Loading, isLoading } from "../../../../core/stores/utils";
-import {
-  NumericInput,
-  ViewMeasurement,
-} from "../../../../core/view-measurement-types";
+import { NumericInput } from "../../../../core/view-measurement-types";
 import "./input.css";
+import { InputProps } from "../measurement-input";
 
-type NumericInputProps = {
-  input: NumericInput;
-  formIndex: number;
-  inputIndex: number;
-};
+// Refactor to a store, not a constant for i18n reasons
+const textForProblem = (): string => "Must be a number";
 
+type NumericInputProps = InputProps<NumericInput>;
 const NumericInputComponent: VFC<NumericInputProps> = (props) => {
-  const [value, setValue] = useState<number>();
-  const viewMeasurement: ViewMeasurement[] | Loading = useViewMeasurements();
-  const setViewMeasurements = useSetViewMeasurements();
+  const [value, setValue] = useState<string | null>(null);
+  const [problem, setProblem] = useState<boolean>();
 
-  if (isLoading(viewMeasurement)) {
-    return <div>loading...</div>;
-  }
   return (
-    <div className="input-base">
-      Numeric Input
-      <IonInput
-        type="number"
-        value={value}
-        placeholder="Enter Number"
-        onIonChange={(e) => {
-          setValue(parseInt(e.detail.value!, 10));
-          const newVals = viewMeasurement.slice();
-          if (value != undefined) {
-            newVals[props.formIndex].inputs[props.inputIndex].value = value;
-          }
-          setViewMeasurements(newVals);
-        }}
-      >
-        <IonLabel slot="end">{props.input.units}</IonLabel>
-      </IonInput>
-    </div>
+    <form className="input-base">
+      <IonItem>
+        <IonLabel color={problem ? "danger" : undefined} position="floating">
+          {props.input.labelText}
+        </IonLabel>
+        <IonInput
+          type="number"
+          value={value}
+          placeholder="Enter Number"
+          color={problem ? "danger" : undefined}
+          onIonChange={(e) => {
+            const newValue = e.detail.value ?? null;
+            console.log({ newValue: e.detail.value });
+            setValue(newValue);
+            setProblem(isNaN(parseFloat(newValue ?? "")));
+          }}
+        />
+        {problem && (
+          <IonText className="hint" color="danger">
+            {textForProblem()}
+          </IonText>
+        )}
+      </IonItem>
+    </form>
   );
 };
 

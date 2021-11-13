@@ -16,42 +16,43 @@ import { createViewMeasurementsSlice } from "../../../core/stores/view-measureme
 import { useViewMeasurements } from "../../../core/stores/app";
 import { isLoading } from "../../../core/stores/utils";
 import { IonButton } from "@ionic/react";
+import { Subject } from "rxjs";
+
 type MeasurementFormProps = { input: ViewMeasurement[] };
 const MeasurementFormParent: VFC<MeasurementFormProps> = (props) => {
   const viewMeasurement = useViewMeasurements();
+  const slideChangeSubject = new Subject<void>();
 
   if (isLoading(viewMeasurement)) {
     return <div>loading...</div>;
   }
   return (
-    <div className="base-container">
-      <div className="inputs-container">
-        <Swiper
-          spaceBetween={50}
-          slidesPerView={1}
-          onSlideChange={() => console.log("slide change")}
-          onSwiper={(swiper) => console.log(swiper)}
-        >
-          {viewMeasurement.map(function (input, index) {
-            return (
-              <SwiperSlide key={input.measurementName}>
-                <div className="slide">
-                  <MeasurementImage {...input.image}></MeasurementImage>
-                  <MeasurementFormInput
-                    input={input.inputs}
-                    index={index}
-                  ></MeasurementFormInput>
-                </div>
-              </SwiperSlide>
-            );
-          })}
-          <SwiperSlide>
-            SUBMIT
-            <IonButton onClick={() => console.log(viewMeasurement)}></IonButton>
+    <Swiper
+      spaceBetween={50}
+      slidesPerView={1}
+      onSlideChange={() => console.log("slide change")}
+      onSwiper={(swiper) => console.log(swiper)}
+    >
+      {viewMeasurement.map(function (input, index) {
+        return (
+          <SwiperSlide key={input.measurementName}>
+            <div className="slide">
+              <MeasurementImage {...input.image}></MeasurementImage>
+              <MeasurementFormInput
+                input={input.inputs}
+                index={index}
+                slideChangeSubject={slideChangeSubject}
+              ></MeasurementFormInput>
+            </div>
           </SwiperSlide>
-        </Swiper>
-      </div>
-    </div>
+        );
+      })}
+      <SwiperSlide>
+        <IonButton onClick={() => console.log(viewMeasurement)}>
+          Submit
+        </IonButton>
+      </SwiperSlide>
+    </Swiper>
   );
 };
 export default MeasurementFormParent;

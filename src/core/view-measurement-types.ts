@@ -17,25 +17,27 @@ export enum InputTypes {
 
 export type MeasurementInput = SliderInput | NumericInput | TextInput;
 
-export interface SliderInput {
+export interface Input {
+  inputType: InputTypes;
+  labelText: string;
+}
+
+export interface SliderInput extends Input {
   inputType: InputTypes.Slider;
-  labelText: string;
   inputRange: Range;
   value: number;
   units: string;
 }
 
-export interface NumericInput {
+export interface NumericInput extends Input {
   inputType: InputTypes.Numeric;
-  labelText: string;
   inputRange: Range;
   value: number;
   units: string;
 }
 
-export interface TextInput {
+export interface TextInput extends Input {
   inputType: InputTypes.Text;
-  labelText: string;
   value: string;
 }
 

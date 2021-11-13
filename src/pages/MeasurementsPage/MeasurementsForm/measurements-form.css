@@ -1,4 +1,5 @@
 .base-container {
+  padding-top:50px;
   background-color: white;
   height: 100vh;
   width: 100vw;
@@ -33,7 +34,8 @@
 }
 
 .slide {
-  width: 90vw;
+  width: 100%;
+  padding: 50px 5% 0 5%;
   border: dashed;
   color: black;
 }

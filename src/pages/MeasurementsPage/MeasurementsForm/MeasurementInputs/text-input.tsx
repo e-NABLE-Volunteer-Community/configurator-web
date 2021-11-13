@@ -1,8 +1,8 @@
 import { IonInput } from "@ionic/react";
 import { useState, VFC } from "react";
 import {
-  useViewMeasurements,
   useSetViewMeasurements,
+  useViewMeasurements,
 } from "../../../../core/stores/app";
 import { isLoading, Loading } from "../../../../core/stores/utils";
 import {
@@ -11,21 +11,19 @@ import {
 } from "../../../../core/view-measurement-types";
 
 import "./input.css";
+import { InputProps } from "../measurement-input";
 
-type TextInputProps = {
-  input: TextInput;
-  formIndex: number;
-  inputIndex: number;
-};
+type TextInputProps = InputProps<TextInput>;
 
 const TextInputComponent: VFC<TextInputProps> = (props) => {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState<string | null>(null);
   const viewMeasurement: ViewMeasurement[] | Loading = useViewMeasurements();
   const setViewMeasurements = useSetViewMeasurements();
 
   if (isLoading(viewMeasurement)) {
     return <div>loading...</div>;
   }
+
   return (
     <div className="input-base">
       Text Input
@@ -34,17 +32,16 @@ const TextInputComponent: VFC<TextInputProps> = (props) => {
         value={value}
         placeholder="Enter Text"
         onIonChange={(e) => {
-          if (e.detail.value) {
-            setValue(e.detail.value);
-            const newVals = viewMeasurement.slice();
-            if (value != undefined) {
-              newVals[props.formIndex].inputs[props.inputIndex].value =
-                e.detail.value;
-            }
-            setViewMeasurements(newVals);
+          const newValue = e.detail.value ?? null;
+          setValue(newValue);
+
+          if (newValue) {
+            viewMeasurement[props.formIndex].inputs[props.inputIndex].value =
+              newValue;
+            setViewMeasurements(viewMeasurement);
           }
         }}
-      ></IonInput>
+      />
     </div>
   );
 };

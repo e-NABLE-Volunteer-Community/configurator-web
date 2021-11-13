@@ -12,21 +12,35 @@ export type MeasurementSet = {
   createdAt: Date;
   modifiedAt: Date;
 };
+
 export interface FingersMeasurements extends MeasurementSet {
   type: MeasurementsType.fingers;
   data: {
-    wristCircumference: string;
+    wristCircumference: number;
+    baseOfHandToTipOfMiddleFinger: number;
   };
 }
+
 export interface HandMeasurements extends MeasurementSet {
   type: MeasurementsType.hand;
-  data: {};
+  data: {
+    wristCircumference: string;
+    baseOfHandToTipOfMiddleFinger: number;
+  };
 }
+
 export interface ElbowMeasurements extends MeasurementSet {
   type: MeasurementsType.elbow;
-  data: {};
+  data: {
+    wristCircumference: string;
+    baseOfHandToTipOfMiddleFinger: number;
+  };
 }
+
 export interface ShoulderMeasurements extends MeasurementSet {
   type: MeasurementsType.shoulder;
-  data: {};
+  data: {
+    wristCircumference: string;
+    baseOfHandToTipOfMiddleFinger: number;
+  };
 }

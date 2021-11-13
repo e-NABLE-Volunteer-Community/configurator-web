@@ -22,8 +22,14 @@ export const useDevices = (): DevicesStore["devices"] =>
 export const useMeasurementSets = (): MeasurementsSlice["measurementSets"] =>
   useApp(R.prop("measurementSets"));
 
-export const useViewMeasurements = (): ViewMeasurementStore["viewMeasurements"] =>
-  useApp(R.prop("viewMeasurements"));
+export const useViewMeasurements =
+  (): ViewMeasurementStore["viewMeasurements"] =>
+    useApp(R.prop("viewMeasurements"));
 
-export const useSetViewMeasurements = (): ViewMeasurementStore["setViewMeasurements"] =>
-  useApp(R.prop("setViewMeasurements"));
+export const useSetViewMeasurements =
+  (): ViewMeasurementStore["setViewMeasurements"] =>
+    useApp(R.prop("setViewMeasurements"));
+
+export const useUpdateNewMeasurementSet =
+  (): MeasurementsSlice["updateNewMeasurementSet"] =>
+    useApp(R.prop("updateNewMeasurementSet"));

@@ -6,14 +6,27 @@ import {
   VFC,
 } from "react";
 import {
+  Input,
   InputTypes,
   MeasurementInput,
+  SliderInput,
 } from "../../../core/view-measurement-types";
 import NumericInputComponent from "./MeasurementInputs/numeric-input";
 import SliderInputComponent from "./MeasurementInputs/slider-input";
 import TextInputComponent from "./MeasurementInputs/text-input";
+import { Subject } from "rxjs";
 
-type MeasurementFormItemProps = { input: MeasurementInput[]; index: number };
+type MeasurementFormItemProps = {
+  input: MeasurementInput[];
+  index: number;
+  slideChangeSubject: Subject<void>;
+};
+export type InputProps<T extends Input> = {
+  input: T;
+  formIndex: number;
+  inputIndex: number;
+  slideChangeSubject: Subject<void>;
+};
 const MeasurementFormInput: VFC<MeasurementFormItemProps> = (props) => {
   return (
     <>
@@ -25,6 +38,7 @@ const MeasurementFormInput: VFC<MeasurementFormItemProps> = (props) => {
               formIndex={props.index}
               inputIndex={index}
               key={input.labelText}
+              slideChangeSubject={props.slideChangeSubject}
             ></SliderInputComponent>
           );
         else if (input.inputType == InputTypes.Numeric)
@@ -34,6 +48,7 @@ const MeasurementFormInput: VFC<MeasurementFormItemProps> = (props) => {
               formIndex={props.index}
               inputIndex={index}
               key={input.labelText}
+              slideChangeSubject={props.slideChangeSubject}
             ></NumericInputComponent>
           );
         else if (input.inputType == InputTypes.Text)
@@ -43,6 +58,7 @@ const MeasurementFormInput: VFC<MeasurementFormItemProps> = (props) => {
               formIndex={props.index}
               inputIndex={index}
               key={input.labelText}
+              slideChangeSubject={props.slideChangeSubject}
             ></TextInputComponent>
           );
       })}

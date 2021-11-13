@@ -39,13 +39,16 @@ const sortMeasurementsByCreatedAtMostRecentFirst = (
 
 export type MeasurementsSlice = {
   measurementSets: MeasurementSet[] | Loading;
-  addMeasurementSet: (measurements: MeasurementSet) => void;
+  submitNewMeasurementSet: (measurements: MeasurementSet) => void;
   removeMeasurementSet: (id: MeasurementSetId) => void;
+
+  updateNewMeasurementSet: (newValue?: Partial<MeasurementSet>) => void;
+  newMeasurementSet?: Partial<MeasurementSet>;
 };
 export const createMeasurementsSlice: StateSlice<MeasurementsSlice> = (set) => {
   const measurementSets: MeasurementSet[] = makeMockMeasurements(10);
 
-  const addMeasurementSet = (measurements: MeasurementSet) =>
+  const submitNewMeasurementSet = (measurements: MeasurementSet) =>
     set(({ measurementSets }) => {
       if (isLoading(measurementSets))
         throw new Error("Cannot add while loading");
@@ -62,5 +65,17 @@ export const createMeasurementsSlice: StateSlice<MeasurementsSlice> = (set) => {
       return { measurementSets: filteredSets };
     });
 
-  return { measurementSets, addMeasurementSet, removeMeasurementSet };
+  const updateNewMeasurementSet = (
+    newValue?: Partial<MeasurementSet>
+  ): void => {
+    set({ newMeasurementSet: newValue });
+  };
+
+  return {
+    measurementSets,
+    submitNewMeasurementSet,
+    removeMeasurementSet,
+
+    updateNewMeasurementSet,
+  };
 };
