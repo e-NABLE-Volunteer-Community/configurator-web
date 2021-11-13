@@ -12,7 +12,7 @@ const TextInputComponent: VFC<TextInputProps> = (props) => {
     <div className="input-base">
       Text Input
       <IonInput
-        type="number"
+        type="text"
         value={value}
         placeholder="Enter Text"
         onIonChange={(e) => setValue(value)}
