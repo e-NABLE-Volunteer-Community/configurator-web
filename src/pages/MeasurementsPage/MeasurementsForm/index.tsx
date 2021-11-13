@@ -1,10 +1,4 @@
-import {
-  ReactElement,
-  JSXElementConstructor,
-  ReactNodeArray,
-  ReactPortal,
-  VFC,
-} from "react";
+import { VFC } from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -21,6 +15,7 @@ import MeasurementImage from "./image";
 import { createViewMeasurementsSlice } from "../../../core/stores/view-measurements";
 import { useViewMeasurements } from "../../../core/stores/app";
 import { isLoading } from "../../../core/stores/utils";
+import { IonButton } from "@ionic/react";
 type MeasurementFormProps = { input: ViewMeasurement[] };
 const MeasurementFormParent: VFC<MeasurementFormProps> = (props) => {
   const viewMeasurement = useViewMeasurements();
@@ -32,24 +27,28 @@ const MeasurementFormParent: VFC<MeasurementFormProps> = (props) => {
     <div className="base-container">
       <div className="inputs-container">
         <Swiper
-          spaceBetween={1}
+          spaceBetween={50}
           slidesPerView={1}
           onSlideChange={() => console.log("slide change")}
           onSwiper={(swiper) => console.log(swiper)}
         >
           {viewMeasurement.map(function (input, index) {
             return (
-              <SwiperSlide>
+              <SwiperSlide key={input.measurementName}>
                 <div className="slide">
                   <MeasurementImage {...input.image}></MeasurementImage>
                   <MeasurementFormInput
                     input={input.inputs}
+                    index={index}
                   ></MeasurementFormInput>
                 </div>
               </SwiperSlide>
             );
           })}
-          <SwiperSlide>SUBMIT</SwiperSlide>
+          <SwiperSlide>
+            SUBMIT
+            <IonButton onClick={() => console.log(viewMeasurement)}></IonButton>
+          </SwiperSlide>
         </Swiper>
       </div>
     </div>

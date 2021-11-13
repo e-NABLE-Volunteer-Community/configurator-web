@@ -1,4 +1,5 @@
 export type ViewMeasurement = {
+  measurementName: string;
   image: ViewImage;
   inputs: MeasurementInput[];
 };
@@ -45,6 +46,7 @@ export interface Range {
 
 export const DEFAULT_MEASUREMENTS: ViewMeasurement[] = [
   {
+    measurementName: "patientName",
     image: {
       imagePath: "patient-name.jpg",
       imageText: "Enter Patient Name",
@@ -58,13 +60,14 @@ export const DEFAULT_MEASUREMENTS: ViewMeasurement[] = [
     ],
   },
   {
+    measurementName: "elbowToWrist",
     image: {
       imagePath: "elbowToWrist.jpg",
       imageText: "Measure the length from elbow to wrist",
     },
     inputs: [
       {
-        inputType: InputTypes.Numeric,
+        inputType: InputTypes.Slider,
         labelText: "INputLabel1",
         inputRange: {
           upperBound: 5,
@@ -86,6 +89,7 @@ export const DEFAULT_MEASUREMENTS: ViewMeasurement[] = [
     ],
   },
   {
+    measurementName: "forearmCircumference",
     image: {
       imagePath: "forearm-circumference.jpg",
       imageText: "forearmcircumference",
@@ -114,6 +118,7 @@ export const DEFAULT_MEASUREMENTS: ViewMeasurement[] = [
     ],
   },
   {
+    measurementName: "updateLater",
     image: {
       imagePath: "updateLater.jpg",
       imageText: "Measure the length from elbow to wrist",

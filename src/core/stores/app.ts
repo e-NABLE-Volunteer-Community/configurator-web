@@ -24,3 +24,6 @@ export const useMeasurementSets = (): MeasurementsSlice["measurementSets"] =>
 
 export const useViewMeasurements = (): ViewMeasurementStore["viewMeasurements"] =>
   useApp(R.prop("viewMeasurements"));
+
+export const useSetViewMeasurements = (): ViewMeasurementStore["setViewMeasurements"] =>
+  useApp(R.prop("setViewMeasurements"));

@@ -1,7 +1,7 @@
 .base-container {
   background-color: white;
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   color: black;
   display: flex;
   flex-direction: column;
@@ -27,6 +27,13 @@
   width: 90vw;
 }
 
+.slide-container {
+  border: dashed;
+  color: purple;
+}
+
 .slide {
   width: 90vw;
+  border: dashed;
+  color: black;
 }

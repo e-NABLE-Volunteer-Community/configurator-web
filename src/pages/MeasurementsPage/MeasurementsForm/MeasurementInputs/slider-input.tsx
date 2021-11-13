@@ -4,7 +4,11 @@ import { SliderInput } from "../../../../core/view-measurement-types";
 
 import "./input.css";
 
-type SliderInputProps = { input: SliderInput };
+type SliderInputProps = {
+  input: SliderInput;
+  formIndex: number;
+  inputIndex: number;
+};
 
 const SliderInputComponent: VFC<SliderInputProps> = (props) => {
   const [value, setValue] = useState(0);
