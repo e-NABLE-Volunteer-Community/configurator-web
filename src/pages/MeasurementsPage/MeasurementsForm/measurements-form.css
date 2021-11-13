@@ -1,0 +1,32 @@
+.base-container {
+  background-color: white;
+  height: 100%;
+  width: 100%;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.measurements-form-container {
+  width: 80%;
+  height: 90%;
+  border: dashed;
+  display: flex;
+  justify-content: center;
+}
+
+.image-base-container {
+}
+
+.inputs-container {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90vw;
+}
+
+.slide {
+  width: 90vw;
+}

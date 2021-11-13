@@ -1,8 +1,9 @@
 import { MeasurementsSlice } from "./measurements";
 import { DevicesStore } from "./devices";
 import { SetState } from "zustand";
+import { ViewMeasurementStore } from "./view-measurements";
 
-export type RootState = MeasurementsSlice & DevicesStore;
+export type RootState = MeasurementsSlice & DevicesStore & ViewMeasurementStore;
 export type StateSlice<T> = (set: SetState<RootState>) => T;
 // Loading is a Symbol nonce used in the stead of real data to
 // signal that store-supplied data is still being loaded

@@ -33,6 +33,7 @@ import "./theme/variables.css";
 import DevicesPage from "./pages/DevicesPage";
 import MeasurementsPage from "./pages/MeasurementsPage";
 import { handLeft, peopleOutline } from "ionicons/icons";
+import DeviceForm from "./pages/MeasurementsPage/MeasurementsForm";
 
 // Swiper bundle styles
 import "swiper/swiper-bundle.min.css";
@@ -48,6 +49,7 @@ const Routes: VFC = () => {
       <Route key={1} path="/:tab(devices)" component={DevicesPage} />
       <Route key={2} path="/:tab(measurements)" component={MeasurementsPage} />
       <Route key={4} path="/" render={() => <Redirect to="/devices" />} exact />
+      <Route key={5} path="/MeasurementPage" component={DeviceForm} />
     </>
   );
 };

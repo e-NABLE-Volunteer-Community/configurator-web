@@ -1,0 +1,14 @@
+.image-container {
+  height: 250px;
+  width: 250px;
+  border: dashed;
+}
+
+.image-text {
+  margin: 10px;
+}
+.base-image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
