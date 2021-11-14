@@ -8,7 +8,7 @@ const mockViewMeasurements = (): ViewMeasurement[] => DEFAULT_MEASUREMENTS;
 
 export type ViewMeasurementStore = {
   setViewMeasurements: (viewMeasurements: ViewMeasurement[]) => void;
-  viewMeasurements: ViewMeasurement[] | Loading;
+  viewMeasurements: ViewMeasurement[];
 };
 
 export const createViewMeasurementsSlice: StateSlice<ViewMeasurementStore> = (

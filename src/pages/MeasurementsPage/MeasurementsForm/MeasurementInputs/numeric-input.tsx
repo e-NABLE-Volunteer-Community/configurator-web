@@ -58,9 +58,11 @@ const NumericInputComponent: VFC<NumericInputProps> = ({
             const newValue = e.detail.value ?? null;
             setProblem(isNaN(parseFloat(newValue ?? "")));
             if (newValue) {
-              setValue(parseInt(newValue as string));
+              setValue(parseFloat(newValue as string));
               viewMeasurement[formIndex].inputs[inputIndex].value = newValue;
               setViewMeasurements(viewMeasurement);
+            } else {
+              setValue(null);
             }
           }}
         />

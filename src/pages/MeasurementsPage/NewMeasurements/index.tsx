@@ -17,8 +17,8 @@ export const NewMeasurements: VFC = () => {
     <Swiper
       spaceBetween={50}
       slidesPerView={1}
-      onSlideChange={() => console.log("slide change")}
-      onSwiper={(swiper) => console.log(swiper)}
+      onSlideChange={() => void {}}
+      onSwiper={() => void {}}
     >
       <SwiperSlide>
         <form className="ion-padding">

@@ -41,13 +41,18 @@ export const useViewMeasurementsFor = (
   measurementIndex: number,
   inputIndex: number
 ): MeasurementInput | Loading => {
-  var viewMeasurements = useViewMeasurements();
+  return useApp(
+    (state) => state.viewMeasurements[measurementIndex].inputs[inputIndex]
+  );
+};
 
-  if (isLoading(viewMeasurements)) {
-    return Loading;
-  } else {
-    return viewMeasurements[measurementIndex].inputs[inputIndex];
-  }
+export const useValueForUseMeasurement = (
+  measurementIndex: number,
+  inputIndex: number
+): string | number | Loading => {
+  return useApp(
+    (state) => state.viewMeasurements[measurementIndex].inputs[inputIndex].value
+  );
 };
 
 export const useSetViewMeasurements = (): ViewMeasurementStore["setViewMeasurements"] =>
