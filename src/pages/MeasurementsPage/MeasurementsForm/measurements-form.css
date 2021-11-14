@@ -23,6 +23,10 @@
   margin: 15px;
 }
 
+.card {
+  height: 70vh;
+}
+
 .inputs-container {
   margin-top: 50px;
   display: flex;

@@ -56,7 +56,7 @@ export const DEFAULT_MEASUREMENTS: ViewMeasurement[] = [
     inputs: [
       {
         inputType: InputTypes.Text,
-        labelText: "Patient Name:",
+        labelText: "Patient Name",
         value: "",
       },
     ],

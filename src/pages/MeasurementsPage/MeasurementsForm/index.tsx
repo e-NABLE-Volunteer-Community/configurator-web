@@ -46,7 +46,7 @@ const MeasurementFormParent: VFC<MeasurementFormProps> = (props) => {
         return (
           <SwiperSlide key={input.measurementName}>
             <IonContent>
-              <IonCard>
+              <IonCard className="card">
                 <IonCardHeader>
                   <IonCardTitle>{input.measurementName}</IonCardTitle>
                   <div className="image-container">
@@ -72,9 +72,27 @@ const MeasurementFormParent: VFC<MeasurementFormProps> = (props) => {
       })}
       <SwiperSlide>
         <IonContent>
-          <IonButton onClick={() => console.log(viewMeasurement)}>
-            Submit
-          </IonButton>
+          <IonCard className="card">
+            <IonCardHeader>All Done?</IonCardHeader>
+            <IonCardContent>
+              {viewMeasurement.map(function (input, index) {
+                return (
+                  <div>
+                    {input.inputs.map(function (input, index) {
+                      return (
+                        <div>
+                          {input.labelText}: {input.value}
+                        </div>
+                      );
+                    })}
+                  </div>
+                );
+              })}
+              <IonButton onClick={() => console.log(viewMeasurement)}>
+                Save Measurements
+              </IonButton>
+            </IonCardContent>
+          </IonCard>
         </IonContent>
       </SwiperSlide>
     </Swiper>
