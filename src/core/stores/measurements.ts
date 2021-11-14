@@ -41,7 +41,6 @@ export type MeasurementsSlice = {
   measurementSets: MeasurementSet[] | Loading;
   submitNewMeasurementSet: (measurements: MeasurementSet) => void;
   removeMeasurementSet: (id: MeasurementSetId) => void;
-
   updateNewMeasurementSet: (newValue?: Partial<MeasurementSet>) => void;
   newMeasurementSet?: Partial<MeasurementSet>;
 };

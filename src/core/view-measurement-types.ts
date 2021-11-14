@@ -20,6 +20,7 @@ export type MeasurementInput = SliderInput | NumericInput | TextInput;
 export interface Input {
   inputType: InputTypes;
   labelText: string;
+  value: number | string;
 }
 
 export interface SliderInput extends Input {

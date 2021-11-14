@@ -1,5 +1,5 @@
 import { IonInput, IonItem, IonLabel, IonText } from "@ionic/react";
-import { useState, VFC } from "react";
+import { useEffect, useState, VFC } from "react";
 import {
   NumericInput,
   ViewMeasurement,
@@ -9,6 +9,7 @@ import { InputProps } from "../measurement-input";
 import {
   useSetViewMeasurements,
   useViewMeasurements,
+  useViewMeasurementsFor,
 } from "../../../../core/stores/app";
 import { isLoading, Loading } from "../../../../core/stores/utils";
 
@@ -16,10 +17,26 @@ import { isLoading, Loading } from "../../../../core/stores/utils";
 const textForProblem = (): string => "Must be a number";
 
 type NumericInputProps = InputProps<NumericInput>;
-const NumericInputComponent: VFC<NumericInputProps> = (props) => {
-  const [value, setValue] = useState<string | null>(null);
+const NumericInputComponent: VFC<NumericInputProps> = ({
+  formIndex,
+  inputIndex,
+  input,
+}) => {
+  const [value, setValue] = useState<number | null>(null);
   const viewMeasurement: ViewMeasurement[] | Loading = useViewMeasurements();
   const setViewMeasurements = useSetViewMeasurements();
+
+  const curInput = useViewMeasurementsFor(formIndex, inputIndex);
+  const curInputIsLoading = isLoading(curInput);
+
+  useEffect(() => {
+    if (!curInputIsLoading) {
+      if (curInput.value) {
+        setValue(curInput.value as number);
+      }
+    }
+  }, [curInputIsLoading]);
+
   const [problem, setProblem] = useState<boolean>();
 
   if (isLoading(viewMeasurement)) {
@@ -30,7 +47,7 @@ const NumericInputComponent: VFC<NumericInputProps> = (props) => {
     <form className="input-base">
       <IonItem>
         <IonLabel color={problem ? "danger" : undefined} position="floating">
-          {props.input.labelText}
+          {input.labelText}
         </IonLabel>
         <IonInput
           type="number"
@@ -39,14 +56,10 @@ const NumericInputComponent: VFC<NumericInputProps> = (props) => {
           color={problem ? "danger" : undefined}
           onIonChange={(e) => {
             const newValue = e.detail.value ?? null;
-            console.log({ newValue: e.detail.value });
-            setValue(newValue);
             setProblem(isNaN(parseFloat(newValue ?? "")));
-
             if (newValue) {
-              viewMeasurement[props.formIndex].inputs[
-                props.inputIndex
-              ].value = newValue;
+              setValue(parseInt(newValue as string));
+              viewMeasurement[formIndex].inputs[inputIndex].value = newValue;
               setViewMeasurements(viewMeasurement);
             }
           }}

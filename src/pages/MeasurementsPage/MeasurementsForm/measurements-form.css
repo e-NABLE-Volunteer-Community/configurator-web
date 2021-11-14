@@ -27,6 +27,10 @@
   height: 70vh;
 }
 
+.review-value {
+  margin: 10px;
+}
+
 .inputs-container {
   margin-top: 50px;
   display: flex;
@@ -36,8 +40,6 @@
 }
 
 .slide-container {
-  border: dashed;
-  color: purple;
 }
 
 .slide {

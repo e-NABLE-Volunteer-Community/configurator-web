@@ -1,18 +1,30 @@
 import { createMeasurementsSlice, MeasurementsSlice } from "./measurements";
-import create from "zustand";
+import create, { SetState, GetState } from "zustand";
+import { persist, StoreApiWithPersist } from "zustand/middleware";
 import { createDevicesSlice, DevicesStore } from "./devices";
 import * as R from "ramda";
-import { RootState } from "./utils";
+import { isLoading, Loading, RootState } from "./utils";
 import {
   createViewMeasurementsSlice,
   ViewMeasurementStore,
 } from "./view-measurements";
+import { MeasurementInput } from "../view-measurement-types";
 
-export const useApp = create<RootState>((set, get, api) => ({
-  ...createMeasurementsSlice(set),
-  ...createDevicesSlice(set),
-  ...createViewMeasurementsSlice(set),
-}));
+export const useApp = create(
+  persist<
+    RootState,
+    SetState<RootState>,
+    GetState<RootState>,
+    StoreApiWithPersist<RootState>
+  >(
+    (set, get) => ({
+      ...createMeasurementsSlice(set),
+      ...createDevicesSlice(set),
+      ...createViewMeasurementsSlice(set),
+    }),
+    { name: "measurement-storage" }
+  )
+);
 export const useDevices = (): DevicesStore["devices"] =>
   useApp(R.prop("devices"));
 
@@ -22,14 +34,24 @@ export const useDevices = (): DevicesStore["devices"] =>
 export const useMeasurementSets = (): MeasurementsSlice["measurementSets"] =>
   useApp(R.prop("measurementSets"));
 
-export const useViewMeasurements =
-  (): ViewMeasurementStore["viewMeasurements"] =>
-    useApp(R.prop("viewMeasurements"));
+export const useViewMeasurements = (): ViewMeasurementStore["viewMeasurements"] =>
+  useApp(R.prop("viewMeasurements"));
 
-export const useSetViewMeasurements =
-  (): ViewMeasurementStore["setViewMeasurements"] =>
-    useApp(R.prop("setViewMeasurements"));
+export const useViewMeasurementsFor = (
+  measurementIndex: number,
+  inputIndex: number
+): MeasurementInput | Loading => {
+  var viewMeasurements = useViewMeasurements();
 
-export const useUpdateNewMeasurementSet =
-  (): MeasurementsSlice["updateNewMeasurementSet"] =>
-    useApp(R.prop("updateNewMeasurementSet"));
+  if (isLoading(viewMeasurements)) {
+    return Loading;
+  } else {
+    return viewMeasurements[measurementIndex].inputs[inputIndex];
+  }
+};
+
+export const useSetViewMeasurements = (): ViewMeasurementStore["setViewMeasurements"] =>
+  useApp(R.prop("setViewMeasurements"));
+
+export const useUpdateNewMeasurementSet = (): MeasurementsSlice["updateNewMeasurementSet"] =>
+  useApp(R.prop("updateNewMeasurementSet"));

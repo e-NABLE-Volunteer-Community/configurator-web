@@ -80,7 +80,7 @@ const MeasurementFormParent: VFC<MeasurementFormProps> = (props) => {
                   <div>
                     {input.inputs.map(function (input, index) {
                       return (
-                        <div>
+                        <div className="review-value">
                           {input.labelText}: {input.value}
                         </div>
                       );
