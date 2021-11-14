@@ -77,38 +77,47 @@ const MeasurementFormParent: VFC<MeasurementFormProps> = (props) => {
       <SwiperSlide>
         <IonContent>
           <IonCard className="card">
-            <IonCardHeader>All Done?</IonCardHeader>
-            <IonCardContent>
-              {viewMeasurement.map(function (input, index) {
-                var formIndex = index;
-                return (
-                  <div key={formIndex.toString() + "child"}>
-                    {input.inputs.map(function (input, index) {
-                      var inputIndex = index;
-                      return (
-                        <SubmitItemComponent
-                          formIndex={formIndex}
-                          inputIndex={inputIndex}
-                          key={
-                            formIndex.toString() +
-                            "-" +
-                            inputIndex.toString() +
-                            "-" +
-                            "child"
-                          }
-                        ></SubmitItemComponent>
-                      );
-                    })}
-                  </div>
-                );
-              })}
-              <IonButton
-                onClick={() =>
-                  console.log("Save Measurement Here", viewMeasurement)
-                }
-              >
-                Save Measurements
-              </IonButton>
+            <IonCardHeader>
+              <IonCardTitle>All Done?</IonCardTitle>
+            </IonCardHeader>
+            <IonCardContent className="submit-card">
+              <div className="card-content-container">
+                <div className="review-results-container">
+                  {viewMeasurement.map(function (input, index) {
+                    var formIndex = index;
+                    return (
+                      <div key={formIndex.toString() + "child"}>
+                        {input.inputs.map(function (input, index) {
+                          var inputIndex = index;
+                          return (
+                            <SubmitItemComponent
+                              formIndex={formIndex}
+                              inputIndex={inputIndex}
+                              key={
+                                formIndex.toString() +
+                                "-" +
+                                inputIndex.toString() +
+                                "-" +
+                                "child"
+                              }
+                            ></SubmitItemComponent>
+                          );
+                        })}
+                      </div>
+                    );
+                  })}
+                </div>
+                <div className="submit-button-container">
+                  <IonButton
+                    className="submit-button"
+                    onClick={() =>
+                      console.log("Save Measurement Here", viewMeasurement)
+                    }
+                  >
+                    Save Measurements
+                  </IonButton>
+                </div>
+              </div>
             </IonCardContent>
           </IonCard>
         </IonContent>

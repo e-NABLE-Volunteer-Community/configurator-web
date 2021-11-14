@@ -37,6 +37,12 @@ export interface NumericInput extends Input {
   units: string;
 }
 
+export const isNumericInput = (
+  input: Omit<MeasurementInput, "value"> | MeasurementInput
+): input is NumericInput => {
+  return input.inputType === InputTypes.Numeric;
+};
+
 export interface TextInput extends Input {
   inputType: InputTypes.Text;
   value: string;

@@ -40,7 +40,7 @@ export const useViewMeasurements = (): ViewMeasurementStore["viewMeasurements"] 
 export const useViewMeasurementsFor = (
   measurementIndex: number,
   inputIndex: number
-): MeasurementInput | Loading => {
+): Omit<MeasurementInput, "value"> | Loading => {
   return useApp(
     (state) => state.viewMeasurements[measurementIndex].inputs[inputIndex]
   );

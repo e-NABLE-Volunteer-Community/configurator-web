@@ -1,12 +1,11 @@
 .base-container {
   padding-top: 50px;
   background-color: white;
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   color: black;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .measurements-form-container {
@@ -24,7 +23,7 @@
 }
 
 .card {
-  height: 70vh;
+  height: 85vh;
 }
 
 .review-value {
@@ -46,4 +45,29 @@
   width: 100%;
   padding: 10px 5% 0 5%;
   color: white;
+}
+
+.submit-button {
+  align-self: flex-end;
+}
+
+.submit-card {
+  height: 80%;
+}
+
+.card-content-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.review-results-container {
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.submit-button-container {
+  display: flex;
+  justify-content: center;
 }

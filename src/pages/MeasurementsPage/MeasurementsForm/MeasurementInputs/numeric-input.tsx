@@ -8,6 +8,7 @@ import "./input.css";
 import { InputProps } from "../measurement-input";
 import {
   useSetViewMeasurements,
+  useValueForUseMeasurement,
   useViewMeasurements,
   useViewMeasurementsFor,
 } from "../../../../core/stores/app";
@@ -26,13 +27,15 @@ const NumericInputComponent: VFC<NumericInputProps> = ({
   const viewMeasurement: ViewMeasurement[] | Loading = useViewMeasurements();
   const setViewMeasurements = useSetViewMeasurements();
 
+  const curInputValue = useValueForUseMeasurement(formIndex, inputIndex);
+
   const curInput = useViewMeasurementsFor(formIndex, inputIndex);
   const curInputIsLoading = isLoading(curInput);
 
   useEffect(() => {
     if (!curInputIsLoading) {
-      if (curInput.value) {
-        setValue(curInput.value as number);
+      if (curInputValue) {
+        setValue(curInputValue as number);
       }
     }
   }, [curInputIsLoading]);
@@ -47,7 +50,7 @@ const NumericInputComponent: VFC<NumericInputProps> = ({
     <form className="input-base">
       <IonItem>
         <IonLabel color={problem ? "danger" : undefined} position="floating">
-          {input.labelText}
+          {input.labelText} ({input.units})
         </IonLabel>
         <IonInput
           type="number"

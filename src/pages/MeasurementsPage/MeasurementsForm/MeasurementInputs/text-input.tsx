@@ -2,6 +2,7 @@ import { IonInput } from "@ionic/react";
 import { useEffect, useState, VFC } from "react";
 import {
   useSetViewMeasurements,
+  useValueForUseMeasurement,
   useViewMeasurements,
   useViewMeasurementsFor,
 } from "../../../../core/stores/app";
@@ -24,13 +25,14 @@ const TextInputComponent: VFC<TextInputProps> = ({
   const viewMeasurement: ViewMeasurement[] | Loading = useViewMeasurements();
   const [value, setValue] = useState<string | null>();
   const curInput = useViewMeasurementsFor(formIndex, inputIndex);
+  const curInputValue = useValueForUseMeasurement(formIndex, inputIndex);
 
   const curInputIsLoading = isLoading(curInput);
 
   useEffect(() => {
     if (!curInputIsLoading) {
-      if (typeof curInput.value === "string") {
-        setValue(curInput.value as string);
+      if (typeof curInputValue === "string") {
+        setValue(curInputValue as string);
       }
     }
   }, [curInputIsLoading]);
