@@ -15,7 +15,15 @@ import MeasurementImage from "./image";
 import { createViewMeasurementsSlice } from "../../../core/stores/view-measurements";
 import { useViewMeasurements } from "../../../core/stores/app";
 import { isLoading } from "../../../core/stores/utils";
-import { IonButton } from "@ionic/react";
+import {
+  IonButton,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardSubtitle,
+  IonCardTitle,
+  IonContent,
+} from "@ionic/react";
 import { Subject } from "rxjs";
 
 type MeasurementFormProps = { input: ViewMeasurement[] };
@@ -32,25 +40,42 @@ const MeasurementFormParent: VFC<MeasurementFormProps> = (props) => {
       slidesPerView={1}
       onSlideChange={() => console.log("slide change")}
       onSwiper={(swiper) => console.log(swiper)}
+      className="base-container"
     >
       {viewMeasurement.map(function (input, index) {
         return (
           <SwiperSlide key={input.measurementName}>
-            <div className="slide">
-              <MeasurementImage {...input.image}></MeasurementImage>
-              <MeasurementFormInput
-                input={input.inputs}
-                index={index}
-                slideChangeSubject={slideChangeSubject}
-              ></MeasurementFormInput>
-            </div>
+            <IonContent>
+              <IonCard>
+                <IonCardHeader>
+                  <IonCardTitle>{input.measurementName}</IonCardTitle>
+                  <div className="image-container">
+                    <img src={input.image.imagePath} />
+                  </div>
+
+                  <IonCardSubtitle>{input.image.imageText}</IonCardSubtitle>
+                </IonCardHeader>
+                <IonCardContent>
+                  <div className="slide">
+                    {/* <MeasurementImage {...input.image}></MeasurementImage> */}
+                    <MeasurementFormInput
+                      input={input.inputs}
+                      index={index}
+                      slideChangeSubject={slideChangeSubject}
+                    ></MeasurementFormInput>
+                  </div>
+                </IonCardContent>
+              </IonCard>
+            </IonContent>
           </SwiperSlide>
         );
       })}
       <SwiperSlide>
-        <IonButton onClick={() => console.log(viewMeasurement)}>
-          Submit
-        </IonButton>
+        <IonContent>
+          <IonButton onClick={() => console.log(viewMeasurement)}>
+            Submit
+          </IonButton>
+        </IonContent>
       </SwiperSlide>
     </Swiper>
   );

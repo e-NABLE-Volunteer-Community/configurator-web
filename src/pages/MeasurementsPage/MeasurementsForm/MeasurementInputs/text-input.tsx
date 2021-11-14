@@ -25,19 +25,19 @@ const TextInputComponent: VFC<TextInputProps> = (props) => {
   }
 
   return (
-    <div className="input-base">
-      Text Input
+    <div className="input-base text-input">
       <IonInput
         type="text"
         value={value}
-        placeholder="Enter Text"
+        placeholder={props.input.labelText}
         onIonChange={(e) => {
           const newValue = e.detail.value ?? null;
           setValue(newValue);
 
           if (newValue) {
-            viewMeasurement[props.formIndex].inputs[props.inputIndex].value =
-              newValue;
+            viewMeasurement[props.formIndex].inputs[
+              props.inputIndex
+            ].value = newValue;
             setViewMeasurements(viewMeasurement);
           }
         }}

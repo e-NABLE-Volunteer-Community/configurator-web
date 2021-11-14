@@ -1,5 +1,5 @@
 .base-container {
-  padding-top:50px;
+  padding-top: 50px;
   background-color: white;
   height: 100vh;
   width: 100vw;
@@ -17,7 +17,10 @@
   justify-content: center;
 }
 
-.image-base-container {
+.image-container {
+  display: flex;
+  justify-content: center;
+  margin: 15px;
 }
 
 .inputs-container {
@@ -35,7 +38,6 @@
 
 .slide {
   width: 100%;
-  padding: 50px 5% 0 5%;
-  border: dashed;
-  color: black;
+  padding: 10px 5% 0 5%;
+  color: white;
 }

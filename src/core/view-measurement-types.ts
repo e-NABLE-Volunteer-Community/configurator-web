@@ -48,39 +48,30 @@ export interface Range {
 
 export const DEFAULT_MEASUREMENTS: ViewMeasurement[] = [
   {
-    measurementName: "patientName",
+    measurementName: "Patient Name",
     image: {
-      imagePath: "patient-name.jpg",
+      imagePath: "https://i.stack.imgur.com/34AD2.jpg",
       imageText: "Enter Patient Name",
     },
     inputs: [
       {
         inputType: InputTypes.Text,
-        labelText: "INputLabel2",
+        labelText: "Patient Name:",
         value: "",
       },
     ],
   },
   {
-    measurementName: "elbowToWrist",
+    measurementName: "Elbow to Wrist",
     image: {
-      imagePath: "elbowToWrist.jpg",
+      imagePath:
+        "https://www.researchgate.net/profile/S-Manimala/publication/322096696/figure/fig4/AS:670436299915276@1536855878228/Distance-between-middle-finger-tip-and-elbow-as-shown-in-figure-2-Label-5-in-figure-2.jpg",
       imageText: "Measure the length from elbow to wrist",
     },
     inputs: [
       {
-        inputType: InputTypes.Slider,
-        labelText: "INputLabel1",
-        inputRange: {
-          upperBound: 5,
-          lowerBound: 0,
-        },
-        value: 0,
-        units: "cm",
-      },
-      {
         inputType: InputTypes.Numeric,
-        labelText: "INputLabel2",
+        labelText: "Elbow to Wrist",
         inputRange: {
           upperBound: 15,
           lowerBound: 0,
@@ -91,65 +82,42 @@ export const DEFAULT_MEASUREMENTS: ViewMeasurement[] = [
     ],
   },
   {
-    measurementName: "forearmCircumference",
+    measurementName: "Forearm Circumference",
     image: {
-      imagePath: "forearm-circumference.jpg",
-      imageText: "forearmcircumference",
+      imagePath:
+        "https://cdn.shopify.com/s/files/1/0083/4306/0598/files/IMG_6797_large.JPG?v=1539371133",
+      imageText: "Measure distance around the forearm 3 inches below the wrist",
     },
     inputs: [
       {
         inputType: InputTypes.Numeric,
-        labelText: "INputLabel1",
+        labelText: "Forearm Circumference",
         inputRange: {
           upperBound: 5,
           lowerBound: 0,
         },
         value: 0,
         units: "cm",
-      },
-      {
-        inputType: InputTypes.Numeric,
-        labelText: "INputLabel2",
-        inputRange: {
-          upperBound: 5,
-          lowerBound: 0,
-        },
-        value: 0,
-        units: "mm",
       },
     ],
   },
   {
-    measurementName: "updateLater",
+    measurementName: "Shoulder to Elbow",
     image: {
-      imagePath: "updateLater.jpg",
-      imageText: "Measure the length from elbow to wrist",
+      imagePath:
+        "https://customstyle.files.wordpress.com/2012/04/upper-arm-measurement.jpg",
+      imageText: "Measure the length from the top of the shoulder to the elbow",
     },
     inputs: [
       {
         inputType: InputTypes.Numeric,
-        labelText: "INputLabel1",
+        labelText: "Shoulder to Elbow",
         inputRange: {
           upperBound: 5,
           lowerBound: 0,
         },
         value: 0,
         units: "cm",
-      },
-      {
-        inputType: InputTypes.Numeric,
-        labelText: "INputLabel2",
-        inputRange: {
-          upperBound: 5,
-          lowerBound: 0,
-        },
-        value: 0,
-        units: "mm",
-      },
-      {
-        inputType: InputTypes.Text,
-        labelText: "INputLabel3",
-        value: "",
       },
     ],
   },
