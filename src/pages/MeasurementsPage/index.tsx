@@ -14,11 +14,11 @@ import { IfMobile, IfNotMobile } from "../../components/responsive/breakpoints";
 import { Route } from "react-router-dom";
 import { useActiveMeasurementSet } from "../../core/hooks/measurements";
 import { Switch, useLocation } from "react-router";
-import { NewMeasurements } from "./NewMeasurements";
 import { MeasurementsList } from "./MeasurementsList";
 import { isLoading } from "../../core/stores/utils";
 import { useApp } from "../../core/stores/app";
 import * as R from "ramda";
+import NewMeasurements from "./NewMeasurements";
 
 const MeasurementsDetails: VFC = () => {
   const activeMeasurementSet = useActiveMeasurementSet();

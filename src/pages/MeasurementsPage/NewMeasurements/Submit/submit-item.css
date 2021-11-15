@@ -1,7 +1,7 @@
 .submit-item {
   display: flex;
   flex-direction: row;
-  margin: 3px;
+  line-height: 1.5rem;
 }
 
 .submit-title {
@@ -13,4 +13,13 @@
   margin-top: 1px;
   display: flex;
   align-content: flex-end;
+}
+
+.problem {
+  color: red;
+}
+
+.submit-hint {
+  font-size: 0.875rem;
+  margin: 0 0 1rem 1rem;
 }

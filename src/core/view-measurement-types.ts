@@ -1,39 +1,32 @@
 export type ViewMeasurement = {
   measurementName: string;
-  image: ViewImage;
+  image?: ViewImage;
   inputs: MeasurementInput[];
 };
 
+// TODO [Thysbe #3]: Image alt text
 export type ViewImage = {
   imagePath: string;
   imageText: string;
 };
 
 export enum InputTypes {
-  Slider = "Slider",
   Numeric = "Numeric",
   Text = "Text",
 }
 
-export type MeasurementInput = SliderInput | NumericInput | TextInput;
+export type MeasurementInput = NumericInput | TextInput;
 
 export interface Input {
   inputType: InputTypes;
   labelText: string;
-  value: number | string;
-}
-
-export interface SliderInput extends Input {
-  inputType: InputTypes.Slider;
-  inputRange: Range;
-  value: number;
-  units: string;
+  value: number | string | null;
 }
 
 export interface NumericInput extends Input {
   inputType: InputTypes.Numeric;
   inputRange: Range;
-  value: number;
+  value: number | null;
   units: string;
 }
 
@@ -45,7 +38,7 @@ export const isNumericInput = (
 
 export interface TextInput extends Input {
   inputType: InputTypes.Text;
-  value: string;
+  value: string | null;
 }
 
 export interface Range {
@@ -64,7 +57,7 @@ export const DEFAULT_MEASUREMENTS: ViewMeasurement[] = [
       {
         inputType: InputTypes.Text,
         labelText: "Patient Name",
-        value: "",
+        value: null,
       },
     ],
   },
@@ -81,9 +74,9 @@ export const DEFAULT_MEASUREMENTS: ViewMeasurement[] = [
         labelText: "Elbow to Wrist",
         inputRange: {
           upperBound: 15,
-          lowerBound: 0,
+          lowerBound: 10,
         },
-        value: 0,
+        value: null,
         units: "cm",
       },
     ],
@@ -101,9 +94,9 @@ export const DEFAULT_MEASUREMENTS: ViewMeasurement[] = [
         labelText: "Forearm Circumference",
         inputRange: {
           upperBound: 5,
-          lowerBound: 0,
+          lowerBound: 1,
         },
-        value: 0,
+        value: null,
         units: "cm",
       },
     ],
@@ -121,9 +114,9 @@ export const DEFAULT_MEASUREMENTS: ViewMeasurement[] = [
         labelText: "Shoulder to Elbow",
         inputRange: {
           upperBound: 5,
-          lowerBound: 0,
+          lowerBound: 1,
         },
-        value: 0,
+        value: null,
         units: "cm",
       },
     ],

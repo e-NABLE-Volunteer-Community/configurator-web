@@ -1,10 +1,10 @@
-import { IonInput } from "@ionic/react";
+import { IonInput, IonItem, IonLabel } from "@ionic/react";
 import { useEffect, useState, VFC } from "react";
 import {
   useSetViewMeasurements,
-  useValueForUseMeasurement,
+  useValueForMeasInput,
   useViewMeasurements,
-  useViewMeasurementsFor,
+  useMeasInput,
 } from "../../../../core/stores/app";
 import { isLoading, Loading } from "../../../../core/stores/utils";
 import {
@@ -17,6 +17,7 @@ import { InputProps } from "../measurement-input";
 
 type TextInputProps = InputProps<TextInput>;
 
+// TODO [Thysbe #3]: Redo same as NumericInputProps
 const TextInputComponent: VFC<TextInputProps> = ({
   formIndex,
   inputIndex,
@@ -24,8 +25,8 @@ const TextInputComponent: VFC<TextInputProps> = ({
 }) => {
   const viewMeasurement: ViewMeasurement[] | Loading = useViewMeasurements();
   const [value, setValue] = useState<string | null>();
-  const curInput = useViewMeasurementsFor(formIndex, inputIndex);
-  const curInputValue = useValueForUseMeasurement(formIndex, inputIndex);
+  const curInput = useMeasInput(formIndex, inputIndex);
+  const curInputValue = useValueForMeasInput(formIndex, inputIndex);
 
   const curInputIsLoading = isLoading(curInput);
 
@@ -44,7 +45,8 @@ const TextInputComponent: VFC<TextInputProps> = ({
   }
 
   return (
-    <div className="input-base text-input">
+    <IonItem className="input-base text-input">
+      <IonLabel position="floating">{input.labelText}</IonLabel>
       <IonInput
         type="text"
         value={value}
@@ -53,13 +55,11 @@ const TextInputComponent: VFC<TextInputProps> = ({
           const newValue = e.detail.value ?? null;
           setValue(newValue);
 
-          if (newValue) {
-            viewMeasurement[formIndex].inputs[inputIndex].value = newValue;
-            setViewMeasurements(viewMeasurement);
-          }
+          viewMeasurement[formIndex].inputs[inputIndex].value = newValue ?? "";
+          setViewMeasurements(viewMeasurement);
         }}
       />
-    </div>
+    </IonItem>
   );
 };
 

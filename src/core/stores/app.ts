@@ -9,6 +9,7 @@ import {
   ViewMeasurementStore,
 } from "./view-measurements";
 import { MeasurementInput } from "../view-measurement-types";
+import { AppState } from "@capacitor/app";
 
 export const useApp = create(
   persist<
@@ -34,10 +35,15 @@ export const useDevices = (): DevicesStore["devices"] =>
 export const useMeasurementSets = (): MeasurementsSlice["measurementSets"] =>
   useApp(R.prop("measurementSets"));
 
-export const useViewMeasurements = (): ViewMeasurementStore["viewMeasurements"] =>
-  useApp(R.prop("viewMeasurements"));
+export const useViewMeasurements =
+  (): ViewMeasurementStore["viewMeasurements"] =>
+    useApp(R.prop("viewMeasurements"));
 
-export const useViewMeasurementsFor = (
+export const useViewMeasurementsAlwaysUpdate =
+  (): ViewMeasurementStore["viewMeasurements"] =>
+    useApp(R.prop("viewMeasurements"), () => false);
+
+export const useMeasInput = (
   measurementIndex: number,
   inputIndex: number
 ): Omit<MeasurementInput, "value"> | Loading => {
@@ -46,17 +52,33 @@ export const useViewMeasurementsFor = (
   );
 };
 
-export const useValueForUseMeasurement = (
+export const useValueForMeasInput = (
   measurementIndex: number,
   inputIndex: number
-): string | number | Loading => {
-  return useApp(
-    (state) => state.viewMeasurements[measurementIndex].inputs[inputIndex].value
-  );
+): string | number | null | Loading => {
+  const valueSelector = (state: RootState) =>
+    isLoading(state)
+      ? state
+      : state.viewMeasurements[measurementIndex].inputs[inputIndex].value;
+  return useApp(valueSelector);
 };
 
-export const useSetViewMeasurements = (): ViewMeasurementStore["setViewMeasurements"] =>
-  useApp(R.prop("setViewMeasurements"));
+export const useSetValueForMeasInput = (
+  measurementIndex: number,
+  inputIndex: number
+) => {
+  const set = useSetViewMeasurements();
+  const viewMeasurements = useViewMeasurements();
+  return (value: string | number) => {
+    viewMeasurements[measurementIndex].inputs[inputIndex].value = value;
+    set(viewMeasurements);
+  };
+};
 
-export const useUpdateNewMeasurementSet = (): MeasurementsSlice["updateNewMeasurementSet"] =>
-  useApp(R.prop("updateNewMeasurementSet"));
+export const useSetViewMeasurements =
+  (): ViewMeasurementStore["setViewMeasurements"] =>
+    useApp(R.prop("setViewMeasurements"));
+
+export const useUpdateNewMeasurementSet =
+  (): MeasurementsSlice["updateNewMeasurementSet"] =>
+    useApp(R.prop("updateNewMeasurementSet"));
