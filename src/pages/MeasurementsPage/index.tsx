@@ -16,13 +16,10 @@ import { useActiveMeasurementSet } from "../../core/hooks/measurements";
 import { Switch, useLocation } from "react-router";
 import { MeasurementsList } from "./MeasurementsList";
 import { isLoading } from "../../core/stores/utils";
-import { useApp } from "../../core/stores/app";
-import * as R from "ramda";
 import NewMeasurements from "./NewMeasurements";
 
 const MeasurementsDetails: VFC = () => {
   const activeMeasurementSet = useActiveMeasurementSet();
-  const download = useApp(R.prop("download"));
 
   if (isLoading(activeMeasurementSet)) return <>Loading...</>; // TODO: Loading
   if (!activeMeasurementSet) return <>Select Measurements</>;

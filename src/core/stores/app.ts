@@ -9,7 +9,7 @@ import {
   ViewMeasurementStore,
 } from "./view-measurements";
 import { MeasurementInput } from "../view-measurement-types";
-import { AppState } from "@capacitor/app";
+import { createExportStatusSlice } from "./export-status";
 
 export const useApp = create(
   persist<
@@ -22,6 +22,7 @@ export const useApp = create(
       ...createMeasurementsSlice(set),
       ...createDevicesSlice(set),
       ...createViewMeasurementsSlice(set),
+      ...createExportStatusSlice(set),
     }),
     { name: "measurement-storage" }
   )
@@ -82,3 +83,9 @@ export const useSetViewMeasurements =
 export const useUpdateNewMeasurementSet =
   (): MeasurementsSlice["updateNewMeasurementSet"] =>
     useApp(R.prop("updateNewMeasurementSet"));
+
+export const useExportDevice = () => useApp(R.prop("exportDevice"));
+export const useWatchExportStatus = () => useApp(R.prop("watchExportStatus"));
+export const useExportStatus = () => useApp(R.prop("status"));
+export const useDownloadExportedDevice = () =>
+  useApp(R.prop("downloadExportedDevice"));

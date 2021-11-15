@@ -19,7 +19,12 @@ import {
   IonToolbar,
 } from "@ionic/react";
 import { Device } from "../../../core/onshape-types";
-import { useApp, useMeasurementSets } from "../../../core/stores/app";
+import {
+  useExportDevice,
+  useMeasurementSets,
+  useWatchExportStatus,
+} from "../../../core/stores/app";
+import { watchExportPath } from "../index";
 
 type SelectMeasurementsProps = { device: Device };
 const SelectMeasurements: VFC<SelectMeasurementsProps> = ({ device }) => {
@@ -54,7 +59,16 @@ const ConfirmGenerate: VFC<ConfirmGenerateProps> = ({
   measurementSetId,
 }) => {
   const measurementSets = useMeasurementSets();
-  const download = useApp(R.prop("download"));
+  const exportDevice = useExportDevice();
+  const watchExport = useWatchExportStatus();
+  const history = useHistory();
+  const generate = async () => {
+    const exportId = await exportDevice(device);
+    watchExport(exportId);
+    history.push(
+      `/devices/d/${device.documentId}/w/${device.workspaceId}/status`
+    );
+  };
 
   if (isLoading(measurementSets)) return <>Loading...</>; // TODO: Loading
   const measurementSet = measurementSets.find(R.propEq("id", measurementSetId));
@@ -87,7 +101,7 @@ const ConfirmGenerate: VFC<ConfirmGenerateProps> = ({
           <div>
             <IonText>Measurements: {measurementSet.name}</IonText>
           </div>
-          <IonButton onClick={() => download(device)}>Generate STLs</IonButton>
+          <IonButton onClick={generate}>Generate STLs</IonButton>
         </div>
       </IonContent>
     </>

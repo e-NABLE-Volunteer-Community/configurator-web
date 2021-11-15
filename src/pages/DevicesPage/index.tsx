@@ -6,6 +6,7 @@ import { TabletDesktopView } from "./DevicesFullView";
 
 export const devicePath = "/devices/d/:documentId/w/:workspaceId";
 export const generatePath = devicePath + "/generate";
+export const watchExportPath = devicePath + "/status";
 
 const DevicesPage: VFC = () => {
   return (

@@ -13,8 +13,9 @@ import {
 } from "@ionic/react";
 import { isLoading } from "../../core/stores/utils";
 import GenerateDeviceStls from "./GenerateDeviceStls";
-import { devicePath, generatePath } from "./index";
+import { devicePath, generatePath, watchExportPath } from "./index";
 import { IfMobile } from "../../components/responsive/breakpoints";
+import ExportDeviceProgress from "./GenerateDeviceStls/ExportDeviceProgress";
 
 const DeviceDetailsContent: VFC = () => {
   const active = useActiveDevice();
@@ -73,6 +74,7 @@ const DeviceDetails: VFC = () => {
     <>
       <Route path={devicePath} exact component={DeviceDetailsContent} />
       <Route path={generatePath} exact component={GenerateDeviceStls} />
+      <Route path={watchExportPath} exact component={ExportDeviceProgress} />
     </>
   );
 };
