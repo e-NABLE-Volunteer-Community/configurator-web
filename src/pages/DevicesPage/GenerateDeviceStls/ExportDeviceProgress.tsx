@@ -176,12 +176,6 @@ const Failed: VFC = () => {
 
 const ExportDeviceProgress: VFC = () => {
   const status = useExportStatus();
-  //   const status: ExportStatus = {
-  //       state: 'queued',
-  //       exportId: '4444',
-  //       queuedAt: new Date(),
-  //   }
-  console.log({ status });
 
   return (
     <>
@@ -209,37 +203,6 @@ const ExportDeviceProgress: VFC = () => {
       })()}
     </>
   );
-  // console.log(status);
-
-  //
-  // // TODO: Loading spinner
-  // if (!status || isLoading(status)) return <>Loading..</>;
-  //
-  // if (status.state === "queued") return <>Queued...</>;
-  // if (status.state === "exporting")
-  //   return (
-  //     <div>
-  //       Exporting...
-  //       {R.toPairs(status.parts).map(([k, v]) => (
-  //         <div>
-  //           {k}: {v}
-  //         </div>
-  //       ))}
-  //     </div>
-  //   );
-  // if (status.state === "exported") return <>Exported.</>;
-  // if (status.state === "zipping") return <>Zipping...</>;
-  // if (status.state === "completed")
-  //   return (
-  //     <>
-  //       Completed.
-  //       <IonButton onClick={() => download(status.exportId, "Phoenix V3")}>
-  //         Download
-  //       </IonButton>
-  //     </>
-  //   );
-  //
-  // return <>Failed.</>;
 };
 
 export default ExportDeviceProgress;
