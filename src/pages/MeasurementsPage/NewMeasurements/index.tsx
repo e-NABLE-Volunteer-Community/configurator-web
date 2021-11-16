@@ -3,7 +3,7 @@ import { VFC } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "./measurement-input.tsx";
-import "./measurements-form.css";
+import "./measurements-form.scss";
 import MeasurementFormInput from "./measurement-input";
 import {
   useViewMeasurements,

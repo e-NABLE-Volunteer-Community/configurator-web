@@ -37,7 +37,6 @@ import { handLeft, peopleOutline } from "ionicons/icons";
 import "swiper/swiper-bundle.min.css";
 // Import Swiper core and required modules, install modules
 import SwiperCore, { Navigation } from "swiper";
-import ExportDeviceProgress from "./pages/DevicesPage/GenerateDeviceStls/ExportDeviceProgress";
 
 SwiperCore.use([Navigation]);
 
@@ -47,7 +46,6 @@ const Routes: VFC = () => {
       <Route key={1} path="/:tab(devices)" component={DevicesPage} />
       <Route key={2} path="/:tab(measurements)" component={MeasurementsPage} />
       <Route key={4} path="/" render={() => <Redirect to="/devices" />} exact />
-      <Route key={5} path="/:tab(status)" component={ExportDeviceProgress} />
     </>
   );
 };

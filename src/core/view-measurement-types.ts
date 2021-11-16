@@ -16,7 +16,7 @@ export enum InputTypes {
 }
 
 export enum MeasurementUnits {
-  Millimiters = "mm",
+  Millimeters = "mm",
   Centimeters = "cm",
   Inches = "in",
   Degrees = "°",

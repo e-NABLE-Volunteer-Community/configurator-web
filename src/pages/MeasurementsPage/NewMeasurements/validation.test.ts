@@ -1,5 +1,6 @@
 import {
   InputTypes,
+  MeasurementUnits,
   NumericInput,
   TextInput,
   ViewMeasurement,
@@ -18,7 +19,7 @@ const numericInput: NumericInput = {
     upperBound: 12,
   },
   value: null,
-  units: "cm",
+  units: MeasurementUnits.Millimeters,
 };
 
 const textInput: TextInput = {
