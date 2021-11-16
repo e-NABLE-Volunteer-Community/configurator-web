@@ -3,6 +3,7 @@ import {
   ViewMeasurement,
 } from "../view-measurement-types";
 import { Loading, StateSlice } from "./utils";
+import { StateCreator } from "zustand";
 
 const mockViewMeasurements = (): ViewMeasurement[] => DEFAULT_MEASUREMENTS;
 
@@ -11,7 +12,7 @@ export type ViewMeasurementStore = {
   viewMeasurements: ViewMeasurement[];
 };
 
-export const createViewMeasurementsSlice: StateSlice<ViewMeasurementStore> = (
+export const createViewMeasurementsSlice: StateCreator<ViewMeasurementStore> = (
   set
 ) => {
   const setViewMeasurements = (viewMeasurements: ViewMeasurement[]) => {

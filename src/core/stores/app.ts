@@ -1,5 +1,5 @@
 import { createMeasurementsSlice, MeasurementsSlice } from "./measurements";
-import create, { SetState, GetState } from "zustand";
+import create, { GetState, SetState } from "zustand";
 import { persist, StoreApiWithPersist } from "zustand/middleware";
 import { createDevicesSlice, DevicesStore } from "./devices";
 import * as R from "ramda";
@@ -11,22 +11,23 @@ import {
 import { MeasurementInput } from "../view-measurement-types";
 import { createExportStatusSlice } from "./export-status";
 
-export const useApp = create(
+export const useApp = create<RootState>((set, get) => ({
+  ...createMeasurementsSlice(set),
+  ...createDevicesSlice(set),
+  ...createExportStatusSlice(set),
+}));
+
+export const useViewMeasurementsStore = create(
   persist<
-    RootState,
-    SetState<RootState>,
-    GetState<RootState>,
-    StoreApiWithPersist<RootState>
-  >(
-    (set, get) => ({
-      ...createMeasurementsSlice(set),
-      ...createDevicesSlice(set),
-      ...createViewMeasurementsSlice(set),
-      ...createExportStatusSlice(set),
-    }),
-    { name: "measurement-storage" }
-  )
+    ViewMeasurementStore,
+    SetState<ViewMeasurementStore>,
+    GetState<ViewMeasurementStore>,
+    StoreApiWithPersist<ViewMeasurementStore>
+  >(createViewMeasurementsSlice, {
+    name: "measurement-storage",
+  })
 );
+
 export const useDevices = (): DevicesStore["devices"] =>
   useApp(R.prop("devices"));
 
@@ -38,17 +39,17 @@ export const useMeasurementSets = (): MeasurementsSlice["measurementSets"] =>
 
 export const useViewMeasurements =
   (): ViewMeasurementStore["viewMeasurements"] =>
-    useApp(R.prop("viewMeasurements"));
+    useViewMeasurementsStore(R.prop("viewMeasurements"));
 
 export const useViewMeasurementsAlwaysUpdate =
   (): ViewMeasurementStore["viewMeasurements"] =>
-    useApp(R.prop("viewMeasurements"), () => false);
+    useViewMeasurementsStore(R.prop("viewMeasurements"), () => false);
 
 export const useMeasInput = (
   measurementIndex: number,
   inputIndex: number
 ): Omit<MeasurementInput, "value"> | Loading => {
-  return useApp(
+  return useViewMeasurementsStore(
     (state) => state.viewMeasurements[measurementIndex].inputs[inputIndex]
   );
 };
@@ -57,11 +58,11 @@ export const useValueForMeasInput = (
   measurementIndex: number,
   inputIndex: number
 ): string | number | null | Loading => {
-  const valueSelector = (state: RootState) =>
+  const valueSelector = (state: ViewMeasurementStore) =>
     isLoading(state)
       ? state
       : state.viewMeasurements[measurementIndex].inputs[inputIndex].value;
-  return useApp(valueSelector);
+  return useViewMeasurementsStore(valueSelector);
 };
 
 export const useSetValueForMeasInput = (
@@ -78,7 +79,7 @@ export const useSetValueForMeasInput = (
 
 export const useSetViewMeasurements =
   (): ViewMeasurementStore["setViewMeasurements"] =>
-    useApp(R.prop("setViewMeasurements"));
+    useViewMeasurementsStore(R.prop("setViewMeasurements"));
 
 export const useUpdateNewMeasurementSet =
   (): MeasurementsSlice["updateNewMeasurementSet"] =>
