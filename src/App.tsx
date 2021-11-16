@@ -32,13 +32,12 @@ import "./theme/variables.css";
 import DevicesPage from "./pages/DevicesPage";
 import MeasurementsPage from "./pages/MeasurementsPage";
 import { handLeft, peopleOutline } from "ionicons/icons";
-import DeviceForm from "./pages/MeasurementsPage/NewMeasurements";
 
 // Swiper bundle styles
 import "swiper/swiper-bundle.min.css";
 // Import Swiper core and required modules, install modules
 import SwiperCore, { Navigation } from "swiper";
-import { AnimationBuilder } from "@ionic/core";
+import ExportDeviceProgress from "./pages/DevicesPage/GenerateDeviceStls/ExportDeviceProgress";
 
 SwiperCore.use([Navigation]);
 
@@ -48,6 +47,7 @@ const Routes: VFC = () => {
       <Route key={1} path="/:tab(devices)" component={DevicesPage} />
       <Route key={2} path="/:tab(measurements)" component={MeasurementsPage} />
       <Route key={4} path="/" render={() => <Redirect to="/devices" />} exact />
+      <Route key={5} path="/:tab(status)" component={ExportDeviceProgress} />
     </>
   );
 };
@@ -64,6 +64,10 @@ const App: FC = () => {
             <IonTabButton tab="devices" href="/devices">
               <IonIcon icon={handLeft} />
               <IonLabel>Devices</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="status" href="/status">
+              <IonIcon icon={handLeft} />
+              <IonLabel>Status</IonLabel>
             </IonTabButton>
             <IonTabButton tab="measurements" href="/measurements">
               <IonIcon icon={peopleOutline} />
