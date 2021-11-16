@@ -26,6 +26,7 @@
     "framer-motion": "4.1.17",
     "ionicons": "^5.4.0",
     "js-file-download": "^0.4.12",
+    "node-sass": "^6.0.1",
     "ramda": "^0.27.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",

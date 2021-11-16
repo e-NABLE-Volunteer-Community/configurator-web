@@ -26,6 +26,8 @@
   margin: 2rem auto;
   height: calc(100% - 4rem);
   max-width: calc(min(400px, 100% - 4rem));
+  display: flex;
+  flex-direction: column;
 }
 
 .review-value {
