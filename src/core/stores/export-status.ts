@@ -65,11 +65,35 @@ export const createExportStatusSlice: StateSlice<ExportStatusStore> = (set) => {
     const socket = io("http://localhost:3008/export-status");
     socket.on("update", (status) => {
       set({ status });
+      console.log({ status });
     });
     socket.emit("status", exportId);
   };
 
   return {
+    // status: {
+    //   exportId: "8e2f35e7-8219-45ae-97b9-ed4525221b50",
+    //   state: "exporting",
+    //   queuedAt: new Date(),
+    //   parts: {
+    //     "PIN-A": "queued",
+    //     "PIN-C": "exporting",
+    //     "PIN-D": "queued",
+    //     "PIN-E": "queued",
+    //     "PIN-F": "exporting",
+    //     Distal: "exported",
+    //     Thumb: "exporting",
+    //     Pointer: "queued",
+    //     Index: "exported",
+    //     Ring: "queued",
+    //     Pinky: "queued",
+    //     "Right Palm": "queued",
+    //     "ARM-GUARD": "exported",
+    //     "Tensioner Block": "exported",
+    //     Tensioner: "pending",
+    //     Washer: "pending",
+    //   },
+    // },
     status: undefined,
     watchExportStatus,
   };
