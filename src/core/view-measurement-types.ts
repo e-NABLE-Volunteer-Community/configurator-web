@@ -15,6 +15,13 @@ export enum InputTypes {
   Text = "Text",
 }
 
+export enum MeasurementUnits {
+  Millimiters = "mm",
+  Centimeters = "cm",
+  Inches = "in",
+  Degrees = "°",
+}
+
 export type MeasurementInput = NumericInput | TextInput;
 
 export interface Input {
@@ -27,7 +34,7 @@ export interface NumericInput extends Input {
   inputType: InputTypes.Numeric;
   inputRange: Range;
   value: number | null;
-  units: string;
+  units: MeasurementUnits;
 }
 
 export const isNumericInput = (
@@ -77,7 +84,7 @@ export const DEFAULT_MEASUREMENTS: ViewMeasurement[] = [
           lowerBound: 10,
         },
         value: null,
-        units: "cm",
+        units: MeasurementUnits.Centimeters,
       },
     ],
   },
@@ -97,7 +104,7 @@ export const DEFAULT_MEASUREMENTS: ViewMeasurement[] = [
           lowerBound: 1,
         },
         value: null,
-        units: "cm",
+        units: MeasurementUnits.Centimeters,
       },
     ],
   },
@@ -117,7 +124,7 @@ export const DEFAULT_MEASUREMENTS: ViewMeasurement[] = [
           lowerBound: 1,
         },
         value: null,
-        units: "cm",
+        units: MeasurementUnits.Centimeters,
       },
     ],
   },
