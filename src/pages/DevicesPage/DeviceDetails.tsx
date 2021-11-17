@@ -50,8 +50,11 @@ const DeviceDetailsContent: VFC = () => {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
+            gap: "2rem",
           }}
         >
+          <IonTitle>{active.name}</IonTitle>
+
           <IonImg
             src="assets/300x300.png"
             style={{
@@ -59,7 +62,7 @@ const DeviceDetailsContent: VFC = () => {
               height: 300,
             }}
           />
-          <IonTitle>{active.name}</IonTitle>
+
           <IonButton onClick={generate}>
             Generate STLs From Measurements
           </IonButton>

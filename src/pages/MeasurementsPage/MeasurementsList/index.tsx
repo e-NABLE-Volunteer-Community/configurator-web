@@ -8,6 +8,7 @@ import {
   IonItem,
   IonLabel,
   IonList,
+  IonText,
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
@@ -45,7 +46,9 @@ export const BaseMeasurementsList: VFC<BaseMeasurementsListProps> = ({
           </IonItem>
           {measurementSets.map((m) => (
             <IonItem key={m.id} onClick={() => onItemClicked(m)}>
-              {m.name}
+              <IonText>
+                <h5>{m.name}</h5>
+              </IonText>
             </IonItem>
           ))}
         </IonList>

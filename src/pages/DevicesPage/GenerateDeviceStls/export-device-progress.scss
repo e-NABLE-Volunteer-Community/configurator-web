@@ -34,9 +34,9 @@ ion-card {
   padding: 0 0.5rem;
   background-image: linear-gradient(
     to right,
-    var(--tint) 0%,
-    var(--tint) 16%,
-    var(--ion-color-light) 26%
+    var(--tint) 0,
+    var(--tint) 36px,
+    var(--ion-color-light) 44px
   );
   margin: 0;
   height: 100%;

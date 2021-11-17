@@ -53,17 +53,17 @@ export interface Range {
   lowerBound: number;
 }
 
-export const DEFAULT_MEASUREMENTS: ViewMeasurement[] = [
+export const defaultMeasurements: ViewMeasurement[] = [
   {
-    measurementName: "Patient Name",
+    measurementName: "Recipient Name",
     image: {
       imagePath: "https://i.stack.imgur.com/34AD2.jpg",
-      imageText: "Enter Patient Name",
+      imageText: "Enter Recipient Name",
     },
     inputs: [
       {
         inputType: InputTypes.Text,
-        labelText: "Patient Name",
+        labelText: "Recipient Name",
         value: null,
       },
     ],

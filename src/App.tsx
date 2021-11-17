@@ -45,7 +45,7 @@ const Routes: VFC = () => {
     <>
       <Route key={1} path="/:tab(devices)" component={DevicesPage} />
       <Route key={2} path="/:tab(measurements)" component={MeasurementsPage} />
-      <Route key={4} path="/" render={() => <Redirect to="/devices" />} exact />
+      <Route key={4} path="/" render={() => <Redirect to="/devices" />} />
     </>
   );
 };
@@ -62,10 +62,6 @@ const App: FC = () => {
             <IonTabButton tab="devices" href="/devices">
               <IonIcon icon={handLeft} />
               <IonLabel>Devices</IonLabel>
-            </IonTabButton>
-            <IonTabButton tab="status" href="/status">
-              <IonIcon icon={handLeft} />
-              <IonLabel>Status</IonLabel>
             </IonTabButton>
             <IonTabButton tab="measurements" href="/measurements">
               <IonIcon icon={peopleOutline} />

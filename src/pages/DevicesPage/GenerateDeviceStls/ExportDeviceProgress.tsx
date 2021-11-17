@@ -10,7 +10,7 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
-import "./export-device-progress.css";
+import "./export-device-progress.scss";
 import {
   CompletedExportStatus,
   ExportingExportStatus,
@@ -28,6 +28,7 @@ import {
   syncCircleOutline,
 } from "ionicons/icons";
 import * as framer from "framer-motion";
+import { useHistory } from "react-router-dom";
 const { motion } = framer;
 
 const Queued: VFC = () => {
@@ -135,6 +136,9 @@ const Zipping: VFC = () => {
 
 const Completed: VFC<{ status: CompletedExportStatus }> = ({ status }) => {
   const download = useDownloadExportedDevice();
+  const history = useHistory();
+  const back = () => history.replace("/devices");
+
   return (
     <>
       <IonContent>
@@ -150,6 +154,9 @@ const Completed: VFC<{ status: CompletedExportStatus }> = ({ status }) => {
           </IonText>
           <IonButton onClick={() => download(status.exportId, "Phoenix V3")}>
             Download
+          </IonButton>
+          <IonButton color="dark" onClick={back}>
+            Back to Devices
           </IonButton>
         </div>
       </IonContent>

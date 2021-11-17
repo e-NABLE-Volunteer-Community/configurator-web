@@ -1,11 +1,11 @@
 import {
-  DEFAULT_MEASUREMENTS,
+  defaultMeasurements,
   ViewMeasurement,
 } from "../view-measurement-types";
 import { Loading, StateSlice } from "./utils";
 import { StateCreator } from "zustand";
 
-const mockViewMeasurements = (): ViewMeasurement[] => DEFAULT_MEASUREMENTS;
+const mockViewMeasurements = (): ViewMeasurement[] => defaultMeasurements;
 
 export type ViewMeasurementStore = {
   setViewMeasurements: (viewMeasurements: ViewMeasurement[]) => void;
