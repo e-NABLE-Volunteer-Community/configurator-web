@@ -38,6 +38,7 @@
     "workbox-routing": "^5.1.4",
     "workbox-strategies": "^5.1.4",
     "workbox-streams": "^5.1.4",
+    "yarn": "^1.22.17",
     "zustand": "^3.6.3"
   },
   "lint-staged": {
@@ -69,6 +70,7 @@
     ]
   },
   "devDependencies": {
+    "@capacitor/cli": "3.2.5",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.6.3",
@@ -80,7 +82,6 @@
     "@types/react-dom": "^16.9.10",
     "@types/react-router": "^5.1.11",
     "@types/react-router-dom": "^5.1.7",
-    "@capacitor/cli": "3.2.5",
     "faker": "^5.5.3",
     "husky": "^7.0.4",
     "lint-staged": "^12.0.2",
