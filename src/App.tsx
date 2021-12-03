@@ -32,6 +32,7 @@ import "./theme/variables.css";
 import DevicesPage from "./pages/DevicesPage";
 import MeasurementsPage from "./pages/MeasurementsPage";
 import { handLeft, peopleOutline } from "ionicons/icons";
+import ProfilePage from "./pages/ProfilePage";
 
 // Swiper bundle styles
 import "swiper/swiper-bundle.min.css";
@@ -45,6 +46,7 @@ const Routes: VFC = () => {
     <>
       <Route key={1} path="/:tab(devices)" component={DevicesPage} />
       <Route key={2} path="/:tab(measurements)" component={MeasurementsPage} />
+      <Route key={5} path="/:tab(profiles)" component={ProfilePage} />
       <Route key={4} path="/" render={() => <Redirect to="/devices" />} />
     </>
   );
@@ -66,6 +68,9 @@ const App: FC = () => {
             <IonTabButton tab="measurements" href="/measurements">
               <IonIcon icon={peopleOutline} />
               <IonLabel>Measurements</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="profiles" href="/profiles">
+              <IonLabel>Profiles</IonLabel>
             </IonTabButton>
           </IonTabBar>
         </IonTabs>
