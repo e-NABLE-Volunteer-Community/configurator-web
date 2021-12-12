@@ -1,10 +1,14 @@
 import { VFC } from "react";
 import { useProfiles } from "../../../core/stores/app";
 import {
+  IonButton,
+  IonButtons,
   IonContent,
   IonHeader,
+  IonIcon,
   IonImg,
   IonItem,
+  IonLabel,
   IonList,
   IonText,
   IonTitle,
@@ -13,6 +17,7 @@ import {
 import { Profile } from "../../../core/profile-types";
 import { useHistory } from "react-router-dom";
 import { isLoading } from "../../../core/stores/utils";
+import { addOutline } from "ionicons/icons";
 
 const ProfileListItem: VFC<Profile> = (profile) => {
   const history = useHistory();
@@ -47,11 +52,16 @@ const NewProfileItem: VFC = () => {
     <IonItem key={key} onClick={onClick}>
       <div style={{ display: "flex" }}>
         <div>
-          <div style={{ marginLeft: "2rem", marginBottom: "1rem" }}>
-            <IonText>
-              <h5>Create New Profile</h5>
-            </IonText>
-          </div>
+          <IonItem>
+            <IonToolbar>
+              <IonButtons>
+                <IonButton onClick={() => history.push("/profiles/new")}>
+                  <IonIcon icon={addOutline} style={{ marginRight: "1rem" }} />
+                  <IonLabel>Create New Profile</IonLabel>
+                </IonButton>
+              </IonButtons>
+            </IonToolbar>
+          </IonItem>
           <div>
             <IonImg />
           </div>
