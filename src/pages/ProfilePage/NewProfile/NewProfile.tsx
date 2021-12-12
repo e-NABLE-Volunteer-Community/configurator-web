@@ -1,15 +1,30 @@
 import { VFC } from "react";
-import { IonContent, IonPage } from "@ionic/react";
+import {
+  IonBackButton,
+  IonButtons,
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+} from "@ionic/react";
+import { Profile } from "../../../core/profile-types";
+import { IfMobile } from "../../../components/responsive/breakpoints";
 
 const NewProfile: VFC = () => {
+  const newProfile: Partial<Profile> = {};
+
   return (
-    <>
-      <IonPage>
-        <IonContent>
-          <div>New Profile</div>
-        </IonContent>
-      </IonPage>
-    </>
+    <div>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>New Profile</IonTitle>
+          <IonButtons slot="start">
+            <IonBackButton defaultHref="/profiles" />
+          </IonButtons>
+        </IonToolbar>
+      </IonHeader>
+    </div>
   );
 };
 export default NewProfile;
