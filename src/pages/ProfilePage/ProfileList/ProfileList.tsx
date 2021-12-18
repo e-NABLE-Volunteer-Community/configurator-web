@@ -79,6 +79,9 @@ const NewProfileItem: VFC = () => {
 
 const ProfileList: VFC = () => {
   const profiles = useProfiles();
+  const history = useHistory();
+  const newProfileUrl = "/profiles/new";
+  const onNewProfileClick = () => history.push(newProfileUrl);
   if (isLoading(profiles)) return <>Loading...</>; // TODO: Loading
 
   return (
@@ -114,8 +117,18 @@ const ProfileList: VFC = () => {
       </IonHeader>
 
       <IonContent>
-        <IonList>{profiles.map(ProfileListItem)}</IonList>
-        <div className="add-new-person">+ add new person</div>
+        <div className="list-container">
+          <IonList lines="none">{profiles.map(ProfileListItem)}</IonList>{" "}
+        </div>
+        <div className="list-spacer"></div>
+        <IonButton
+          fill="solid"
+          color="tertiary"
+          className="add-new-person"
+          onClick={onNewProfileClick}
+        >
+          + add new person
+        </IonButton>
       </IonContent>
     </>
   );
