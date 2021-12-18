@@ -13,11 +13,19 @@ import {
   IonText,
   IonTitle,
   IonToolbar,
+  IonInput,
 } from "@ionic/react";
+import {
+  arrowBackOutline,
+  funnelOutline,
+  filterCircleOutline,
+} from "ionicons/icons";
+
 import { Profile } from "../../../core/profile-types";
 import { useHistory } from "react-router-dom";
 import { isLoading } from "../../../core/stores/utils";
 import { addOutline } from "ionicons/icons";
+import "../ProfileList/profile-list.scss";
 
 const ProfileListItem: VFC<Profile> = (profile) => {
   const history = useHistory();
@@ -26,17 +34,15 @@ const ProfileListItem: VFC<Profile> = (profile) => {
   const thisUrl = `/profiles/p/${profile.profileId}`;
   const onClick = () => history.push(thisUrl);
   return (
-    <IonItem key={key} onClick={onClick}>
-      <div style={{ display: "flex" }}>
-        <div>
-          <div style={{ marginLeft: "2rem", marginBottom: "1rem" }}>
-            <IonText>
-              <h5>{profile.name}</h5>
-            </IonText>
-          </div>
-          <div>
-            <IonImg src={profile.profileImageUrl} />
-          </div>
+    <IonItem key={key} onClick={onClick} className="profile-list-item-base">
+      <div className="profile-list-item">
+        <div className="profile-image">
+          <IonImg src={profile.profileImageUrl} />
+        </div>
+        <div className="profile-info">
+          <h5>{profile.name}</h5>
+          <div className="profile-measurement-count">3 measurements</div>
+          <div className="profile-location">location</div>
         </div>
       </div>
     </IonItem>
@@ -77,16 +83,39 @@ const ProfileList: VFC = () => {
 
   return (
     <>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Profiles</IonTitle>
-        </IonToolbar>
+      <IonHeader className="people-header">
+        <div className="home-container">
+          <IonIcon
+            icon={arrowBackOutline}
+            color={"light"}
+            className="back-arrow"
+          />
+          <div>home</div>
+        </div>
+        <div className="header-items">
+          <div className="header-text">People</div>
+          <div>
+            <IonInput
+              placeholder=" Search for someone..."
+              className="people-search"
+            ></IonInput>
+          </div>
+          <div className="sort-filter-row">
+            <div className="sort-filter-item">
+              <IonIcon icon={funnelOutline} />
+              <div>Sort</div>
+            </div>
+            <div className="sort-filter-item">
+              <IonIcon icon={filterCircleOutline} />
+              <div>Filter</div>
+            </div>
+          </div>
+        </div>
       </IonHeader>
+
       <IonContent>
-        <IonList>
-          <NewProfileItem />
-          {profiles.map(ProfileListItem)}
-        </IonList>
+        <IonList>{profiles.map(ProfileListItem)}</IonList>
+        <div className="add-new-person">+ add new person</div>
       </IonContent>
     </>
   );
