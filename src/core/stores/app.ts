@@ -2,6 +2,7 @@ import { createMeasurementsSlice, MeasurementsSlice } from "./measurements";
 import create, { GetState, SetState } from "zustand";
 import { persist, StoreApiWithPersist } from "zustand/middleware";
 import { createDevicesSlice, DevicesStore } from "./devices";
+import { createProfilesSlice, ProfileStore } from "./profiles";
 import * as R from "ramda";
 import { isLoading, Loading, RootState } from "./utils";
 import {
@@ -15,6 +16,7 @@ export const useApp = create<RootState>((set, get) => ({
   ...createMeasurementsSlice(set),
   ...createDevicesSlice(set),
   ...createExportStatusSlice(set),
+  ...createProfilesSlice(set),
 }));
 
 export const useViewMeasurementsStore = create(
@@ -30,6 +32,9 @@ export const useViewMeasurementsStore = create(
 
 export const useDevices = (): DevicesStore["devices"] =>
   useApp(R.prop("devices"));
+
+export const useProfiles = (): ProfileStore["profiles"] =>
+  useApp(R.prop("profiles"));
 
 // Returns null while still loading
 // This won't happen until Measurements are stored remotely, but the app should be
