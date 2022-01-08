@@ -31,13 +31,20 @@ import "@ionic/react/css/display.css";
 import "./theme/variables.css";
 import DevicesPage from "./pages/DevicesPage";
 import MeasurementsPage from "./pages/MeasurementsPage";
-import { handLeft, peopleOutline } from "ionicons/icons";
+import {
+  apertureOutline,
+  handLeft,
+  homeOutline,
+  peopleOutline,
+  printOutline,
+} from "ionicons/icons";
 import ProfilePage from "./pages/ProfilePage";
 
 // Swiper bundle styles
 import "swiper/swiper-bundle.min.css";
 // Import Swiper core and required modules, install modules
 import SwiperCore, { Navigation } from "swiper";
+import LandingPage from "./pages/LandingPage";
 
 SwiperCore.use([Navigation]);
 
@@ -48,6 +55,7 @@ const Routes: VFC = () => {
       <Route key={2} path="/:tab(measurements)" component={MeasurementsPage} />
       <Route key={5} path="/:tab(profiles)" component={ProfilePage} />
       <Route key={4} path="/" render={() => <Redirect to="/devices" />} />
+      <Route key={3} path="/:tab(home)" component={LandingPage} />
     </>
   );
 };
@@ -61,16 +69,28 @@ const App: FC = () => {
             <Routes />
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
-            <IonTabButton tab="devices" href="/devices">
+            {/* <IonTabButton tab="devices" href="/devices">
               <IonIcon icon={handLeft} />
               <IonLabel>Devices</IonLabel>
-            </IonTabButton>
-            <IonTabButton tab="measurements" href="/measurements">
+            </IonTabButton> */}
+            {/* <IonTabButton tab="measurements" href="/measurements">
               <IonIcon icon={peopleOutline} />
               <IonLabel>Measurements</IonLabel>
+            </IonTabButton> */}
+            {/* <IonTabButton tab="profiles" href="/profiles">
+              <IonLabel>Profiles</IonLabel>
+            </IonTabButton> */}
+            <IonTabButton tab="home" href="/home">
+              <IonIcon icon={homeOutline} />
+              <IonLabel></IonLabel>
             </IonTabButton>
             <IonTabButton tab="profiles" href="/profiles">
-              <IonLabel>Profiles</IonLabel>
+              <IonIcon icon={peopleOutline} />
+              <IonLabel></IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="home" href="/home">
+              <IonIcon icon={printOutline} />
+              <IonLabel></IonLabel>
             </IonTabButton>
           </IonTabBar>
         </IonTabs>
