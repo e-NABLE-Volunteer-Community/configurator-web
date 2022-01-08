@@ -3,3 +3,7 @@ export type Profile = {
   profileId: string;
   profileImageUrl: string;
 };
+
+export type ProfileId = {
+  profileId: string;
+};

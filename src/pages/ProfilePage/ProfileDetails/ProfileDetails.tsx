@@ -8,14 +8,20 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
+import { useActiveProfile } from "../../../core/hooks/profiles";
+import { isLoading } from "../../../core/stores/utils";
+
+import "../../../theme/header.scss";
 
 const ProfileDetails: VFC = () => {
+  const activeProfile = useActiveProfile();
+  if (isLoading(activeProfile) || !activeProfile) return <>Loading...</>;
   return (
     <>
       <IonPage>
-        <IonHeader>
+        <IonHeader className="small-header">
           <IonToolbar>
-            <IonTitle>Profile Details</IonTitle>
+            <IonTitle>{activeProfile.name}</IonTitle>
             <IonButtons slot="start">
               <IonBackButton defaultHref="/profiles" />
             </IonButtons>
