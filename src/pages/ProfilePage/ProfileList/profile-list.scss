@@ -101,3 +101,10 @@
 .list-spacer {
   height: 50px;
 }
+
+.profile-item-card {
+  margin: 10px;
+  min-height: 50px;
+  background-color: var(--ion-color-tertiary-tint);
+  border-radius: 5px;
+}

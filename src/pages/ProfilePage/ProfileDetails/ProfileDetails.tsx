@@ -85,7 +85,16 @@ const ProfileDetails: VFC = () => {
 const MeasurementItem: VFC<MeasurementSet> = (
   measurementSet: MeasurementSet
 ) => {
-  return <div>MEAS</div>;
+  return (
+    <div className="profile-item-card">
+      <div>img</div>
+      <div className="card-details">
+        <div>{measurementSet.type}</div>
+        <div>meas details</div>
+      </div>
+      <div>{measurementSet.modifiedAt.toDateString()}</div>
+    </div>
+  );
 };
 
 const DeviceItem: VFC<Device> = (device: Device) => {
