@@ -1,0 +1,40 @@
+.profile-info-container {
+  display: flex;
+}
+
+.profile-image {
+  height: 140px;
+  width: 140px;
+  margin: 15px;
+}
+
+.info-container {
+  margin: 26px 10px 15px 0px;
+  width: 60%;
+}
+
+.info-item {
+  padding: 5px;
+}
+
+.info-header {
+  font-weight: 200;
+}
+
+.info-text {
+}
+
+.profile-item-header {
+  font-weight: bold;
+  font-size: 24px !important;
+}
+
+.profile-item-button {
+  width: 95%;
+  margin: 10px 10px 0px 10px;
+}
+
+.items-container {
+  display: flex;
+  flex-direction: column;
+}

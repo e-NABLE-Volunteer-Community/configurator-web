@@ -36,9 +36,7 @@ const ProfileListItem: VFC<Profile> = (profile) => {
   return (
     <IonItem key={key} onClick={onClick} className="profile-list-item-base">
       <div className="profile-list-item">
-        <div className="profile-image">
-          <IonImg src={profile.profileImageUrl} />
-        </div>
+        <IonImg className="profile-image" src={profile.profileImageUrl} />
         <div className="profile-info">
           <h5>{profile.name}</h5>
           <div className="profile-measurement-count">3 measurements</div>
