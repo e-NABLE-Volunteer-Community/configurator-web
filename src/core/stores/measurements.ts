@@ -1,7 +1,7 @@
 import {
   MeasurementSet,
   MeasurementSetId,
-  MeasurementsType,
+  MeasurementSetType,
 } from "../configurator-types";
 import * as R from "ramda";
 import faker from "faker";
@@ -11,7 +11,7 @@ import { isLoading, Loading, StateSlice } from "./utils";
 const sample = <T>(ts: T[]): T => ts[Math.floor(Math.random() * ts.length)];
 const makeMockMeasurements = (n: number) =>
   R.times((i) => {
-    const type = sample(Object.values(MeasurementsType));
+    const type = sample(Object.values(MeasurementSetType));
     return {
       id: i.toString(),
       name: `Measurements ${i}`,
@@ -19,7 +19,7 @@ const makeMockMeasurements = (n: number) =>
       createdAt: faker.date.recent(),
       modifiedAt: faker.date.recent(),
       data:
-        type === MeasurementsType.hand
+        type === MeasurementSetType.hand
           ? {
               wristCircumference: `${Math.floor(Math.random() * 15)} cm`,
             }

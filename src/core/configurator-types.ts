@@ -1,5 +1,5 @@
 export type MeasurementSetId = string;
-export enum MeasurementsType {
+export enum MeasurementSetType {
   fingers = "fingers",
   hand = "hand",
   elbow = "elbow",
@@ -8,13 +8,13 @@ export enum MeasurementsType {
 export type MeasurementSet = {
   id: MeasurementSetId;
   name: string;
-  type: MeasurementsType;
+  type: MeasurementSetType;
   createdAt: Date;
   modifiedAt: Date;
 };
 
 export interface FingersMeasurements extends MeasurementSet {
-  type: MeasurementsType.fingers;
+  type: MeasurementSetType.fingers;
   data: {
     wristCircumference: number;
     baseOfHandToTipOfMiddleFinger: number;
@@ -22,7 +22,7 @@ export interface FingersMeasurements extends MeasurementSet {
 }
 
 export interface HandMeasurements extends MeasurementSet {
-  type: MeasurementsType.hand;
+  type: MeasurementSetType.hand;
   data: {
     wristCircumference: string;
     baseOfHandToTipOfMiddleFinger: number;
@@ -30,17 +30,36 @@ export interface HandMeasurements extends MeasurementSet {
 }
 
 export interface ElbowMeasurements extends MeasurementSet {
-  type: MeasurementsType.elbow;
+  type: MeasurementSetType.elbow;
   data: {
     wristCircumference: string;
     baseOfHandToTipOfMiddleFinger: number;
   };
 }
 
+export function isElbowMeasurements(
+  measurements: MeasurementSet
+): measurements is ElbowMeasurements {
+  return measurements.type === MeasurementSetType.elbow;
+}
+
 export interface ShoulderMeasurements extends MeasurementSet {
-  type: MeasurementsType.shoulder;
+  type: MeasurementSetType.shoulder;
   data: {
     wristCircumference: string;
     baseOfHandToTipOfMiddleFinger: number;
   };
 }
+
+export interface Measurement {}
+
+export enum ArmMeasurementTypes {
+  thumb = "thumb",
+  indexFinger = "index finger",
+  middleFinger = "middle finger",
+  ringFinger = "ring finger",
+
+  forearm = "forearm",
+}
+
+export enum MeasurementTypes {}

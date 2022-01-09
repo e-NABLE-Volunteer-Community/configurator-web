@@ -15,9 +15,15 @@ import { isLoading } from "../../../core/stores/utils";
 
 import "../../../theme/header.scss";
 import "../ProfileDetails/profile-details.scss";
-import { MeasurementSet } from "../../../core/configurator-types";
+import {
+  MeasurementSet,
+  ElbowMeasurements,
+  isElbowMeasurements,
+} from "../../../core/configurator-types";
 import { Device } from "../../../core/onshape-types";
 import { useHistory } from "react-router";
+
+import { capitalizeFirstLetter } from "../../../core/util/string-manipulation";
 
 const ProfileDetails: VFC = () => {
   const history = useHistory();
@@ -85,19 +91,44 @@ const ProfileDetails: VFC = () => {
 const MeasurementItem: VFC<MeasurementSet> = (
   measurementSet: MeasurementSet
 ) => {
+  var details: number | string;
+  var unit: string;
+  if (isElbowMeasurements(measurementSet)) {
+    details = measurementSet.data.wristCircumference;
+    unit = "cm";
+  } else {
+    details = "todo";
+    unit = "also todo";
+  }
+
   return (
-    <div className="profile-item-card">
-      <div>img</div>
+    <div key={measurementSet.id} className="profile-item-card">
+      <div className="item-image">img</div>
       <div className="card-details">
-        <div>{measurementSet.type}</div>
-        <div>meas details</div>
+        <div className="detail-title">
+          {capitalizeFirstLetter(measurementSet.type)}
+        </div>
+        <div className="detail-text">
+          {details} {unit}
+        </div>
       </div>
-      <div>{measurementSet.modifiedAt.toDateString()}</div>
+      <div className="item-date">
+        {measurementSet.modifiedAt.toDateString()}
+      </div>
     </div>
   );
 };
 
 const DeviceItem: VFC<Device> = (device: Device) => {
-  return <div>DEV</div>;
+  return (
+    <div key={device.documentId} className="profile-item-card">
+      <div className="item-image">img</div>
+      <div className="card-details">
+        <div className="detail-title">{capitalizeFirstLetter(device.name)}</div>
+        <div className="detail-text">$deviceNote</div>
+      </div>
+      <div className="item-date">$modifiedDate</div>
+    </div>
+  );
 };
 export default ProfileDetails;

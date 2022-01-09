@@ -5,7 +5,7 @@ import phoenixBom from "../../phoenix-v3-bom.json";
 import fusionBom from "../../fusion-test-bom.json";
 import { ExportId } from "./export-status";
 
-const mockDevices = (): Device[] => [
+export const mockDevices = (): Device[] => [
   {
     name: "Phoenix v3",
     billOfMaterials: phoenixBom as OnshapeBom,
