@@ -54,7 +54,7 @@ const Routes: VFC = () => {
       <Route key={1} path="/:tab(devices)" component={DevicesPage} />
       <Route key={2} path="/:tab(measurements)" component={MeasurementsPage} />
       <Route key={5} path="/:tab(profiles)" component={ProfilePage} />
-      <Route key={4} path="/" render={() => <Redirect to="/devices" />} />
+      <Route key={4} path="/" render={() => <Redirect to="/home" />} />
       <Route key={3} path="/:tab(home)" component={LandingPage} />
     </>
   );
