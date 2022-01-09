@@ -99,9 +99,7 @@ const MeasurementItem: VFC<MeasurementSet> = (
         <div className="detail-title">
           {capitalizeFirstLetter(measurementSet.type)}
         </div>
-        <div className="detail-text">
-          {details} {unit}
-        </div>
+        <div className="detail-text">{measurementSet.name}</div>
       </div>
       <div className="item-date">
         {measurementSet.modifiedAt.toDateString()}

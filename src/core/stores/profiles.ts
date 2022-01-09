@@ -1,4 +1,8 @@
-import { MeasurementSetType, MeasurementSet } from "../configurator-types";
+import {
+  MeasurementSetType,
+  MeasurementSet,
+  MeasurementTypes,
+} from "../configurator-types";
 import { Device } from "../onshape-types";
 import { Profile } from "../profile-types";
 import { Loading, StateSlice } from "./utils";
@@ -6,11 +10,30 @@ import { mockDevices } from "../stores/devices";
 
 let mockArm: MeasurementSet = {
   id: "123",
-  name: "",
+  name: "My Right Arm",
   type: MeasurementSetType.arm,
   createdAt: new Date(),
   modifiedAt: new Date(),
-  data: [],
+  data: [
+    {
+      type: MeasurementTypes.forearm,
+      measurementTitle: "Elbow to wrist",
+      data: 5,
+      units: "cm",
+    },
+    {
+      type: MeasurementTypes.elbowCircumference,
+      measurementTitle: "Measure around the elbow",
+      data: 15,
+      units: "cm",
+    },
+    {
+      type: MeasurementTypes.palm,
+      measurementTitle: "Measure the width of the palm",
+      data: 8,
+      units: "cm",
+    },
+  ],
 };
 const mockProfiles = (): Profile[] => [
   {
