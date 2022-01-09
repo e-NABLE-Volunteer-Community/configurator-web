@@ -79,7 +79,9 @@ const ProfileList: VFC = () => {
   const profiles = useProfiles();
   const history = useHistory();
   const newProfileUrl = "/profiles/new";
+  const homeUrl = "/home";
   const onNewProfileClick = () => history.push(newProfileUrl);
+  const onHomeClick = () => history.push(homeUrl);
   if (isLoading(profiles)) return <>Loading...</>; // TODO: Loading
 
   return (
@@ -90,6 +92,7 @@ const ProfileList: VFC = () => {
             icon={arrowBackOutline}
             color={"light"}
             className="back-arrow"
+            onClick={onHomeClick}
           />
           <div>home</div>
         </div>
