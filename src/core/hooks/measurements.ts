@@ -17,6 +17,7 @@ export const useActiveMeasurementSet = ():
   return measurements.find(R.propEq("id", active));
 };
 
+// NON FUNCTIONAL CURRENTLY
 export const useProfileMeasurementSet = ():
   | MeasurementSet
   | Loading
