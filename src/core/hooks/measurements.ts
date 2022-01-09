@@ -16,3 +16,16 @@ export const useActiveMeasurementSet = ():
   if (!active) return undefined;
   return measurements.find(R.propEq("id", active));
 };
+
+export const useProfileMeasurementSet = ():
+  | MeasurementSet
+  | Loading
+  | undefined => {
+  const measurements = useMeasurementSets();
+  const path = "/profiles/p/:profileId/m/:measurementSetId";
+  const routeMatch = useRouteMatch<{ id: string }>(path);
+  if (isLoading(measurements)) return Loading;
+  const active = routeMatch?.params.id;
+  if (!active) return undefined;
+  return measurements.find(R.propEq("id", active));
+};

@@ -87,13 +87,22 @@ const ProfileDetails: VFC = () => {
 const MeasurementItem: VFC<MeasurementSet> = (
   measurementSet: MeasurementSet
 ) => {
+  const history = useHistory();
+
+  const thisUrl = history.location.pathname + `/m/${measurementSet.id}`;
+  const onClick = () => history.push(thisUrl);
+
   var details: number | string;
   var unit: string;
   details = "todo";
   unit = "also todo";
 
   return (
-    <div key={measurementSet.id} className="profile-item-card">
+    <div
+      key={measurementSet.id}
+      className="profile-item-card"
+      onClick={onClick}
+    >
       <div className="item-image">img</div>
       <div className="card-details">
         <div className="detail-title">
