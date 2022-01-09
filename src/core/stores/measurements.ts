@@ -18,12 +18,7 @@ const makeMockMeasurements = (n: number) =>
       type,
       createdAt: faker.date.recent(),
       modifiedAt: faker.date.recent(),
-      data:
-        type === MeasurementSetType.hand
-          ? {
-              wristCircumference: `${Math.floor(Math.random() * 15)} cm`,
-            }
-          : {},
+      data: [],
     };
   }, n);
 //</editor-fold>

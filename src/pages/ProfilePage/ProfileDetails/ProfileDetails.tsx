@@ -15,11 +15,7 @@ import { isLoading } from "../../../core/stores/utils";
 
 import "../../../theme/header.scss";
 import "../ProfileDetails/profile-details.scss";
-import {
-  MeasurementSet,
-  ElbowMeasurements,
-  isElbowMeasurements,
-} from "../../../core/configurator-types";
+import { MeasurementSet } from "../../../core/configurator-types";
 import { Device } from "../../../core/onshape-types";
 import { useHistory } from "react-router";
 
@@ -93,13 +89,8 @@ const MeasurementItem: VFC<MeasurementSet> = (
 ) => {
   var details: number | string;
   var unit: string;
-  if (isElbowMeasurements(measurementSet)) {
-    details = measurementSet.data.wristCircumference;
-    unit = "cm";
-  } else {
-    details = "todo";
-    unit = "also todo";
-  }
+  details = "todo";
+  unit = "also todo";
 
   return (
     <div key={measurementSet.id} className="profile-item-card">
