@@ -53,13 +53,20 @@ export interface ShoulderMeasurements extends MeasurementSet {
 
 export interface Measurement {}
 
+export interface ArmMeasurement {
+  type: MeasurementTypes.arm;
+}
+
 export enum ArmMeasurementTypes {
   thumb = "thumb",
   indexFinger = "index finger",
   middleFinger = "middle finger",
   ringFinger = "ring finger",
-
   forearm = "forearm",
+  palm = "palm",
+  elbowCircumference = "elbowCircumference",
 }
 
-export enum MeasurementTypes {}
+export enum MeasurementTypes {
+  arm = "arm",
+}
