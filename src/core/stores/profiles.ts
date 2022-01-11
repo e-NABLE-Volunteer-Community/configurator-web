@@ -51,7 +51,7 @@ const mockProfiles = (): Profile[] => [
     devices: mockDevices(),
   },
   {
-    name: "Bill Bles",
+    name: "Bil Bless",
     profileId: "1233",
     profileImageUrl: "https://i.pravatar.cc/120?img=3",
     measurements: [mockArm],
