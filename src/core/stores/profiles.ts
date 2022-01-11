@@ -51,7 +51,7 @@ const mockProfiles = (): Profile[] => [
     devices: mockDevices(),
   },
   {
-    name: "Bill Bless",
+    name: "Bill Bles",
     profileId: "1233",
     profileImageUrl: "https://i.pravatar.cc/120?img=3",
     measurements: [mockArm],
@@ -75,6 +75,13 @@ const mockProfiles = (): Profile[] => [
     name: "Greg Jones",
     profileId: "5667",
     profileImageUrl: "https://i.pravatar.cc/120?img=6",
+    measurements: [mockArm],
+    devices: mockDevices(),
+  },
+  {
+    name: "DJ Derick",
+    profileId: "56657",
+    profileImageUrl: "https://i.pravatar.cc/120?img=5",
     measurements: [mockArm],
     devices: mockDevices(),
   },
