@@ -58,12 +58,19 @@ type BillOfMaterialsInstance = {
 };
 export type ParameterName = string;
 export type BillOfMaterialsParameters = Record<ParameterName, string>;
+
 export type Device = {
   name: string;
   documentId: DocumentId;
   workspaceId: WorkspaceId;
   billOfMaterials: BillOfMaterials;
 };
+
+export type ProfileDevice = {
+  device: Device;
+  notes: string;
+};
+
 export type DocumentAndWorkspaceIds = {
   documentId: string;
   workspaceId: string;

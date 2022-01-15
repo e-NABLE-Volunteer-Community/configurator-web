@@ -19,6 +19,8 @@ const makeMockMeasurements = (n: number) =>
       createdAt: faker.date.recent(),
       modifiedAt: faker.date.recent(),
       data: [],
+      associatedDevices: [],
+
     };
   }, n);
 //</editor-fold>
