@@ -20,6 +20,7 @@ import { Device } from "../../../core/onshape-types";
 import { useHistory } from "react-router";
 
 import { capitalizeFirstLetter } from "../../../core/util/string-manipulation";
+import Header from "../../../components/responsive/header/header";
 
 const ProfileDetails: VFC = () => {
   const history = useHistory();
@@ -31,14 +32,7 @@ const ProfileDetails: VFC = () => {
   return (
     <>
       <IonPage>
-        <IonHeader className="small-header">
-          <IonToolbar>
-            <IonTitle>{activeProfile.name}</IonTitle>
-            <IonButtons slot="start">
-              <IonBackButton defaultHref="/profiles" />
-            </IonButtons>
-          </IonToolbar>
-        </IonHeader>
+        <Header title={activeProfile.name} backUrl="/profiles"></Header>
         <IonContent>
           <div className="profile-info-container">
             <div className="profile-image">
