@@ -25,6 +25,7 @@ const ProfileDetails: VFC = () => {
   const history = useHistory();
   const onNewMeasurementClick = () => history.push("/measurements");
   const onNewDeviceClick = () => history.push("/devices");
+
   const activeProfile = useActiveProfile();
   if (isLoading(activeProfile) || !activeProfile) return <>Loading...</>;
   return (

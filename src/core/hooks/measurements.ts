@@ -25,6 +25,7 @@ export const useProfileMeasurementSet = ():
   const measurements = useMeasurementSets();
   const path = "/profiles/p/:profileId/m/:measurementSetId";
   const routeMatch = useRouteMatch<{ id: string }>(path);
+  console.log("route", routeMatch);
   if (isLoading(measurements)) return Loading;
   const active = routeMatch?.params.id;
   if (!active) return undefined;
