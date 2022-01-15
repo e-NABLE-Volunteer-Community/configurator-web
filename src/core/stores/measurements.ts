@@ -20,6 +20,7 @@ const makeMockMeasurements = (n: number) =>
       modifiedAt: faker.date.recent(),
       data: [],
       associatedDevices: [],
+
     };
   }, n);
 //</editor-fold>

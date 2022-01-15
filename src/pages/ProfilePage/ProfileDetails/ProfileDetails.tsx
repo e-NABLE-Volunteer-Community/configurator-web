@@ -20,6 +20,7 @@ import { Device } from "../../../core/onshape-types";
 import { useHistory } from "react-router";
 
 import { capitalizeFirstLetter } from "../../../core/util/string-manipulation";
+
 import Header from "../../../components/header/header";
 import DeviceItem from "../../../components/device-item/device-item";
 
@@ -27,13 +28,21 @@ const ProfileDetails: VFC = () => {
   const history = useHistory();
   const onNewMeasurementClick = () => history.push("/measurements");
   const onNewDeviceClick = () => history.push("/devices");
-
+  
   const activeProfile = useActiveProfile();
   if (isLoading(activeProfile) || !activeProfile) return <>Loading...</>;
   return (
     <>
       <IonPage>
         <Header title={activeProfile.name} backUrl="/profiles"></Header>
+        <IonHeader className="small-header">
+          <IonToolbar>
+            <IonTitle>{activeProfile.name}</IonTitle>
+            <IonButtons slot="start">
+              <IonBackButton defaultHref="/profiles" />
+            </IonButtons>
+          </IonToolbar>
+        </IonHeader>
         <IonContent>
           <div className="profile-info-container">
             <div className="profile-image">
@@ -61,6 +70,7 @@ const ProfileDetails: VFC = () => {
               add new measurement set
             </IonButton>
             {activeProfile.measurements.map(MeasurementSetItem)}
+
           </div>
           <div className="items-container">
             <div className="profile-item-header">Prosthetic Devices</div>

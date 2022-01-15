@@ -35,6 +35,7 @@ let mockArm: MeasurementSet = {
     },
   ],
   associatedDevices: [{ device: mockDevices()[0], notes: "My Device" }],
+
 };
 const mockProfiles = (): Profile[] => [
   {

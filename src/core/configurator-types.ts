@@ -16,6 +16,7 @@ export type MeasurementSet = {
   modifiedAt: Date;
   data: Measurement[];
   associatedDevices: ProfileDevice[];
+
 };
 
 export interface ArmMeasurementSet extends MeasurementSet {
