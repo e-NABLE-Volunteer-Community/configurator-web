@@ -21,6 +21,7 @@ import { useHistory } from "react-router";
 
 import { capitalizeFirstLetter } from "../../../core/util/string-manipulation";
 import Header from "../../../components/responsive/header/header";
+import DeviceItem from "../../../components/device-item/device-item";
 
 const ProfileDetails: VFC = () => {
   const history = useHistory();
@@ -59,7 +60,7 @@ const ProfileDetails: VFC = () => {
             >
               add new measurement set
             </IonButton>
-            {activeProfile.measurements.map(MeasurementItem)}
+            {activeProfile.measurements.map(MeasurementSetItem)}
           </div>
           <div className="items-container">
             <div className="profile-item-header">Prosthetic Devices</div>
@@ -79,7 +80,7 @@ const ProfileDetails: VFC = () => {
   );
 };
 
-const MeasurementItem: VFC<MeasurementSet> = (
+const MeasurementSetItem: VFC<MeasurementSet> = (
   measurementSet: MeasurementSet
 ) => {
   const history = useHistory();
@@ -112,16 +113,4 @@ const MeasurementItem: VFC<MeasurementSet> = (
   );
 };
 
-const DeviceItem: VFC<Device> = (device: Device) => {
-  return (
-    <div key={device.documentId} className="profile-item-card">
-      <div className="item-image">img</div>
-      <div className="card-details">
-        <div className="detail-title">{capitalizeFirstLetter(device.name)}</div>
-        <div className="detail-text">$deviceNote</div>
-      </div>
-      <div className="item-date">$modifiedDate</div>
-    </div>
-  );
-};
 export default ProfileDetails;
