@@ -1,7 +1,7 @@
 import { IonButton } from "@ionic/react";
 import { VFC } from "react";
 import { Route, useHistory } from "react-router-dom";
-import Header from "../../../components/responsive/header/header";
+import Header from "../../../components/header/header";
 import { MeasurementSet } from "../../../core/configurator-types";
 import { useProfileMeasurementSet } from "../../../core/hooks/measurements";
 import { useActiveProfile } from "../../../core/hooks/profiles";

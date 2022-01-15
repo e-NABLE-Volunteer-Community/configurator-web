@@ -20,7 +20,7 @@ import { Device } from "../../../core/onshape-types";
 import { useHistory } from "react-router";
 
 import { capitalizeFirstLetter } from "../../../core/util/string-manipulation";
-import Header from "../../../components/responsive/header/header";
+import Header from "../../../components/header/header";
 import DeviceItem from "../../../components/device-item/device-item";
 
 const ProfileDetails: VFC = () => {

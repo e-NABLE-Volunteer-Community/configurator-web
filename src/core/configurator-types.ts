@@ -1,3 +1,5 @@
+import { ProfileDevice } from "./onshape-types";
+
 export type MeasurementSetId = string;
 export enum MeasurementSetType {
   fingers = "fingers",
@@ -13,6 +15,7 @@ export type MeasurementSet = {
   createdAt: Date;
   modifiedAt: Date;
   data: Measurement[];
+  associatedDevices: ProfileDevice[];
 };
 
 export interface ArmMeasurementSet extends MeasurementSet {
