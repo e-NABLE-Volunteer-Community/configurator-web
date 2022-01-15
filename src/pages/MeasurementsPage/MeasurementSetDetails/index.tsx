@@ -1,7 +1,9 @@
 import { IonButton } from "@ionic/react";
 import { VFC } from "react";
 import { Route, useHistory } from "react-router-dom";
+import DeviceItem from "../../../components/device-item/device-item";
 import Header from "../../../components/header/header";
+import MeasurementItem from "../../../components/measurement-item/measurement-item";
 import { MeasurementSet } from "../../../core/configurator-types";
 import { useProfileMeasurementSet } from "../../../core/hooks/measurements";
 import { useActiveProfile } from "../../../core/hooks/profiles";
@@ -41,6 +43,7 @@ const MeasurementSetDetails: VFC<MeasurementSet> = () => {
         >
           add new measurement
         </IonButton>
+        {profileMeasurementSet.data.map(MeasurementItem)}
       </div>
       <div className="measurement-set-items-container">
         <div className="title">
@@ -53,6 +56,9 @@ const MeasurementSetDetails: VFC<MeasurementSet> = () => {
         >
           add new device
         </IonButton>
+        {profileMeasurementSet.associatedDevices.map((ad) => (
+          <DeviceItem {...ad.device} />
+        ))}
       </div>
     </div>
   );
