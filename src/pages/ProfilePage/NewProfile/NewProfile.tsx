@@ -22,9 +22,11 @@ import {
 } from "@ionic/react";
 import { Profile } from "../../../core/profile-types";
 import { Swiper, SwiperSlide } from "swiper/react";
+import Calendar from "react-calendar";
 import SubmitItemComponent from "../../MeasurementsPage/NewMeasurements/Submit/submit-item";
 import "./new-profile.scss";
 import Header from "../../../components/header/header";
+import "react-calendar/dist/Calendar.css";
 
 const NewProfile: VFC = () => {
   const newProfile: Partial<Profile> = {};
@@ -46,9 +48,9 @@ const NewProfileSwiper: VFC = () => {
       <Swiper>
         <SwiperSlide className="swiper-center">
           <IonCard className="card">
-            <IonCardTitle className="card-title">
-              Who are you creating a profile for?
-            </IonCardTitle>
+            <IonCardHeader>
+              <IonCardTitle>Who are you creating a profile for?</IonCardTitle>
+            </IonCardHeader>
             <div className="card-inputs">
               <div className="input-item">
                 <IonItem>
@@ -107,6 +109,16 @@ const NewProfileSwiper: VFC = () => {
             <IonCardHeader>
               <IonCardTitle>When was $name born?</IonCardTitle>
             </IonCardHeader>
+            <IonCardContent>
+              <Calendar className="calendar"></Calendar>
+            </IonCardContent>
+          </IonCard>
+        </SwiperSlide>
+        <SwiperSlide className="swiper-center">
+          <IonCard className="card">
+            <IonCardHeader>
+              <IonCardTitle>Add a photo, if you like</IonCardTitle>
+            </IonCardHeader>
             <IonCardContent></IonCardContent>
           </IonCard>
         </SwiperSlide>
@@ -114,14 +126,12 @@ const NewProfileSwiper: VFC = () => {
           <IonCard className="card">
             <IonCardHeader>
               <IonCardTitle>All Done?</IonCardTitle>
-              <IonCardSubtitle>Please review your measurements</IonCardSubtitle>
+              <IonCardSubtitle>Please review your information</IonCardSubtitle>
             </IonCardHeader>
             <IonCardContent className="submit-card">
               <div className="card-content-container">
                 <div className="submit-button-container">
-                  <IonButton className="submit-button">
-                    Save Measurements
-                  </IonButton>
+                  <IonButton className="submit-button">Save Profile</IonButton>
                 </div>
               </div>
             </IonCardContent>
