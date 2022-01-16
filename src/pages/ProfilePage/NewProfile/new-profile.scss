@@ -1,5 +1,43 @@
 .card {
-  border: dashed;
-  height: 100px;
-  width: 100px;
+  height: 100%;
+  width: 100%;
+  padding: 0px !important;
+  margin: 0px !important;
+}
+
+.page-container {
+  height: 100%;
+}
+
+.swiper-container {
+  height: 100%;
+}
+
+.swiper-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-title {
+  margin: 15px;
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+}
+
+.card-inputs {
+  width: 90%;
+  font-weight: bolder;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.radio-list {
+  width: 100%;
+}
+
+.input-item {
+  margin: 15px;
 }
