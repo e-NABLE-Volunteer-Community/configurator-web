@@ -43,7 +43,9 @@ const MeasurementSetDetails: VFC<MeasurementSet> = () => {
         >
           add new measurement
         </IonButton>
-        {profileMeasurementSet.data.map(MeasurementItem)}
+        {profileMeasurementSet.data.map((measurementItem) => (
+          <MeasurementItem {...measurementItem} key={measurementItem.id} />
+        ))}
       </div>
       <div className="measurement-set-items-container">
         <div className="title">
@@ -57,7 +59,7 @@ const MeasurementSetDetails: VFC<MeasurementSet> = () => {
           add new device
         </IonButton>
         {profileMeasurementSet.associatedDevices.map((ad) => (
-          <DeviceItem {...ad.device} />
+          <DeviceItem {...ad.device} key={ad.device.documentId} />
         ))}
       </div>
     </div>

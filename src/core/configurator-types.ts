@@ -16,14 +16,15 @@ export type MeasurementSet = {
   modifiedAt: Date;
   data: Measurement[];
   associatedDevices: ProfileDevice[];
-
 };
 
 export interface ArmMeasurementSet extends MeasurementSet {
   type: MeasurementSetType.arm;
 }
 
+export type MeasurementId = string;
 export interface Measurement {
+  id: MeasurementId;
   type: MeasurementTypes;
   measurementTitle: string;
   data: number;

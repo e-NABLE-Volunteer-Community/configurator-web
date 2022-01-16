@@ -4,7 +4,7 @@ import "../measurement-item/measurement-item.scss";
 
 const MeasurementItem: VFC<Measurement> = (measurement: Measurement) => {
   return (
-    <div className="item-card">
+    <div className="item-card" key={measurement.id}>
       <div className="item-image">img</div>
       <div className="card-details">
         <div className="detail-title">{measurement.type}</div>

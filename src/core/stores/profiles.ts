@@ -16,18 +16,21 @@ let mockArm: MeasurementSet = {
   modifiedAt: new Date(),
   data: [
     {
+      id: "453465364",
       type: MeasurementTypes.forearm,
       measurementTitle: "Elbow to wrist",
       data: 5,
       units: "cm",
     },
     {
+      id: "534354",
       type: MeasurementTypes.elbowCircumference,
       measurementTitle: "Measure around the elbow",
       data: 15,
       units: "cm",
     },
     {
+      id: "3456345745",
       type: MeasurementTypes.palm,
       measurementTitle: "Measure the width of the palm",
       data: 8,
@@ -35,7 +38,6 @@ let mockArm: MeasurementSet = {
     },
   ],
   associatedDevices: [{ device: mockDevices()[0], notes: "My Device" }],
-
 };
 const mockProfiles = (): Profile[] => [
   {
