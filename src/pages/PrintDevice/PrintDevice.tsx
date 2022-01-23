@@ -6,10 +6,16 @@ import {
   IonInput,
   IonItem,
   IonLabel,
+  IonList,
 } from "@ionic/react";
 import { VFC } from "react";
+import { useHistory } from "react-router";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ScrollHeader from "../../components/header/scroll-header";
+import ProfileItem from "../../components/profile-item/ProfileItem";
+import { useProfiles } from "../../core/stores/app";
+import { isLoading, Loading } from "../../core/stores/utils";
+import "../PrintDevice/print-device.scss";
 
 const PrintDevice: VFC = () => {
   return (
@@ -21,39 +27,28 @@ const PrintDevice: VFC = () => {
 };
 
 const PrintDeviceSwiper: VFC = () => {
+  const history = useHistory();
+  const profiles = useProfiles();
+  const newProfile = `/profiles/new`;
+  const onProfileClick = () => history.push(newProfile);
+
+  if (isLoading(profiles)) return <div>loading...</div>;
   return (
-    <IonContent className="swiper-inner-container">
-      <Swiper
-        spaceBetween={30}
-        slidesPerView={1}
-        navigation
-        pagination={{ clickable: true }}
-        scrollbar={{ draggable: true }}
-      >
-        <SwiperSlide className="swiper-center">
-          <IonCard className="card">
-            <IonCardHeader>
-              <IonCardTitle>Who are you creating a profile for?</IonCardTitle>
-            </IonCardHeader>
-            <div className="card-inputs">
-              <div className="input-item">
-                <IonItem>
-                  <IonLabel>First Name:</IonLabel>
-
-                  <IonInput></IonInput>
-                </IonItem>
-              </div>
-              <div className="input-item">
-                <IonItem>
-                  <IonLabel>Last name:</IonLabel>
-
-                  <IonInput></IonInput>
-                </IonItem>
-              </div>
-            </div>
-          </IonCard>
-        </SwiperSlide>
-      </Swiper>
+    <IonContent className="print-device-container">
+      <IonCard className="card">
+        <IonCardHeader>
+          <IonCardTitle>
+            Select who you want to create a device for
+          </IonCardTitle>
+        </IonCardHeader>
+        <IonContent>
+          <IonList lines="none">
+            {profiles.map((profile) => (
+              <ProfileItem profile={profile} onProfileClick={onProfileClick} />
+            ))}
+          </IonList>
+        </IonContent>
+      </IonCard>
     </IonContent>
   );
 };
