@@ -21,6 +21,7 @@ import {
   IonToolbar,
 } from "@ionic/react";
 import { Profile } from "../../../core/profile-types";
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Calendar from "react-calendar";
 import SubmitItemComponent from "../../MeasurementsPage/NewMeasurements/Submit/submit-item";
@@ -34,9 +35,7 @@ const NewProfile: VFC = () => {
   return (
     <IonContent>
       <Header title="Create New Profile" backUrl="/"></Header>
-      <div className="swiper-container">
-        <NewProfileSwiper></NewProfileSwiper>
-      </div>
+      <NewProfileSwiper></NewProfileSwiper>
     </IonContent>
   );
 };
@@ -44,8 +43,14 @@ const NewProfile: VFC = () => {
 const NewProfileSwiper: VFC = () => {
   const [selectedSex, setSelectedSex] = useState<string>("other");
   return (
-    <IonContent className="swiper-container">
-      <Swiper>
+    <IonContent className="swiper-inner-container">
+      <Swiper
+        spaceBetween={30}
+        slidesPerView={1}
+        navigation
+        pagination={{ clickable: true }}
+        scrollbar={{ draggable: true }}
+      >
         <SwiperSlide className="swiper-center">
           <IonCard className="card">
             <IonCardHeader>
@@ -110,7 +115,9 @@ const NewProfileSwiper: VFC = () => {
               <IonCardTitle>When was $name born?</IonCardTitle>
             </IonCardHeader>
             <IonCardContent>
-              <Calendar className="calendar"></Calendar>
+              <div className="calendar-container">
+                <Calendar className="calendar"></Calendar>
+              </div>
             </IonCardContent>
           </IonCard>
         </SwiperSlide>

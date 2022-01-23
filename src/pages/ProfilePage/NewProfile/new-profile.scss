@@ -10,7 +10,10 @@
 }
 
 .swiper-container {
-  height: 100%;
+  padding: 5px;
+  margin: 5px;
+  height: 96%;
+  overflow: hidden;
 }
 
 .swiper-center {
@@ -40,6 +43,11 @@
 
 .input-item {
   margin: 15px;
+}
+
+.calendar-container {
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .react-calendar__month-view__days__day {
