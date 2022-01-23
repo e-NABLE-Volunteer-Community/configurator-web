@@ -26,26 +26,7 @@ import { useHistory } from "react-router-dom";
 import { isLoading } from "../../../core/stores/utils";
 import { addOutline } from "ionicons/icons";
 import "../ProfileList/profile-list.scss";
-
-const ProfileListItem: VFC<Profile> = (profile) => {
-  const history = useHistory();
-
-  const key = profile.profileId;
-  const thisUrl = `/profiles/p/${profile.profileId}`;
-  const onClick = () => history.push(thisUrl);
-  return (
-    <IonItem key={key} onClick={onClick} className="profile-list-item-base">
-      <div className="profile-list-item">
-        <IonImg className="profile-image" src={profile.profileImageUrl} />
-        <div className="profile-info">
-          <h5>{profile.name}</h5>
-          <div className="profile-measurement-count">3 measurements</div>
-          <div className="profile-location">location</div>
-        </div>
-      </div>
-    </IonItem>
-  );
-};
+import ProfileItem from "../../../components/profile-item/ProfileItem";
 
 const NewProfileItem: VFC = () => {
   const history = useHistory();
@@ -80,6 +61,9 @@ const ProfileList: VFC = () => {
   const history = useHistory();
   const newProfileUrl = "/profiles/new";
   const homeUrl = "/home";
+  const newProfile = `/profiles/new`;
+  const onProfileClick = () => history.push(newProfile);
+
   const onNewProfileClick = () => history.push(newProfileUrl);
   const onHomeClick = () => history.push(homeUrl);
   if (isLoading(profiles)) return <>Loading...</>; // TODO: Loading
@@ -119,7 +103,11 @@ const ProfileList: VFC = () => {
 
       <IonContent>
         <div className="list-container">
-          <IonList lines="none">{profiles.map(ProfileListItem)}</IonList>{" "}
+          <IonList lines="none">
+            {profiles.map((profile) => (
+              <ProfileItem profile={profile} onProfileClick={onProfileClick} />
+            ))}
+          </IonList>
         </div>
         <div className="list-spacer"></div>
         <IonButton

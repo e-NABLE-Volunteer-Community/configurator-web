@@ -1,0 +1,33 @@
+.profile-list-item {
+  background-color: var(--ion-color-tertiary-tint);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 10px;
+  height: 100px;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.profile-image {
+  height: 100px;
+  width: 100px;
+  padding: 10px;
+  display: flex;
+}
+
+.profile-info {
+  width: 100%;
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-measurement-count {
+  font-size: smaller;
+}
+
+.profile-location {
+  font-size: small;
+  font-weight: lighter;
+}

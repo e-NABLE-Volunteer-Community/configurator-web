@@ -45,6 +45,7 @@ import "swiper/swiper-bundle.min.css";
 // Import Swiper core and required modules, install modules
 import SwiperCore, { Navigation } from "swiper";
 import LandingPage from "./pages/LandingPage";
+import PrintDevice from "./pages/PrintDevice/PrintDevice";
 
 SwiperCore.use([Navigation]);
 
@@ -54,7 +55,7 @@ const Routes: VFC = () => {
       <Route key={1} path="/:tab(devices)" component={DevicesPage} />
       <Route key={2} path="/:tab(measurements)" component={MeasurementsPage} />
       <Route key={5} path="/:tab(profiles)" component={ProfilePage} />
-      <Route key={4} path="/" render={() => <Redirect to="/home" />} />
+      <Route key={4} path="/:tab(print-device)" component={PrintDevice} />
       <Route key={3} path="/:tab(home)" component={LandingPage} />
     </>
   );
@@ -88,7 +89,7 @@ const App: FC = () => {
               <IonIcon icon={peopleOutline} />
               <IonLabel></IonLabel>
             </IonTabButton>
-            <IonTabButton tab="home" href="/home">
+            <IonTabButton tab="print-device" href="/print-device">
               <IonIcon icon={printOutline} />
               <IonLabel></IonLabel>
             </IonTabButton>
