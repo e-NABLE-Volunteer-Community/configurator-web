@@ -66,6 +66,7 @@ const ProfileList: VFC = () => {
   const onProfileClick = (profile: Profile) =>
     history.push(profileUrl + profile.profileId);
 
+
   const onNewProfileClick = () => history.push(newProfileUrl);
   const onHomeClick = () => history.push(homeUrl);
   if (isLoading(profiles)) return <>Loading...</>; // TODO: Loading
