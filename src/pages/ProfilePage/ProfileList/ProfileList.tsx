@@ -62,7 +62,9 @@ const ProfileList: VFC = () => {
   const newProfileUrl = "/profiles/new";
   const homeUrl = "/home";
   const newProfile = `/profiles/new`;
-  const onProfileClick = () => history.push(newProfile);
+  const profileUrl = "/profiles/p/";
+  const onProfileClick = (profile: Profile) =>
+    history.push(profileUrl + profile.profileId);
 
   const onNewProfileClick = () => history.push(newProfileUrl);
   const onHomeClick = () => history.push(homeUrl);
@@ -105,7 +107,10 @@ const ProfileList: VFC = () => {
         <div className="list-container">
           <IonList lines="none">
             {profiles.map((profile) => (
-              <ProfileItem profile={profile} onProfileClick={onProfileClick} />
+              <ProfileItem
+                profile={profile}
+                onProfileClick={() => onProfileClick(profile)}
+              />
             ))}
           </IonList>
         </div>
