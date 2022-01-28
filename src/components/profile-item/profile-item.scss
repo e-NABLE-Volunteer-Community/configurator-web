@@ -1,33 +1,44 @@
-.profile-list-item {
-  background-color: var(--ion-color-tertiary-tint);
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-top: 10px;
-  height: 100px;
-  width: 100%;
-  border-radius: 10px;
-}
+ion-item {
+  position: relative;
 
-.profile-image {
-  height: 100px;
-  width: 100px;
-  padding: 10px;
-  display: flex;
-}
+  .profile-item-image {
+    height: 100px;
+    width: 100px;
+    padding: 0;
+    margin: 0;
+  }
+  .profile-item-label {
+    gap: 1rem;
+    display: flex;
+    flex-direction: row;
+  }
+  .profile-item-info {
+    width: 100%;
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+  }
 
-.profile-info {
-  width: 100%;
-  height: 90px;
-  display: flex;
-  flex-direction: column;
-}
+  .profile-item-name {
+    font-weight: bold;
+    font-size: 1.375rem;
+  }
 
-.profile-measurement-count {
-  font-size: smaller;
-}
+  .profile-item-display {
+    padding-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 1.25rem;
+  }
 
-.profile-location {
-  font-size: small;
-  font-weight: lighter;
+  .profile-item-location {
+    opacity: 0.5;
+  }
+
+  .profile-item-arrow {
+    height: 2rem;
+    width: 2rem;
+    color: var(--ion-color-dark);
+  }
 }
