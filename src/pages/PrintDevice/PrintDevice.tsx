@@ -9,42 +9,50 @@ import {
   IonList,
 } from "@ionic/react";
 import { VFC } from "react";
-import { useHistory } from "react-router";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Route, useHistory, useRouteMatch } from "react-router";
 import ScrollHeader from "../../components/header/scroll-header";
 import ProfileItem from "../../components/profile-item/ProfileItem";
+import { Profile } from "../../core/profile-types";
 import { useProfiles } from "../../core/stores/app";
 import { isLoading, Loading } from "../../core/stores/utils";
 import "../PrintDevice/print-device.scss";
+import PrintDeviceSelectArm from "./SelectArm";
 
 const PrintDevice: VFC = () => {
   return (
     <IonContent>
       <ScrollHeader backUrl="/home" />
-      <PrintDeviceSwiper></PrintDeviceSwiper>
+      <Route path="/print-device" exact component={PrintDeviceSelectProfile} />
+      <Route
+        path="/print-device/p/:profileId"
+        exact
+        component={PrintDeviceSelectArm}
+      />
     </IonContent>
   );
 };
 
-const PrintDeviceSwiper: VFC = () => {
+const PrintDeviceSelectProfile: VFC = () => {
   const history = useHistory();
   const profiles = useProfiles();
-  const newProfile = `/profiles/new`;
-  const onProfileClick = () => history.push(newProfile);
+  const profileDevice = `/print-device/p/`;
+  const onProfileClick = (profile: Profile) =>
+    history.push(profileDevice + profile.profileId);
 
   if (isLoading(profiles)) return <div>loading...</div>;
   return (
     <IonContent className="print-device-container">
-      <IonCard className="card">
-        <IonCardHeader>
-          <IonCardTitle>
-            Select who you want to create a device for
-          </IonCardTitle>
-        </IonCardHeader>
+      <IonCard className="print-device-profile-card">
+        <h1 className="print-device-profile-header">
+          Select who you want to create a device for
+        </h1>
         <IonContent>
           <IonList lines="none">
             {profiles.map((profile) => (
-              <ProfileItem profile={profile} onProfileClick={onProfileClick} />
+              <ProfileItem
+                profile={profile}
+                onProfileClick={() => onProfileClick(profile)}
+              />
             ))}
           </IonList>
         </IonContent>

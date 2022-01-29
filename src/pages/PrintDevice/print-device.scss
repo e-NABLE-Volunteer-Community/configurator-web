@@ -8,3 +8,17 @@
   flex-direction: column;
   justify-content: center;
 }
+
+.print-device-profile-card {
+  height: 100%;
+  width: 100%;
+  padding: 0px !important;
+  margin: 0px !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.print-device-profile-header {
+  padding: 0px 20px 0px 20px;
+  font-weight: 900;
+}
