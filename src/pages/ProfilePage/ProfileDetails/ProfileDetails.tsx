@@ -23,11 +23,15 @@ import { capitalizeFirstLetter } from "../../../core/util/string-manipulation";
 
 import Header from "../../../components/header/header";
 import DeviceItem from "../../../components/device-item/device-item";
+import MeasurementSetItem from "../../../components/measurement-set-item/measurement-set-item";
 
 const ProfileDetails: VFC = () => {
   const history = useHistory();
   const onNewMeasurementClick = () => history.push("/measurements");
   const onNewDeviceClick = () => history.push("/devices");
+
+  const onMeasSetClick = (measurementSet: MeasurementSet) =>
+    history.push(history.location.pathname + `/m${measurementSet.id}`);
 
   const activeProfile = useActiveProfile();
   if (isLoading(activeProfile) || !activeProfile) return <>Loading...</>;
@@ -61,7 +65,12 @@ const ProfileDetails: VFC = () => {
             >
               add new measurement set
             </IonButton>
-            {activeProfile.measurements.map(MeasurementSetItem)}
+            {activeProfile.measurements.map((measSet) => (
+              <MeasurementSetItem
+                measurementSet={measSet}
+                onMeasSetClick={() => onMeasSetClick}
+              />
+            ))}
           </div>
           <div className="items-container">
             <div className="profile-item-header">Prosthetic Devices</div>
@@ -81,37 +90,21 @@ const ProfileDetails: VFC = () => {
   );
 };
 
-const MeasurementSetItem: VFC<MeasurementSet> = (
-  measurementSet: MeasurementSet
-) => {
-  const history = useHistory();
-
-  const thisUrl = history.location.pathname + `/m/${measurementSet.id}`;
-  const onClick = () => history.push(thisUrl);
-
-  var details: number | string;
-  var unit: string;
-  details = "todo";
-  unit = "also todo";
-
-  return (
-    <div
-      key={measurementSet.id}
-      className="profile-item-card"
-      onClick={onClick}
-    >
-      <div className="item-image">img</div>
-      <div className="card-details">
-        <div className="detail-title">
-          {capitalizeFirstLetter(measurementSet.type)}
-        </div>
-        <div className="detail-text">{measurementSet.name}</div>
-      </div>
-      <div className="item-date">
-        {measurementSet.modifiedAt.toDateString()}
-      </div>
-    </div>
-  );
-};
-
 export default ProfileDetails;
+// function MeasurementSetItem(
+//   MeasurementSetItem: any
+// ):
+//   | string
+//   | number
+//   | boolean
+//   | {}
+//   | import("react").ReactElement<
+//       any,
+//       string | import("react").JSXElementConstructor<any>
+//     >
+//   | import("react").ReactNodeArray
+//   | import("react").ReactPortal
+//   | null
+//   | undefined {
+//   throw new Error("Function not implemented.");
+// }
