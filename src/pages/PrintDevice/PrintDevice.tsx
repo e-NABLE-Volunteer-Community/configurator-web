@@ -16,6 +16,7 @@ import { Profile } from "../../core/profile-types";
 import { useProfiles } from "../../core/stores/app";
 import { isLoading, Loading } from "../../core/stores/utils";
 import "../PrintDevice/print-device.scss";
+import PrintDeviceDeviceDetails from "./DeviceDetails";
 import PrintDeviceSelectArm from "./SelectArm";
 
 const PrintDevice: VFC = () => {
@@ -27,6 +28,11 @@ const PrintDevice: VFC = () => {
         path="/print-device/p/:profileId"
         exact
         component={PrintDeviceSelectArm}
+      />
+      <Route
+        path="/print-device/p/:profileId/m/:measSetId"
+        exact
+        component={PrintDeviceDeviceDetails}
       />
     </IonContent>
   );
