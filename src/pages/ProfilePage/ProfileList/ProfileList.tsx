@@ -107,10 +107,12 @@ const ProfileList: VFC = () => {
         <div className="list-container">
           <IonList lines="inset">
             {profiles.map((profile) => (
-              <ProfileItem
-                profile={profile}
-                onProfileClick={() => onProfileClick(profile)}
-              />
+              <div key={profile.profileId}>
+                <ProfileItem
+                  profile={profile}
+                  onProfileClick={() => onProfileClick(profile)}
+                />
+              </div>
             ))}
           </IonList>
         </div>
