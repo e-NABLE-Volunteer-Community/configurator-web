@@ -49,10 +49,12 @@ const PrintDeviceSelectProfile: VFC = () => {
         <IonContent>
           <IonList lines="none">
             {profiles.map((profile) => (
-              <ProfileItem
-                profile={profile}
-                onProfileClick={() => onProfileClick(profile)}
-              />
+              <div key={profile.profileId}>
+                <ProfileItem
+                  profile={profile}
+                  onProfileClick={() => onProfileClick(profile)}
+                />
+              </div>
             ))}
           </IonList>
         </IonContent>
