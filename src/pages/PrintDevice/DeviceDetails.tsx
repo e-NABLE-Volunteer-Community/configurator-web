@@ -1,32 +1,30 @@
+import { IonContent } from "@ionic/react";
 import { VFC } from "react";
-import { useHistory, useRouteMatch } from "react-router";
-import DeviceItem from "../../components/device-item/device-item";
-import MeasurementSetItem from "../../components/measurement-set-item/measurement-set-item";
-import { MeasurementSet } from "../../core/configurator-types";
-import { useProfilePrintDevice } from "../../core/hooks/profiles";
-import { useDevices, useProfiles } from "../../core/stores/app";
-import { isLoading } from "../../core/stores/utils";
+import { Route, useHistory, useRouteMatch } from "react-router";
+import ScrollHeader from "../../components/header/scroll-header";
+import ProfileItem from "../../components/profile-item/ProfileItem";
+import { Profile } from "../../core/profile-types";
+import { useProfiles } from "../../core/stores/app";
+import { isLoading, Loading } from "../../core/stores/utils";
+import "../PrintDevice/print-device.scss";
+import PrintDeviceSelectDevice from "./SelectDevice";
+import PrintDeviceSelectArm from "./SelectArm";
+import DeviceDetails from "../../components/device-details/DeviceDetails";
+import { useActiveDevice } from "../../core/hooks/devices";
+import { Device } from "../../core/onshape-types";
 
 const PrintDeviceDeviceDetails: VFC = () => {
-  const devices = useDevices();
+  const device = useActiveDevice();
   const history = useHistory();
-  const onDevDetailsClick = () =>
-    history.push(history.location.pathname + `/d/$device`);
-
-  if (isLoading(devices)) return <div>Loading..</div>;
+  const onDeviceDetailsClick = (device: Device) => history.push("123123");
+  if (isLoading(device) || !device) return <div>loading...</div>;
   return (
     <div>
-      <h1 className="print-device-profile-header">
-        Which device would you like to print?
-      </h1>
-      {devices.map((d) => (
-        <div key={d.documentId}>
-          <DeviceItem
-            device={d}
-            onDeviceItemClick={onDevDetailsClick}
-          ></DeviceItem>
-        </div>
-      ))}
+      <h1 className="print-device-profile-header">Confirm Device</h1>
+      <DeviceDetails
+        device={device}
+        onDeviceDetailsClick={() => onDeviceDetailsClick(device)}
+      ></DeviceDetails>
     </div>
   );
 };
