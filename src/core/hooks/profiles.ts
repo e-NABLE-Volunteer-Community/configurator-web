@@ -23,3 +23,18 @@ const useMaybeProfileWithIds = (
   if (!ids) return undefined;
   return profiles.find(objPropsMatch(ids));
 };
+
+export const useProfilePrintDevice = (): Profile | Loading | undefined => {
+  const profiles = useProfiles();
+  const path = "/print-device/p/:profileId";
+  const routeMatch =
+    useRouteMatch<{ profileId: string; measurementSetId: string }>(path);
+
+  if (isLoading(profiles)) return Loading;
+
+  const activeProfileId = routeMatch?.params.profileId;
+
+  if (!activeProfileId) return undefined;
+
+  return profiles.find(R.propEq("profileId", activeProfileId));
+};
