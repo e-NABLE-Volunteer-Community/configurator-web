@@ -14,11 +14,17 @@ const PrintDeviceSelectArm: VFC = () => {
   if (isLoading(profile) || !profile) return <div>loading...</div>;
   return (
     <div>
+      <h1 className="print-device-profile-header">
+        Which arm would you like to create a device for? Tap to select.
+      </h1>
+
       {profile.measurements.map((measSet) => (
-        <MeasurementSetItem
-          measurementSet={measSet}
-          onMeasSetClick={() => onMeasSetClick}
-        />
+        <div key={measSet.id}>
+          <MeasurementSetItem
+            measurementSet={measSet}
+            onMeasSetClick={() => onMeasSetClick}
+          />
+        </div>
       ))}
     </div>
   );

@@ -67,6 +67,7 @@ const ProfileDetails: VFC = () => {
             </IonButton>
             {activeProfile.measurements.map((measSet) => (
               <MeasurementSetItem
+                key={measSet.id}
                 measurementSet={measSet}
                 onMeasSetClick={() => onMeasSetClick}
               />
@@ -82,7 +83,15 @@ const ProfileDetails: VFC = () => {
             >
               add new device
             </IonButton>
-            {activeProfile.devices.map(DeviceItem)}
+            {activeProfile.devices.map((d) => (
+              <div key={d.documentId}>
+                <DeviceItem
+                  key={d.documentId}
+                  device={d}
+                  onDeviceItemClick={onNewDeviceClick}
+                ></DeviceItem>
+              </div>
+            ))}
           </div>
         </IonContent>
       </IonPage>

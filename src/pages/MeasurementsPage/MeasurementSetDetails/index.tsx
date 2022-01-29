@@ -16,6 +16,8 @@ const MeasurementSetDetails: VFC<MeasurementSet> = () => {
   const history = useHistory();
   const onNewMeasurementClick = () => history.push("/measurements");
 
+  const onDeviceItemClick = () => history.push("d/");
+
   if (
     !profileMeasurementSet ||
     !activeProfile ||
@@ -59,7 +61,11 @@ const MeasurementSetDetails: VFC<MeasurementSet> = () => {
           add new device
         </IonButton>
         {profileMeasurementSet.associatedDevices.map((ad) => (
-          <DeviceItem {...ad.device} key={ad.device.documentId} />
+          <DeviceItem
+            device={ad.device}
+            onDeviceItemClick={onDeviceItemClick}
+            key={ad.device.documentId}
+          />
         ))}
       </div>
     </div>
