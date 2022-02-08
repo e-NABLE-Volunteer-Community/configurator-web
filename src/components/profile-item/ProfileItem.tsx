@@ -13,7 +13,7 @@ export type ProfileItem = {
 const ProfileItem: VFC<ProfileItem> = ({ profile, onProfileClick }) => {
   const key = profile.profileId;
   return (
-    <IonItem key={key} onClick={onProfileClick}>
+    <IonItem key={key} onClick={onProfileClick} className="profile-item">
       <IonLabel>
         <div className="profile-item-label">
           <IonImg
