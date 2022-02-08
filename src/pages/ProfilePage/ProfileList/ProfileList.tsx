@@ -72,38 +72,40 @@ const ProfileList: VFC = () => {
 
   return (
     <>
-      <IonHeader className="people-header">
-        <div className="home-container">
-          <IonIcon
-            icon={arrowBackOutline}
-            color={"light"}
-            className="back-arrow"
-            onClick={onHomeClick}
-          />
-          <div>home</div>
-        </div>
-        <div className="header-items">
-          <div className="header-text">People</div>
-          <div>
-            <IonInput
-              placeholder=" Search for someone..."
-              className="people-search"
-            ></IonInput>
+      <div className="profile-list__">
+        <IonHeader className="people-header">
+          <div className="home-container">
+            <IonIcon
+              icon={arrowBackOutline}
+              color={"light"}
+              className="back-arrow"
+              onClick={onHomeClick}
+            />
+            <div>home</div>
           </div>
-          <div className="sort-filter-row">
-            <div className="sort-filter-item">
-              <IonIcon icon={funnelOutline} />
-              <div>Sort</div>
+          <div className="header-items">
+            <div className="header-text">People</div>
+            <div>
+              <IonInput
+                placeholder=" Search for someone..."
+                className="people-search"
+              ></IonInput>
             </div>
-            <div className="sort-filter-item">
-              <IonIcon icon={filterCircleOutline} />
-              <div>Filter</div>
+            <div className="sort-filter-row">
+              <div className="sort-filter-item">
+                <IonIcon icon={funnelOutline} />
+                <div>Sort</div>
+              </div>
+              <div className="sort-filter-item">
+                <IonIcon icon={filterCircleOutline} />
+                <div>Filter</div>
+              </div>
             </div>
           </div>
-        </div>
-      </IonHeader>
+        </IonHeader>
+      </div>
 
-      <IonContent>
+      <IonContent className="profile-list__">
         <div className="list-container">
           <IonList lines="inset">
             {profiles.map((profile) => (
@@ -117,6 +119,7 @@ const ProfileList: VFC = () => {
           </IonList>
         </div>
         <div className="list-spacer"></div>
+        {/* the heck does that spacer do? nothing happens if I remove it... */}
         <IonButton
           fill="solid"
           color="tertiary"

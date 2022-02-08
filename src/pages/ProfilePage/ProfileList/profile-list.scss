@@ -1,110 +1,111 @@
-.people-header {
-  background-color: var(--ion-color-tertiary);
-  color: white;
-  display: flex;
-  flex-direction: column;
+.profile-list__ {
+  .people-header {
+    background-color: var(--ion-color-tertiary);
+    color: white;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .home-container {
+    height: 4vh;
+    padding-top: 15px;
+    padding-left: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .back-arrow {
+    color: white;
+  }
+
+  .header-items {
+    margin: 10px;
+    margin-top: 15px;
+    margin-bottom: 0;
+  }
+
+  .header-text {
+    font-size: x-large;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .people-search {
+    background-color: white;
+    color: black;
+  }
+
+  .sort-filter-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+    font-size: 1.375rem;
+  }
+
+  .sort-filter-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .add-new-person {
+    border: solid 1px lightgrey;
+    position: fixed;
+    bottom: 2px;
+    right: 10px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 5px lightgrey;
+    color: black !important;
+  }
+
+  .list-container {
+    margin-bottom: 120px;
+  }
+
+  .list-spacer {
+    height: 50px;
+  }
 }
 
-.home-container {
-  height: 4vh;
-  padding-top: 15px;
-  padding-left: 10px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
+// .profile-list-item {
+//   background-color: var(--ion-color-tertiary-tint);
+//   display: flex;
+//   flex-direction: row;
+//   align-items: center;
+//   margin-top: 10px;
+//   height: 100px;
+//   width: 100%;
+//   border-radius: 10px;
+// }
 
-.back-arrow {
-  color: white;
-}
+// .profile-image {
+//   height: 100px;
+//   width: 100px;
+//   padding: 10px;
+//   display: flex;
+// }
 
-.header-items {
-  margin: 10px;
-  margin-top: 15px;
-  margin-bottom: 0;
-}
+// .profile-info {
+//   width: 100%;
+//   height: 90px;
+//   display: flex;
+//   flex-direction: column;
+// }
 
-.header-text {
-  font-size: x-large;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
+// .profile-measurement-count {
+//   font-size: smaller;
+// }
 
-.people-search {
-  background-color: white;
-  color: black;
-}
+// .profile-location {
+//   font-size: small;
+//   font-weight: lighter;
+// }
 
-.sort-filter-row {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin: 10px;
-  font-size: 1.375rem;
-}
-
-.sort-filter-item {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.profile-list-item {
-  background-color: var(--ion-color-tertiary-tint);
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-top: 10px;
-  height: 100px;
-  width: 100%;
-  border-radius: 10px;
-}
-
-.profile-image {
-  height: 100px;
-  width: 100px;
-  padding: 10px;
-  display: flex;
-}
-
-.profile-info {
-  width: 100%;
-  height: 90px;
-  display: flex;
-  flex-direction: column;
-}
-
-.profile-measurement-count {
-  font-size: smaller;
-}
-
-.profile-location {
-  font-size: small;
-  font-weight: lighter;
-}
-
-.add-new-person {
-  border: solid 1px lightgrey;
-  position: fixed;
-  bottom: 2px;
-  right: 10px;
-  border-radius: 15px;
-  box-shadow: 5px 5px 5px lightgrey;
-  color: black !important;
-}
-
-.list-container {
-  margin-bottom: 120px;
-}
-
-.list-spacer {
-  height: 50px;
-}
-
-.profile-item-card {
-  margin: 10px;
-  min-height: 50px;
-  background-color: var(--ion-color-tertiary-tint);
-  border-radius: 5px;
-}
+// .profile-item-card {
+//   margin: 10px;
+//   min-height: 50px;
+//   background-color: var(--ion-color-tertiary-tint);
+//   border-radius: 5px;
+// }
