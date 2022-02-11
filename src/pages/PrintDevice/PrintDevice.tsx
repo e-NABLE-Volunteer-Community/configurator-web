@@ -19,6 +19,7 @@ import "../PrintDevice/print-device.scss";
 import PrintDeviceSelectDevice from "./SelectDevice";
 import PrintDeviceSelectArm from "./SelectArm";
 import PrintDeviceDeviceDetails from "./DeviceDetails";
+import ProfileItemCompact from "../../components/profile-item-compact/ProfileItem";
 
 const PrintDevice: VFC = () => {
   return (
@@ -62,7 +63,7 @@ const PrintDeviceSelectProfile: VFC = () => {
           <IonList lines="none">
             {profiles.map((profile) => (
               <div key={profile.profileId}>
-                <ProfileItem
+                <ProfileItemCompact
                   profile={profile}
                   onProfileClick={() => onProfileClick(profile)}
                 />
