@@ -16,11 +16,12 @@ const PrintDeviceSelectDevice: VFC = () => {
   if (isLoading(devices)) return <div>Loading..</div>;
   return (
     <IonPage>
-      <HeaderSmall backUrl="/home" />
+      <HeaderSmall
+        backUrl="/home"
+        title="dots here"
+        subtitle="Which device would you like to print?"
+      />
       <IonContent>
-        <h1 className="print-device-profile-header">
-          Which device would you like to print?
-        </h1>
         {devices.map((d) => (
           <div key={d.documentId}>
             <DeviceItem

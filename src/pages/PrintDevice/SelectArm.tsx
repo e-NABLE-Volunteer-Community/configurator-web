@@ -15,12 +15,12 @@ const PrintDeviceSelectArm: VFC = () => {
   if (isLoading(profile) || !profile) return <div>loading...</div>;
   return (
     <IonPage>
-      <HeaderSmall backUrl="/home" />
+      <HeaderSmall
+        backUrl="/home"
+        title="dots here"
+        subtitle="Which arm would you like to create a device for? Tap to select."
+      />
       <IonContent>
-        <h1 className="print-device-profile-header">
-          Which arm would you like to create a device for? Tap to select.
-        </h1>
-
         {profile.measurements.map((measSet) => (
           <div key={measSet.id}>
             <MeasurementSetItem
