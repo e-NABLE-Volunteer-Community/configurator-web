@@ -2,7 +2,7 @@ import { IonButton } from "@ionic/react";
 import { VFC } from "react";
 import { Route, useHistory } from "react-router-dom";
 import DeviceItem from "../../../components/device-item/device-item";
-import Header from "../../../components/header/header";
+import Header from "../../../components/header/header-small";
 import MeasurementItem from "../../../components/measurement-item/measurement-item";
 import { MeasurementSet } from "../../../core/configurator-types";
 import { useProfileMeasurementSet } from "../../../core/hooks/measurements";
@@ -34,7 +34,7 @@ const MeasurementSetDetails: VFC<MeasurementSet> = () => {
       ></Header>
 
       <div className="measurement-set-items-container">
-        <div className="title ">
+        <div className="titlez ">
           Measurements for {profileMeasurementSet.name}
         </div>
         <IonButton

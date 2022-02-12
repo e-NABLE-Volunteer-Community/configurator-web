@@ -1,21 +1,25 @@
 .header-base {
+  // to remove
   background-color: var(--ion-color-tertiary);
   color: white;
   height: 22vh;
 }
 
 .header-items {
+  // to remove
   margin: 10px;
   margin-top: 15px;
 }
 
 .header-text {
+  // to remove
   font-size: x-large;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
 .home-container {
+  // to remove
   height: 4vh;
   padding-top: 15px;
   padding-left: 10px;
@@ -24,6 +28,36 @@
   align-items: center;
 }
 
-.small-header {
-  padding-top: 35px;
+.header-small__ {
+  background-color: var(--ion-color-tertiary);
+  .title {
+    font-size: large;
+    background-color: var(--ion-color-tertiary);
+    color: var(--ion-color-tertiary-contrast);
+  }
+  .subtitle {
+    font-size: x-large;
+    padding-bottom: 1rem;
+    color: var(--ion-color-tertiary-contrast);
+  }
+  .button {
+    color: var(--ion-color-tertiary-contrast);
+  }
+}
+
+.header-big__ {
+  background-color: var(--ion-color-tertiary);
+  .title {
+    font-size: x-large;
+    background-color: var(--ion-color-tertiary);
+    color: var(--ion-color-tertiary-contrast);
+  }
+  .subtitle {
+    font-size: large;
+    padding-bottom: 1rem;
+    color: var(--ion-color-tertiary-contrast);
+  }
+  .button {
+    color: var(--ion-color-tertiary-contrast);
+  }
 }

@@ -1,17 +1,12 @@
 import { IonContent, IonPage } from "@ionic/react";
 import { VFC } from "react";
-import { Route, useHistory, useRouteMatch } from "react-router";
-import ScrollHeader from "../../components/header/scroll-header";
-import ProfileItem from "../../components/profile-item/ProfileItem";
-import { Profile } from "../../core/profile-types";
-import { useProfiles } from "../../core/stores/app";
-import { isLoading, Loading } from "../../core/stores/utils";
+import { useHistory } from "react-router";
+import { isLoading } from "../../core/stores/utils";
 import "../PrintDevice/print-device.scss";
-import PrintDeviceSelectDevice from "./SelectDevice";
-import PrintDeviceSelectArm from "./SelectArm";
 import DeviceDetails from "../../components/device-details/DeviceDetails";
 import { useActiveDevice } from "../../core/hooks/devices";
 import { Device } from "../../core/onshape-types";
+import HeaderSmall from "../../components/header/header-small";
 
 const PrintDeviceDeviceDetails: VFC = () => {
   const device = useActiveDevice();
@@ -20,7 +15,7 @@ const PrintDeviceDeviceDetails: VFC = () => {
   if (isLoading(device) || !device) return <div>loading...</div>;
   return (
     <IonPage>
-      <ScrollHeader backUrl="/home" />
+      <HeaderSmall backUrl="/home" />
       <IonContent>
         <h1 className="print-device-profile-header">Confirm Device</h1>
         <DeviceDetails

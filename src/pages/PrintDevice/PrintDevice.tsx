@@ -1,28 +1,10 @@
-import {
-  IonCard,
-  IonCardHeader,
-  IonCardTitle,
-  IonContent,
-  IonInput,
-  IonItem,
-  IonLabel,
-  IonList,
-  IonPage,
-} from "@ionic/react";
 import { VFC } from "react";
-import { Route, useHistory, useRouteMatch } from "react-router";
-import ScrollHeader from "../../components/header/scroll-header";
-import ProfileItem from "../../components/profile-item/ProfileItem";
-import { Profile } from "../../core/profile-types";
-import { useProfiles } from "../../core/stores/app";
-import { isLoading, Loading } from "../../core/stores/utils";
+import { Route } from "react-router";
 import "../PrintDevice/print-device.scss";
 import PrintDeviceSelectDevice from "./SelectDevice";
 import PrintDeviceSelectArm from "./SelectArm";
 import PrintDeviceDeviceDetails from "./DeviceDetails";
-import ProfileItemCompact from "../../components/profile-item-compact/ProfileItem";
 import PrintDeviceSelectProfile from "./SelectProfile";
-import Header from "../../components/header/header";
 
 const PrintDevice: VFC = () => {
   return (
