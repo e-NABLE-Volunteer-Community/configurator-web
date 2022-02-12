@@ -1,5 +1,6 @@
-import { IonHeader, IonToolbar, IonTitle } from "@ionic/react";
+import { IonHeader, IonToolbar, IonTitle, IonContent } from "@ionic/react";
 import { VFC } from "react";
+import React from "react";
 
 const HeaderLanding: VFC<{ title?: string; subtitle?: string }> = ({
   title,
