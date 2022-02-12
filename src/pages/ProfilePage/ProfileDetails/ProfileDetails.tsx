@@ -13,7 +13,7 @@ import {
 import { useActiveProfile } from "../../../core/hooks/profiles";
 import { isLoading } from "../../../core/stores/utils";
 
-import "../../../theme/header.scss";
+import "../../../components/header/header.scss";
 import "../ProfileDetails/profile-details.scss";
 import { MeasurementSet } from "../../../core/configurator-types";
 import { Device } from "../../../core/onshape-types";

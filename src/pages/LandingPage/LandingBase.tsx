@@ -10,7 +10,7 @@ import {
   IonPage,
 } from "@ionic/react";
 import { IfMobile, IfNotMobile } from "../../components/responsive/breakpoints";
-import "../../theme/header.scss";
+import "../../components/header/header.scss";
 import "../LandingPage/landing-base.scss";
 import {
   arrowBackOutline,
