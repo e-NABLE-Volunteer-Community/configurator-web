@@ -26,7 +26,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import Calendar from "react-calendar";
 import SubmitItemComponent from "../../MeasurementsPage/NewMeasurements/Submit/submit-item";
 import "./new-profile.scss";
-import Header from "../../../components/header/header";
+import Header from "../../../components/header/header-small";
 import "react-calendar/dist/Calendar.css";
 
 const NewProfile: VFC = () => {

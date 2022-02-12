@@ -21,7 +21,7 @@ import { useHistory } from "react-router";
 
 import { capitalizeFirstLetter } from "../../../core/util/string-manipulation";
 
-import Header from "../../../components/header/header";
+import Header from "../../../components/header/header-small";
 import DeviceItem from "../../../components/device-item/device-item";
 import MeasurementSetItem from "../../../components/measurement-set-item/measurement-set-item";
 

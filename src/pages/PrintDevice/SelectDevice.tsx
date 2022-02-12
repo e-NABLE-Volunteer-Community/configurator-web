@@ -1,13 +1,10 @@
 import { IonContent, IonPage } from "@ionic/react";
 import { VFC } from "react";
-import { useHistory, useRouteMatch } from "react-router";
+import { useHistory } from "react-router";
 import DeviceItem from "../../components/device-item/device-item";
-import ScrollHeader from "../../components/header/scroll-header";
-import MeasurementSetItem from "../../components/measurement-set-item/measurement-set-item";
-import { MeasurementSet } from "../../core/configurator-types";
-import { useProfilePrintDevice } from "../../core/hooks/profiles";
+import HeaderSmall from "../../components/header/header-small";
 import { Device } from "../../core/onshape-types";
-import { useDevices, useProfiles } from "../../core/stores/app";
+import { useDevices } from "../../core/stores/app";
 import { isLoading } from "../../core/stores/utils";
 
 const PrintDeviceSelectDevice: VFC = () => {
@@ -19,7 +16,7 @@ const PrintDeviceSelectDevice: VFC = () => {
   if (isLoading(devices)) return <div>Loading..</div>;
   return (
     <IonPage>
-      <ScrollHeader backUrl="/home" />
+      <HeaderSmall backUrl="/home" />
       <IonContent>
         <h1 className="print-device-profile-header">
           Which device would you like to print?
