@@ -9,23 +9,29 @@ import PrintDeviceSelectProfile from "./SelectProfile";
 const PrintDevice: VFC = () => {
   return (
     <>
-      <Route path="/print-device" exact component={PrintDeviceSelectProfile} />
-      <Route
-        path="/print-device/p/:profileId"
-        exact
-        component={PrintDeviceSelectArm}
-      />
-      {/* this is all conditional rendering based on ID using hooks, don't F with them yet */}
-      <Route
-        path="/print-device/p/:profileId/m/:measSetId"
-        exact
-        component={PrintDeviceSelectDevice}
-      />
-      <Route
-        path="/print-device/p/:profileId/m/:measSetId/d/:deviceId"
-        exact
-        component={PrintDeviceDeviceDetails}
-      />
+      <div className="print-device__">
+        <Route
+          path="/print-device"
+          exact
+          component={PrintDeviceSelectProfile}
+        />
+        <Route
+          path="/print-device/p/:profileId"
+          exact
+          component={PrintDeviceSelectArm}
+        />
+        {/* this is all conditional rendering based on ID using hooks, don't F with them yet */}
+        <Route
+          path="/print-device/p/:profileId/m/:measSetId"
+          exact
+          component={PrintDeviceSelectDevice}
+        />
+        <Route
+          path="/print-device/p/:profileId/m/:measSetId/d/:deviceId"
+          exact
+          component={PrintDeviceDeviceDetails}
+        />
+      </div>
     </>
   );
 };

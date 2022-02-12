@@ -1,5 +1,12 @@
-// .card {
-//   border: dashed;
-//   width: 100% !important;
-//}
-// none of the things here were used anywhere
+.print-device__ {
+  .device-content {
+    padding: 0px 15px 0px 15px;
+    margin-top: 0px;
+    padding-top: 0px;
+  }
+
+  .image-container {
+    border: dashed;
+    height: 150px;
+  }
+}

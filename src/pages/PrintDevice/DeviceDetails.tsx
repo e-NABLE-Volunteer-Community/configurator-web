@@ -19,12 +19,14 @@ const PrintDeviceDeviceDetails: VFC = () => {
   return (
     <IonPage>
       <HeaderSmall backUrl="/home" />
-      <IonContent>
-        <h1>Confirm Device</h1>
-        <DeviceDetails
-          device={device}
-          onDeviceDetailsClick={() => onDeviceDetailsClick(device)}
-        ></DeviceDetails>
+      <IonContent className="device-details-container">
+        <h1 className="device-content">{device.name}</h1>
+        <p className="device-content">{device.description}</p>
+        <div className="image-container"></div>
+        <h5 className="device-content">Materials</h5>
+        <p className="device-content"> lorem i[sepomsdg;lsdgf;ljsg</p>
+        <h5 className="device-content">Designers</h5>
+        <p className="device-content">ben and jeff and some other guys</p>
       </IonContent>
     </IonPage>
   );
