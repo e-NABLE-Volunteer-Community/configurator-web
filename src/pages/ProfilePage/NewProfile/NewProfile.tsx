@@ -28,13 +28,14 @@ import SubmitItemComponent from "../../MeasurementsPage/NewMeasurements/Submit/s
 import "./new-profile.scss";
 import Header from "../../../components/header/header-small";
 import "react-calendar/dist/Calendar.css";
+import HeaderSmall from "../../../components/header/header-small";
 
 const NewProfile: VFC = () => {
   const newProfile: Partial<Profile> = {};
 
   return (
     <IonContent>
-      <Header title="Create New Profile" backUrl="/"></Header>
+      <HeaderSmall title="Create New Profile" backUrl="/"></HeaderSmall>
       <NewProfileSwiper></NewProfileSwiper>
     </IonContent>
   );
@@ -43,8 +44,9 @@ const NewProfile: VFC = () => {
 const NewProfileSwiper: VFC = () => {
   const [selectedSex, setSelectedSex] = useState<string>("other");
   return (
-    <IonContent className="swiper-inner-container">
+    <IonContent className="new-profile__">
       <Swiper
+        className="swiper-container"
         spaceBetween={30}
         slidesPerView={1}
         navigation

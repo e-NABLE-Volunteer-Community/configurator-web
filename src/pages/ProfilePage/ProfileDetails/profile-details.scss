@@ -1,74 +1,74 @@
-.profile-info-container {
-  display: flex;
-}
+.profile-details__ {
+  .profile-info-container {
+    display: flex;
+  }
 
-.profile-image {
-  height: 140px;
-  width: 140px;
-  margin: 15px;
-}
+  .profile-image {
+    height: 140px;
+    width: 140px;
+    margin: 15px;
+  }
 
-.info-container {
-  margin: 26px 10px 15px 0px;
-  width: 60%;
-}
+  .info-container {
+    margin: 26px 10px 15px 0px;
+    width: 60%;
+  }
 
-.info-item {
-  padding: 5px;
-}
+  .info-item {
+    padding: 5px;
+  }
 
-.info-header {
-  font-weight: 200;
-}
+  .info-header {
+    font-weight: 200;
+  }
 
-.info-text {
-}
-.detail-title {
-  margin: 5px;
-  font-weight: 500;
-}
+  .detail-title {
+    margin: 5px;
+    font-weight: 500;
+  }
 
-.detail-text {
-  font-weight: 300;
-  margin: 0px 2px 0px 2px;
-}
+  .detail-text {
+    font-weight: 300;
+    margin: 0px 2px 0px 2px;
+  }
 
-.profile-item-header {
-  font-weight: bold;
-  font-size: 24px !important;
-}
+  .profile-item-header {
+    font-weight: bold;
+    font-size: 24px !important;
+  }
 
-.profile-item-button {
-  width: 95%;
-  margin: 10px 10px 0px 10px;
-}
+  .profile-item-button {
+    width: 95%;
+    margin: 10px 10px 0px 10px;
+  }
 
-.items-container {
-  display: flex;
-  flex-direction: column;
-}
+  .items-container {
+    display: flex;
+    flex-direction: column;
+  }
 
-.profile-item-card {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
+  .profile-item-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 
-.item-image {
-  margin: 5px;
-  border: dashed;
-  height: 60px;
-  width: 60px;
-}
+  .item-image {
+    margin: 5px;
+    border: dashed;
+    height: 60px;
+    width: 60px;
+  }
 
-.item-date {
-  margin-top: 15px;
-  margin-right: 5px;
-  font-weight: 300;
-  font-size: 14px;
-}
+  .item-date {
+    margin-top: 15px;
+    margin-right: 5px;
+    font-weight: 300;
+    font-size: 14px;
+  }
 
-.card-details {
-  width: 55%;
-  margin: 10px;
+  .card-details {
+    width: 55%;
+    margin: 10px;
+  }
 }

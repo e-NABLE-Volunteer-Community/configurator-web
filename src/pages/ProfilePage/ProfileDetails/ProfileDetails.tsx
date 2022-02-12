@@ -24,6 +24,7 @@ import { capitalizeFirstLetter } from "../../../core/util/string-manipulation";
 import Header from "../../../components/header/header-small";
 import DeviceItem from "../../../components/device-item/device-item";
 import MeasurementSetItem from "../../../components/measurement-set-item/measurement-set-item";
+import HeaderSmall from "../../../components/header/header-small";
 
 const ProfileDetails: VFC = () => {
   const history = useHistory();
@@ -38,8 +39,11 @@ const ProfileDetails: VFC = () => {
   return (
     <>
       <IonPage>
-        <Header title={activeProfile.name} backUrl="/profiles"></Header>
-        <IonContent>
+        <HeaderSmall
+          title={activeProfile.name}
+          backUrl="/profiles"
+        ></HeaderSmall>
+        <IonContent className="profile-details__">
           <div className="profile-info-container">
             <div className="profile-image">
               <IonImg src={activeProfile.profileImageUrl} />
