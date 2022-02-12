@@ -2,30 +2,4 @@
 //   border: dashed;
 //   width: 100% !important;
 //}
-
-.print-device-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  .print-device-profile-card {
-    height: 100%;
-    width: 100%;
-    padding: 0px !important;
-    margin: 0px !important;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .print-device-profile-header {
-    padding: 0;
-    margin: 0;
-    font-weight: 900;
-    position: sticky;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    z-index: 1000;
-    background-color: var(--ion-background-color);
-  }
-}
+// none of the things here were used anywhere

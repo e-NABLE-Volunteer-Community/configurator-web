@@ -17,7 +17,7 @@ const PrintDeviceDeviceDetails: VFC = () => {
     <IonPage>
       <HeaderSmall backUrl="/home" />
       <IonContent>
-        <h1 className="print-device-profile-header">Confirm Device</h1>
+        <h1>Confirm Device</h1>
         <DeviceDetails
           device={device}
           onDeviceDetailsClick={() => onDeviceDetailsClick(device)}
