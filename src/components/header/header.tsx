@@ -6,9 +6,10 @@ import {
   IonBackButton,
 } from "@ionic/react";
 import { VFC } from "react";
-
-const Header: VFC<{ title: string; backUrl: string }> = ({
+// parameter with ?: means optional parameter.
+const Header: VFC<{ title: string; title2?: string; backUrl: string }> = ({
   title,
+  title2, // refactor this with better names.
   backUrl,
 }) => {
   return (
@@ -19,6 +20,7 @@ const Header: VFC<{ title: string; backUrl: string }> = ({
           <IonBackButton defaultHref={backUrl} />
         </IonButtons>
       </IonToolbar>
+      <h1>{title2}</h1>
     </IonHeader>
   );
 };

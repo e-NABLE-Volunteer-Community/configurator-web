@@ -1,6 +1,8 @@
+import { IonContent, IonPage } from "@ionic/react";
 import { VFC } from "react";
 import { useHistory, useRouteMatch } from "react-router";
 import DeviceItem from "../../components/device-item/device-item";
+import ScrollHeader from "../../components/header/scroll-header";
 import MeasurementSetItem from "../../components/measurement-set-item/measurement-set-item";
 import { MeasurementSet } from "../../core/configurator-types";
 import { useProfilePrintDevice } from "../../core/hooks/profiles";
@@ -16,19 +18,22 @@ const PrintDeviceSelectDevice: VFC = () => {
 
   if (isLoading(devices)) return <div>Loading..</div>;
   return (
-    <div>
-      <h1 className="print-device-profile-header">
-        Which device would you like to print?
-      </h1>
-      {devices.map((d) => (
-        <div key={d.documentId}>
-          <DeviceItem
-            device={d}
-            onDeviceItemClick={() => onDevDetailsClick(d)}
-          ></DeviceItem>
-        </div>
-      ))}
-    </div>
+    <IonPage>
+      <ScrollHeader backUrl="/home" />
+      <IonContent>
+        <h1 className="print-device-profile-header">
+          Which device would you like to print?
+        </h1>
+        {devices.map((d) => (
+          <div key={d.documentId}>
+            <DeviceItem
+              device={d}
+              onDeviceItemClick={() => onDevDetailsClick(d)}
+            ></DeviceItem>
+          </div>
+        ))}
+      </IonContent>
+    </IonPage>
   );
 };
 
