@@ -37,8 +37,9 @@
   }
   .subtitle {
     font-size: x-large;
-    padding-bottom: 1rem;
+    padding-bottom: 0.5rem;
     color: var(--ion-color-tertiary-contrast);
+    padding-left: 0.5rem;
   }
   .button {
     color: var(--ion-color-tertiary-contrast);
@@ -55,9 +56,47 @@
   .subtitle {
     font-size: large;
     padding-bottom: 1rem;
+    padding-left: 1rem;
     color: var(--ion-color-tertiary-contrast);
   }
   .button {
+    color: var(--ion-color-tertiary-contrast);
+  }
+
+  .search-bar {
+    padding: 10px;
+  }
+  .people-search {
+    background-color: white;
+    color: black;
+  }
+  .sort-filter-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+    font-size: 1.375rem;
+  }
+  .sort-filter-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: var(--ion-color-tertiary-contrast);
+  }
+}
+
+.header-landing__ {
+  background-color: var(--ion-color-tertiary);
+  .title {
+    font-size: x-large;
+    background-color: var(--ion-color-tertiary);
+    color: var(--ion-color-tertiary-contrast);
+  }
+  .subtitle {
+    font-size: large;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
     color: var(--ion-color-tertiary-contrast);
   }
 }
