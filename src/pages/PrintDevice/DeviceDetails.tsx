@@ -1,4 +1,4 @@
-import { IonContent } from "@ionic/react";
+import { IonContent, IonPage } from "@ionic/react";
 import { VFC } from "react";
 import { Route, useHistory, useRouteMatch } from "react-router";
 import ScrollHeader from "../../components/header/scroll-header";
@@ -19,13 +19,16 @@ const PrintDeviceDeviceDetails: VFC = () => {
   const onDeviceDetailsClick = (device: Device) => history.push("123123");
   if (isLoading(device) || !device) return <div>loading...</div>;
   return (
-    <div>
-      <h1 className="print-device-profile-header">Confirm Device</h1>
-      <DeviceDetails
-        device={device}
-        onDeviceDetailsClick={() => onDeviceDetailsClick(device)}
-      ></DeviceDetails>
-    </div>
+    <IonPage>
+      <ScrollHeader backUrl="/home" />
+      <IonContent>
+        <h1 className="print-device-profile-header">Confirm Device</h1>
+        <DeviceDetails
+          device={device}
+          onDeviceDetailsClick={() => onDeviceDetailsClick(device)}
+        ></DeviceDetails>
+      </IonContent>
+    </IonPage>
   );
 };
 
