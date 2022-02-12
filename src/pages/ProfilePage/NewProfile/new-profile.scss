@@ -1,55 +1,57 @@
-.card {
-  height: 100%;
-  width: 100%;
-  padding: 0px !important;
-  margin: 0px !important;
-}
+.new-profile__ {
+  .card {
+    height: 100%;
+    width: 100%;
+    padding: 0px !important;
+    margin: 0px !important;
+  }
 
-.page-container {
-  height: 100%;
-}
+  .page-container {
+    height: 100%;
+  }
 
-.swiper-container {
-  padding: 5px;
-  margin: 5px;
-  height: 96%;
-  overflow: hidden;
-}
+  .swiper-container {
+    padding: 5px;
+    margin: 5px;
+    height: 96%;
+    overflow: hidden;
+  }
 
-.swiper-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+  .swiper-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-.card-title {
-  margin: 15px;
-  font-size: 26px;
-  display: flex;
-  align-items: center;
-}
+  .card-title {
+    margin: 15px;
+    font-size: 26px;
+    display: flex;
+    align-items: center;
+  }
 
-.card-inputs {
-  width: 90%;
-  font-weight: bolder;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
+  .card-inputs {
+    width: 90%;
+    font-weight: bolder;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 
-.radio-list {
-  width: 100%;
-}
+  .radio-list {
+    width: 100%;
+  }
 
-.input-item {
-  margin: 15px;
-}
+  .input-item {
+    margin: 15px;
+  }
 
-.calendar-container {
-  padding-left: 15px;
-  padding-right: 15px;
-}
+  .calendar-container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 
-.react-calendar__month-view__days__day {
-  color: black;
+  .react-calendar__month-view__days__day {
+    color: black;
+  }
 }
