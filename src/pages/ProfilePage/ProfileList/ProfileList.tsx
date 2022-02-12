@@ -27,6 +27,7 @@ import { isLoading } from "../../../core/stores/utils";
 import { addOutline } from "ionicons/icons";
 import "../ProfileList/profile-list.scss";
 import ProfileItem from "../../../components/profile-item/ProfileItem";
+import HeaderBig from "../../../components/header/header-big";
 
 const NewProfileItem: VFC = () => {
   const history = useHistory();
@@ -72,38 +73,7 @@ const ProfileList: VFC = () => {
 
   return (
     <>
-      <div className="profile-list__">
-        <IonHeader className="people-header">
-          <div className="home-container">
-            <IonIcon
-              icon={arrowBackOutline}
-              color={"light"}
-              className="back-arrow"
-              onClick={onHomeClick}
-            />
-            <div>home</div>
-          </div>
-          <div className="header-items">
-            <div className="header-text">People</div>
-            <div>
-              <IonInput
-                placeholder=" Search for someone..."
-                className="people-search"
-              ></IonInput>
-            </div>
-            <div className="sort-filter-row">
-              <div className="sort-filter-item">
-                <IonIcon icon={funnelOutline} />
-                <div>Sort</div>
-              </div>
-              <div className="sort-filter-item">
-                <IonIcon icon={filterCircleOutline} />
-                <div>Filter</div>
-              </div>
-            </div>
-          </div>
-        </IonHeader>
-      </div>
+      <HeaderBig title="People" backUrl="homeUrl" />
 
       <IonContent className="profile-list__">
         <div className="list-container">

@@ -22,6 +22,7 @@ import {
   handLeftOutline,
 } from "ionicons/icons";
 import { useHistory } from "react-router";
+import HeaderLanding from "../../components/header/header-landing";
 
 const LandingBase: VFC = () => {
   const history = useHistory();
@@ -32,93 +33,70 @@ const LandingBase: VFC = () => {
   const viewPreviousDevices = () => onClick("/devices");
   return (
     <>
-      <IonHeader className="people-header">
-        <div className="home-container">
-          <div></div>
-        </div>
-        <div
-          className="header-items"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "end",
-            height: "65%",
-          }}
-        >
-          <div className="header-text">Hello $Name</div>
-          <div>What would you like to do today?</div>
-        </div>
-      </IonHeader>
-      <IonContent>
-        <div className="list-container">
-          <IonList
-            lines="none"
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-            }}
-          >
-            <IonItem>
-              <div className="landing-card" onClick={newPerson}>
-                <div className="icon-container">
-                  <IonIcon className="icon" icon={personAddOutline}></IonIcon>
-                </div>
-                <div className="text-container">
-                  <div className="card-header-text">Add a new person</div>
-                  <div className="card-body-text">
-                    Create a new profile for a person
-                  </div>
+      <HeaderLanding
+        title="Hello $Name"
+        subtitle="What would you like to do today?"
+      ></HeaderLanding>
+
+      <IonContent className="landing-base__">
+        <IonList>
+          <IonItem>
+            <div className="landing-card" onClick={newPerson}>
+              <div className="icon-container">
+                <IonIcon className="icon" icon={personAddOutline}></IonIcon>
+              </div>
+              <div className="text-container">
+                <div className="card-header-text">Add a new person</div>
+                <div className="card-body-text">
+                  Create a new profile for a person
                 </div>
               </div>
-            </IonItem>
-            <IonItem>
-              <div className="landing-card" onClick={viewProfiles}>
-                <div className="icon-container">
-                  <IonIcon className="icon" icon={peopleOutline}></IonIcon>
+            </div>
+          </IonItem>
+          <IonItem>
+            <div className="landing-card" onClick={viewProfiles}>
+              <div className="icon-container">
+                <IonIcon className="icon" icon={peopleOutline}></IonIcon>
+              </div>
+              <div className="text-container">
+                <div className="card-header-text">
+                  View people and measurements
                 </div>
-                <div className="text-container">
-                  <div className="card-header-text">
-                    View people and measurements
-                  </div>
-                  <div className="card-body-text">
-                    View existing profiles in order to add and edit measurements
-                  </div>
+                <div className="card-body-text">
+                  View existing profiles in order to add and edit measurements
                 </div>
               </div>
-            </IonItem>
-            <IonItem>
-              <div className="landing-card" onClick={printDevice}>
-                <div className="icon-container">
-                  <IonIcon className="icon" icon={printOutline}></IonIcon>
-                </div>
-                <div className="text-container">
-                  <div className="card-header-text">
-                    Print prosthetic device
-                  </div>
-                  <div className="card-body-text">
-                    Generate an STL file to send to a 3D printer
-                  </div>
+            </div>
+          </IonItem>
+          <IonItem>
+            <div className="landing-card" onClick={printDevice}>
+              <div className="icon-container">
+                <IonIcon className="icon" icon={printOutline}></IonIcon>
+              </div>
+              <div className="text-container">
+                <div className="card-header-text">Print prosthetic device</div>
+                <div className="card-body-text">
+                  Generate an STL file to send to a 3D printer
                 </div>
               </div>
-            </IonItem>
-            <IonItem>
-              <div className="landing-card" onClick={viewPreviousDevices}>
-                <div className="icon-container">
-                  <IonIcon className="icon" icon={handLeftOutline}></IonIcon>
+            </div>
+          </IonItem>
+          <IonItem>
+            <div className="landing-card" onClick={viewPreviousDevices}>
+              <div className="icon-container">
+                <IonIcon className="icon" icon={handLeftOutline}></IonIcon>
+              </div>
+              <div className="text-container">
+                <div className="card-header-text">
+                  View previous prosthetic devices
                 </div>
-                <div className="text-container">
-                  <div className="card-header-text">
-                    View previous prosthetic devices
-                  </div>
-                  <div className="card-body-text">
-                    View STL files you created in the past
-                  </div>
+                <div className="card-body-text">
+                  View STL files you created in the past
                 </div>
               </div>
-            </IonItem>
-          </IonList>
-        </div>
+            </div>
+          </IonItem>
+        </IonList>
       </IonContent>
     </>
   );

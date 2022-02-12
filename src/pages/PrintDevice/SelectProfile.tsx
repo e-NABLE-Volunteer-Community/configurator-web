@@ -19,10 +19,10 @@ const PrintDeviceSelectProfile: VFC = () => {
   if (isLoading(profiles)) return <div>loading...</div>;
   return (
     <IonPage>
-      <HeaderBig
+      <HeaderSmall
         backUrl="/home"
         title="dots here"
-        subtitle="Select who you want to create a device for"
+        subtitle="Who is the device for?"
       />
       <IonContent>
         <IonList lines="none">
