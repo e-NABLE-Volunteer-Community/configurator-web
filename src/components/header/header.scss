@@ -1,68 +1,4 @@
-.header-small__ {
-  background-color: var(--ion-color-tertiary);
-
-  ion-toolbar,
-  ion-header {
-    --background: var(--ion-color-tertiary);
-  }
-
-  .title {
-    font-size: large;
-    background-color: var(--ion-color-tertiary);
-    color: var(--ion-color-tertiary-contrast);
-  }
-  .subtitle {
-    font-size: x-large;
-    font-weight: bold;
-    padding: 0.5rem;
-    color: black;
-    padding-left: 0.5rem;
-    background-color: white;
-  }
-  .button {
-    color: var(--ion-color-tertiary-contrast);
-  }
-}
-
 .header-big__ {
-  background-color: var(--ion-color-tertiary);
-
-  ion-toolbar,
-  ion-header {
-    --background: var(--ion-color-tertiary);
-  }
-
-  ion-searchbar {
-    input {
-      --background: var(
-        --ion-item-background,
-        var(--ion-background-color, #fff)
-      );
-    }
-  }
-
-  .title {
-    font-size: x-large;
-    background-color: var(--ion-color-tertiary);
-    color: var(--ion-color-tertiary-contrast);
-  }
-  .subtitle {
-    font-size: large;
-    padding-bottom: 1rem;
-    padding-left: 1rem;
-    color: var(--ion-color-tertiary-contrast);
-  }
-  .button {
-    color: var(--ion-color-tertiary-contrast);
-  }
-
-  .search-bar {
-    padding: 10px;
-  }
-  .people-search {
-    background-color: white;
-    color: black;
-  }
   .sort-filter-row {
     display: flex;
     flex-direction: row;
@@ -71,6 +7,7 @@
     margin: 10px;
     font-size: 1.375rem;
   }
+
   .sort-filter-item {
     display: flex;
     flex-direction: row;
@@ -79,23 +16,25 @@
   }
 }
 
-.header-landing__ {
-  background-color: var(--ion-color-tertiary);
-
-  ion-toolbar,
-  ion-header {
-    --background: var(--ion-color-tertiary);
-  }
-
-  .title {
-    font-size: x-large;
-    background-color: var(--ion-color-tertiary);
+ion-toolbar {
+  .button {
     color: var(--ion-color-tertiary-contrast);
   }
-  .subtitle {
-    font-size: large;
-    padding-bottom: 1rem;
-    padding-left: 1rem;
-    color: var(--ion-color-tertiary-contrast);
+
+  h1,
+  h2 {
+    padding: 0 1rem;
+  }
+
+  color: var(--ion-color-tertiary-contrast);
+  --background: var(--ion-color-tertiary);
+
+  ion-searchbar {
+    input {
+      --background: var(
+        --ion-item-background,
+        var(--ion-background-color, #fff)
+      );
+    }
   }
 }

@@ -42,7 +42,7 @@ const LandingPageCard: VFC<LandingPageCard> = (props) => {
   return (
     <IonCard routerLink={href}>
       <IonCardContent>
-        <IonItem lines="none">
+        <IonItem className="ion-no-padding" lines="none">
           <IonIcon className="icon" icon={icon} slot="start" size="large" />
           <div className="landing-page-card-text">
             <h2>{title}</h2>

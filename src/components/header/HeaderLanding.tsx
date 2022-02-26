@@ -5,15 +5,15 @@ import React from "react";
 const HeaderLanding: VFC<{ title?: string; subtitle?: string }> = ({
   title,
   subtitle,
-}) => {
-  return (
-    <IonHeader className="header-landing__">
-      <IonToolbar>
-        <IonTitle className="title">{title}</IonTitle>
-      </IonToolbar>
-      <div className="subtitle">{subtitle}</div>
-    </IonHeader>
-  );
-};
+}) => (
+  <IonHeader className="header-landing__">
+    <IonToolbar>
+      <div>
+        <h1>{title}</h1>
+        <h2>{subtitle}</h2>
+      </div>
+    </IonToolbar>
+  </IonHeader>
+);
 
 export default HeaderLanding;

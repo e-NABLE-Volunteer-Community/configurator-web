@@ -5,7 +5,7 @@ import {
   IonButtons,
   IonBackButton,
 } from "@ionic/react";
-import { VFC } from "react";
+import React, { VFC } from "react";
 import { homePath } from "../../routes";
 // parameter with ?: means optional parameter.
 
@@ -16,19 +16,15 @@ const HeaderSmall: VFC<{
 }> = ({
   title,
   subtitle, // refactor this with better names.
-}) => {
-  return (
-    <IonHeader className="header-small__">
-      <IonToolbar>
-        <IonButtons slot="start" className="button">
-          <IonBackButton defaultHref={homePath} />
-        </IonButtons>
-
-        <IonTitle className="title">{title}</IonTitle>
-      </IonToolbar>
-      <div className="subtitle">{subtitle}</div>
-    </IonHeader>
-  );
-};
+}) => (
+  <IonHeader className="header-small__">
+    <IonToolbar>
+      <IonButtons slot="start" className="button">
+        <IonBackButton defaultHref={homePath} />
+      </IonButtons>
+      <IonTitle>{title}</IonTitle>
+    </IonToolbar>
+  </IonHeader>
+);
 
 export default HeaderSmall;
