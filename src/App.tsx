@@ -1,8 +1,7 @@
-import React, { FC, VFC } from "react";
+import React, { FC } from "react";
 import {
   IonApp,
   IonIcon,
-  IonLabel,
   IonRouterOutlet,
   IonTabBar,
   IonTabButton,
@@ -30,40 +29,31 @@ import "@ionic/react/css/display.css";
 /* Theme variables */
 import "./theme/variables.css";
 import "./theme/design-system.scss";
-import DevicesTab from "./pages/DevicesPage";
-import MeasurementsTab from "./pages/MeasurementsPage";
 import { homeOutline, peopleOutline, printOutline } from "ionicons/icons";
-import ProfileTab from "./pages/ProfilePage";
 
 // Swiper bundle styles
 import "swiper/swiper-bundle.min.css";
 // Import Swiper core and required modules, install modules
 import SwiperCore, { Navigation } from "swiper";
-import LandingTab from "./pages/LandingPage";
-import PrintDeviceTab from "./pages/PrintDevice/PrintDevice";
+import LandingPage from "./pages/LandingPage";
 import {
-  devicesPath,
   homePath,
-  measurementsPath,
+  measurementSetDetailsPath,
+  newProfilePath,
   printDevicePath,
+  profileDetailsPath,
   profilesPath,
-  tabifyPath,
 } from "./routes";
+import ProfileListPage from "./pages/ProfilePage/ProfileList/ProfileListPage";
+import NewProfilePage from "./pages/ProfilePage/NewProfile/NewProfilePage";
+import ProfileDetailsPage from "./pages/ProfilePage/ProfileDetails/ProfileDetailsPage";
+import MeasurementSetDetailsPage from "./pages/MeasurementsPage/MeasurementSetDetails";
+import PrintDeviceSelectProfilePage from "./pages/PrintDevice/SelectProfile";
+import PrintDeviceSelectArmPage from "./pages/PrintDevice/SelectArm";
+import PrintDeviceSelectDevicePage from "./pages/PrintDevice/SelectDevice";
+import PrintDeviceDeviceDetailsPage from "./pages/PrintDevice/DeviceDetails";
 
 SwiperCore.use([Navigation]);
-
-const Routes: VFC = () => {
-  return (
-    <>
-      <Route path={tabifyPath(profilesPath)} component={ProfileTab} />
-      <Route path={tabifyPath(printDevicePath)} component={PrintDeviceTab} />
-      <Route path={tabifyPath(homePath)} component={LandingTab} />
-      <Route>
-        <Redirect to={homePath} />
-      </Route>
-    </>
-  );
-};
 
 const App: FC = () => {
   return (
@@ -71,7 +61,42 @@ const App: FC = () => {
       <IonReactRouter>
         <IonTabs>
           <IonRouterOutlet id="main">
-            <Routes />
+            <Route path={homePath} component={LandingPage} />
+            <Route path={profilesPath} exact component={ProfileListPage} />
+            <Route path={newProfilePath} exact component={NewProfilePage} />
+            <Route
+              path={profileDetailsPath}
+              exact
+              component={ProfileDetailsPage}
+            />
+            <Route
+              path={measurementSetDetailsPath}
+              exact
+              component={MeasurementSetDetailsPage}
+            />
+            <Route
+              path={printDevicePath}
+              exact
+              component={PrintDeviceSelectProfilePage}
+            />
+            <Route
+              path="/print-device/p/:profileId"
+              exact
+              component={PrintDeviceSelectArmPage}
+            />
+            <Route
+              path="/print-device/p/:profileId/m/:measSetId"
+              exact
+              component={PrintDeviceSelectDevicePage}
+            />
+            <Route
+              path="/print-device/p/:profileId/m/:measSetId/d/:deviceId"
+              exact
+              component={PrintDeviceDeviceDetailsPage}
+            />
+            <Route>
+              <Redirect to={homePath} />
+            </Route>
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
             <IonTabButton tab="home" href={homePath}>
