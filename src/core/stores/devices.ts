@@ -1,5 +1,5 @@
 import { Device, Fusion360Bom, OnshapeBom } from "../onshape-types";
-import { Loading, StateSlice } from "./utils";
+import { StateSlice } from "./utils";
 import fileDownload from "js-file-download";
 import phoenixBom from "../../phoenix-v3-bom.json";
 import fusionBom from "../../fusion-test-bom.json";
@@ -21,7 +21,7 @@ export const mockDevices = (): Device[] => [
 ];
 
 export type DevicesStore = {
-  devices: Device[] | Loading;
+  devices: Device[];
   exportDevice: (device: Device) => Promise<string>;
   downloadExportedDevice: (
     exportId: ExportId,

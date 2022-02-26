@@ -4,7 +4,7 @@ import { persist, StoreApiWithPersist } from "zustand/middleware";
 import { createDevicesSlice, DevicesStore } from "./devices";
 import { createProfilesSlice, ProfileStore } from "./profiles";
 import * as R from "ramda";
-import { isLoading, Loading, RootState } from "./utils";
+import { RootState } from "./utils";
 import {
   createViewMeasurementsSlice,
   ViewMeasurementStore,
@@ -53,7 +53,7 @@ export const useViewMeasurementsAlwaysUpdate =
 export const useMeasInput = (
   measurementIndex: number,
   inputIndex: number
-): Omit<MeasurementInput, "value"> | Loading => {
+): Omit<MeasurementInput, "value"> => {
   return useViewMeasurementsStore(
     (state) => state.viewMeasurements[measurementIndex].inputs[inputIndex]
   );
@@ -62,11 +62,9 @@ export const useMeasInput = (
 export const useValueForMeasInput = (
   measurementIndex: number,
   inputIndex: number
-): string | number | null | Loading => {
+): string | number | null => {
   const valueSelector = (state: ViewMeasurementStore) =>
-    isLoading(state)
-      ? state
-      : state.viewMeasurements[measurementIndex].inputs[inputIndex].value;
+    state.viewMeasurements[measurementIndex].inputs[inputIndex].value;
   return useViewMeasurementsStore(valueSelector);
 };
 

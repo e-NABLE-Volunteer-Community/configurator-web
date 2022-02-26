@@ -4,7 +4,6 @@ import { useHistory } from "react-router";
 import MeasurementSetItem from "../../components/measurement-set-item/measurement-set-item";
 import { MeasurementSet } from "../../core/configurator-types";
 import { useProfilePrintDevice } from "../../core/hooks/profiles";
-import { isLoading } from "../../core/stores/utils";
 import HeaderSmall from "../../components/header/HeaderSmall";
 
 const PrintDeviceSelectArm: VFC = () => {
@@ -12,7 +11,8 @@ const PrintDeviceSelectArm: VFC = () => {
   const history = useHistory();
   const onMeasSetClick = (measurementSet: MeasurementSet) =>
     history.push(history.location.pathname + `/m${measurementSet.id}`);
-  if (isLoading(profile) || !profile) return <div>loading...</div>;
+
+  if (!profile) throw new Error(); // TODO
   return (
     <IonPage>
       <HeaderSmall

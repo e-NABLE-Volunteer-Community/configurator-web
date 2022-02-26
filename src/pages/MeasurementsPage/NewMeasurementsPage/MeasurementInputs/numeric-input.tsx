@@ -7,7 +7,6 @@ import {
   useSetValueForMeasInput,
   useValueForMeasInput,
 } from "../../../../core/stores/app";
-import { isLoading } from "../../../../core/stores/utils";
 import {
   checkNumericValue,
   NumericProblem,
@@ -22,9 +21,6 @@ const NumericRangeHint: VFC<NumericRangeHintProps> = ({ value, input }) =>
     <IonText className="hint">{textForNumericBounds(input)}</IonText>
   ) : null;
 
-// TODO: I18N
-const renderedWhileLoadingMsg = "Inputs must be loaded before rendered";
-
 type NumericInputProps = InputProps<NumericInput>;
 const NumericInputComponent: VFC<NumericInputProps> = (props) => {
   const { formIndex, inputIndex, input } = props;
@@ -32,7 +28,6 @@ const NumericInputComponent: VFC<NumericInputProps> = (props) => {
   const [problem, setProblem] = useState<NumericProblem | undefined>();
 
   const valueForInput = useValueForMeasInput(formIndex, inputIndex);
-  if (isLoading(valueForInput)) throw new Error(renderedWhileLoadingMsg);
   const initialValue = valueForInput?.toString() ?? null;
   const [value, setValue] = useState<string | null>(initialValue);
 

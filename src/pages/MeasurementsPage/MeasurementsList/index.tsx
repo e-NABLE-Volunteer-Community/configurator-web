@@ -16,7 +16,6 @@ import { IfNotMobile } from "../../../components/responsive/breakpoints";
 import { addOutline } from "ionicons/icons";
 import { useHistory } from "react-router-dom";
 import { MeasurementSet } from "../../../core/configurator-types";
-import { isLoading } from "../../../core/stores/utils";
 import { useMeasurementSets } from "../../../core/stores/app";
 
 type BaseMeasurementsListProps = {
@@ -28,7 +27,6 @@ export const BaseMeasurementsList: VFC<BaseMeasurementsListProps> = ({
   onItemClicked,
 }) => {
   const measurementSets = useMeasurementSets();
-  if (isLoading(measurementSets)) return <>Loading...</>; // TODO: Loading
 
   return (
     <>

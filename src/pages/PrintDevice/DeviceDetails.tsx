@@ -1,7 +1,6 @@
 import { IonContent, IonPage } from "@ionic/react";
 import { VFC } from "react";
 import { useHistory } from "react-router";
-import { isLoading } from "../../core/stores/utils";
 import "../PrintDevice/print-device.scss";
 import DeviceDetails from "../../components/device-details/DeviceDetails";
 import { useActiveDevice } from "../../core/hooks/devices";
@@ -12,7 +11,9 @@ const PrintDeviceDeviceDetails: VFC = () => {
   const device = useActiveDevice();
   const history = useHistory();
   const onDeviceDetailsClick = (device: Device) => history.push("123123");
-  if (isLoading(device) || !device) return <div>loading...</div>;
+
+  if (!device) throw new Error(); // TODO
+
   return (
     <IonPage>
       <HeaderSmall />

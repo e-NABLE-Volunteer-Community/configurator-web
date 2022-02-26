@@ -20,7 +20,6 @@ import {
   useDownloadExportedDevice,
   useExportStatus,
 } from "../../../core/stores/app";
-import { isLoading } from "../../../core/stores/utils";
 import {
   checkmarkCircleOutline,
   ellipsisHorizontalCircleOutline,
@@ -29,6 +28,7 @@ import {
 } from "ionicons/icons";
 import * as framer from "framer-motion";
 import { useHistory } from "react-router-dom";
+
 const { motion } = framer;
 
 const Queued: VFC = () => {
@@ -192,7 +192,6 @@ const ExportDeviceProgress: VFC = () => {
         </IonToolbar>
       </IonHeader>
       {(() => {
-        if (!status || isLoading(status)) return <>Loading</>; //TODO: Loading spinner
         switch (status?.state) {
           case "queued":
             return <Queued />;
@@ -206,6 +205,8 @@ const ExportDeviceProgress: VFC = () => {
             return <Completed status={status} />;
           case "failed":
             return <Failed />;
+          default:
+            return <>Loading...</>; // TODO
         }
       })()}
     </>

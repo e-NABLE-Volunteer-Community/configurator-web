@@ -6,7 +6,6 @@ import MeasurementItem from "../../../components/measurement-item/measurement-it
 import { MeasurementSet } from "../../../core/configurator-types";
 import { useProfileMeasurementSet } from "../../../core/hooks/measurements";
 import { useActiveProfile } from "../../../core/hooks/profiles";
-import { isLoading, Loading } from "../../../core/stores/utils";
 import "../MeasurementSetDetails/measurement-set-details.scss";
 import HeaderSmall from "../../../components/header/HeaderSmall";
 import { profilesPath } from "../../../routes";
@@ -19,13 +18,8 @@ const MeasurementSetDetailsPage: VFC<MeasurementSet> = () => {
 
   const onDeviceItemClick = () => history.push("d/");
 
-  if (
-    !profileMeasurementSet ||
-    !activeProfile ||
-    isLoading(profileMeasurementSet) ||
-    isLoading(activeProfile)
-  )
-    return <div>loading</div>;
+  if (!profileMeasurementSet) throw new Error(); // TODO
+  if (!activeProfile) throw new Error(); // TODO
 
   return (
     <IonPage>

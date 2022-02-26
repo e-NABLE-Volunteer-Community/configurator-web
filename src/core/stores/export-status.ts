@@ -1,4 +1,4 @@
-import { Loading, StateSlice } from "./utils";
+import { StateSlice } from "./utils";
 import { io } from "socket.io-client";
 
 export type ExportStatusState =
@@ -57,7 +57,7 @@ export type ExportStatus =
   | FailedExportStatus;
 
 export type ExportStatusStore = {
-  status: ExportStatus | Loading | undefined;
+  status: ExportStatus | undefined;
   watchExportStatus: (exportId: ExportId) => void;
 };
 export const createExportStatusSlice: StateSlice<ExportStatusStore> = (set) => {

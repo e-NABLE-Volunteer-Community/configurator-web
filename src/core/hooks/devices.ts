@@ -2,12 +2,11 @@ import { Device, DocumentAndWorkspaceIds } from "../onshape-types";
 import { useRouteMatch } from "react-router-dom";
 import * as R from "ramda";
 import { useDevices } from "../stores/app";
-import { isLoading, Loading } from "../stores/utils";
 
-export const useActiveDevice = (): Device | Loading | undefined =>
+export const useActiveDevice = (): Device | undefined =>
   useMaybeDeviceWithIds(useMatchDeviceRouteWithSuffix());
 
-export const useGeneratingDevice = (): Device | Loading =>
+export const useGeneratingDevice = (): Device =>
   useAlwaysDeviceWithIds(useMatchDeviceRouteWithSuffix("/generate"));
 
 const route = "/devices/d/:documentId/w/:workspaceId";
@@ -19,16 +18,15 @@ const objPropsMatch = (subset: Record<string, unknown>) =>
 
 const useMaybeDeviceWithIds = (
   ids: DocumentAndWorkspaceIds | undefined
-): Device | Loading | undefined => {
+): Device | undefined => {
   const devices = useDevices();
-  if (isLoading(devices)) return Loading;
   if (!ids) return undefined;
   return devices.find(objPropsMatch(ids));
 };
 
 const useAlwaysDeviceWithIds = (
   ids: DocumentAndWorkspaceIds | undefined
-): Device | Loading => {
+): Device => {
   const device = useMaybeDeviceWithIds(ids);
   if (!device) throw new Error("No device with IDs: " + JSON.stringify(ids));
   return device;

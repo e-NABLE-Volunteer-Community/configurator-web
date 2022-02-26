@@ -7,7 +7,6 @@ import {
 } from "../../../core/configurator-types";
 import * as R from "ramda";
 import { BaseMeasurementsList } from "../../MeasurementsPage/MeasurementsList";
-import { isLoading } from "../../../core/stores/utils";
 import {
   IonBackButton,
   IonButton,
@@ -70,7 +69,6 @@ const ConfirmGenerate: VFC<ConfirmGenerateProps> = ({
     );
   };
 
-  if (isLoading(measurementSets)) return <>Loading...</>; // TODO: Loading
   const measurementSet = measurementSets.find(R.propEq("id", measurementSetId));
   if (!measurementSet)
     throw new Error("No measurement set with ID: " + measurementSetId);
@@ -111,9 +109,6 @@ const ConfirmGenerate: VFC<ConfirmGenerateProps> = ({
 const GenerateDeviceStls: VFC = () => {
   const history = useHistory();
   const device = useGeneratingDevice();
-
-  if (isLoading(device)) return <>Loading...</>; // TODO: Loading
-
   const params = new URLSearchParams(history.location.search);
   const measurementSetId = params.get("m");
   if (!measurementSetId) return <SelectMeasurements device={device} />;

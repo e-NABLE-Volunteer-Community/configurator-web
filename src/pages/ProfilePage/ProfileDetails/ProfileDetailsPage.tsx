@@ -1,7 +1,6 @@
 import { VFC } from "react";
 import { IonButton, IonContent, IonImg, IonPage } from "@ionic/react";
 import { useActiveProfile } from "../../../core/hooks/profiles";
-import { isLoading } from "../../../core/stores/utils";
 
 import "../../../components/header/header.scss";
 import "../ProfileDetails/profile-details.scss";
@@ -22,7 +21,7 @@ const ProfileDetailsPage: VFC = () => {
     history.push(history.location.pathname + `/m${measurementSet.id}`);
 
   const activeProfile = useActiveProfile();
-  if (isLoading(activeProfile) || !activeProfile) return <>Loading...</>;
+  if (!activeProfile) throw new Error(); // TODO
 
   return (
     <IonPage>

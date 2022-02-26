@@ -11,7 +11,6 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
-import { isLoading } from "../../core/stores/utils";
 import GenerateDeviceStls from "./GenerateDeviceStls";
 import { devicePath, generatePath, watchExportPath } from "./index";
 import { IfMobile } from "../../components/responsive/breakpoints";
@@ -21,19 +20,15 @@ const DeviceDetailsContent: VFC = () => {
   const active = useActiveDevice();
   const history = useHistory();
 
-  if (isLoading(active)) return <>Loading...</>; // TODO: Loading
-  if (!active) return <>Pick a device</>;
+  if (!active) return <>Pick a device</>; // TODO
 
-  const title = isLoading(active)
-    ? "Loading"
-    : active?.name ?? "Select a Device";
   const generateUrl = `/devices/d/${active.documentId}/w/${active.workspaceId}/generate`;
   const generate = () => history.push(generateUrl);
   return (
     <>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>{title}</IonTitle>
+          <IonTitle>Select a Device</IonTitle>
           <IfMobile>
             {active && (
               <IonButtons slot="start">

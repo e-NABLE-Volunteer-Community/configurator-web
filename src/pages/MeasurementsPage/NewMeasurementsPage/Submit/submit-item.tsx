@@ -3,7 +3,6 @@ import {
   useMeasInput,
   useValueForMeasInput,
 } from "../../../../core/stores/app";
-import { isLoading } from "../../../../core/stores/utils";
 import {
   isNumericInput,
   NumericInput,
@@ -39,14 +38,9 @@ const SubmitItemComponent: VFC<SubmitItemProps> = ({
   inputIndex,
 }) => {
   const valueForInput = useValueForMeasInput(formIndex, inputIndex);
-  const valueForInputIsLoading = isLoading(valueForInput);
 
   //WARNING: this will not update on value change. Just being used here to get units which should not change ever (I hope)
   const inputObject = useMeasInput(formIndex, inputIndex);
-  const inputObjectIsLoading = isLoading(inputObject);
-
-  if (valueForInputIsLoading || inputObjectIsLoading)
-    return <div>loading.</div>; // TODO: Loading spinner
 
   if (isNumericInput(inputObject)) {
     return (

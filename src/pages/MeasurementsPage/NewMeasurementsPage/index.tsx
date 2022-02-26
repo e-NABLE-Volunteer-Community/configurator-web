@@ -9,7 +9,6 @@ import {
   useViewMeasurements,
   useViewMeasurementsAlwaysUpdate,
 } from "../../../core/stores/app";
-import { isLoading } from "../../../core/stores/utils";
 import {
   IonButton,
   IonCard,
@@ -105,9 +104,6 @@ const InputSlideBody: VFC<{ viewMeasurement: ViewMeasurement; index: number }> =
 
 const NewMeasurementsPage: VFC = () => {
   const viewMeasurements = useViewMeasurements();
-
-  // TODO: Loading spinner
-  if (isLoading(viewMeasurements)) return <div>loading...</div>;
 
   return (
     <IonPage>

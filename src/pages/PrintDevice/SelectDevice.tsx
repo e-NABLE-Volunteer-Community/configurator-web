@@ -4,7 +4,6 @@ import { useHistory } from "react-router";
 import DeviceItem from "../../components/device-item/device-item";
 import { Device } from "../../core/onshape-types";
 import { useDevices } from "../../core/stores/app";
-import { isLoading } from "../../core/stores/utils";
 import HeaderSmall from "../../components/header/HeaderSmall";
 
 const PrintDeviceSelectDevice: VFC = () => {
@@ -13,7 +12,6 @@ const PrintDeviceSelectDevice: VFC = () => {
   const onDevDetailsClick = (device: Device) =>
     history.push(history.location.pathname + `/d/` + device.documentId);
 
-  if (isLoading(devices)) return <div>Loading..</div>;
   return (
     <IonPage>
       <HeaderSmall

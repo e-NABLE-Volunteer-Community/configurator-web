@@ -3,7 +3,6 @@ import { Route } from "react-router-dom";
 import { useActiveDevice } from "../../core/hooks/devices";
 import DeviceList from "./DevicesList";
 import DeviceDetails from "./DeviceDetails";
-import { isLoading } from "../../core/stores/utils";
 import { devicePath } from "./index";
 
 const MobileRoutes: VFC = () => {
@@ -17,9 +16,6 @@ const MobileRoutes: VFC = () => {
 
 // TODO: Mobile page transitions
 export const MobileView: VFC = () => {
-  const device = useActiveDevice();
-  if (isLoading(device)) return <>Loading...</>; // TODO: Loading
-
   return (
     <>
       <MobileRoutes />

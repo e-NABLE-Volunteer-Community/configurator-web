@@ -2,7 +2,6 @@ import {
   defaultMeasurements,
   ViewMeasurement,
 } from "../view-measurement-types";
-import { Loading, StateSlice } from "./utils";
 import { StateCreator } from "zustand";
 
 const mockViewMeasurements = (): ViewMeasurement[] => defaultMeasurements;

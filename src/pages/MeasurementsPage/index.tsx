@@ -15,13 +15,11 @@ import { Route } from "react-router-dom";
 import { useActiveMeasurementSet } from "../../core/hooks/measurements";
 import { Switch, useLocation } from "react-router";
 import { MeasurementsList } from "./MeasurementsList";
-import { isLoading } from "../../core/stores/utils";
 import NewMeasurements from "./NewMeasurementsPage";
 
 const MeasurementsDetails: VFC = () => {
   const activeMeasurementSet = useActiveMeasurementSet();
 
-  if (isLoading(activeMeasurementSet)) return <>Loading...</>; // TODO: Loading
   if (!activeMeasurementSet) return <>Select Measurements</>;
 
   return (
@@ -44,8 +42,6 @@ const MeasurementsDetails: VFC = () => {
 
 const TabletDesktopView: VFC = () => {
   const activeMeasurementSet = useActiveMeasurementSet();
-
-  if (isLoading(activeMeasurementSet)) return <>Loading...</>; // TODO: Loading
 
   return (
     <div style={{ display: "flex" }}>
@@ -74,8 +70,6 @@ const TabletDesktopView: VFC = () => {
 const MobileView: VFC = () => {
   const activeMeasurementSet = useActiveMeasurementSet();
   const isNew = useLocation().pathname === "/measurements/new";
-
-  if (isLoading(activeMeasurementSet)) return <>Loading...</>; // TODO: Loading
 
   return (
     <>

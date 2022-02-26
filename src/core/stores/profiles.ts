@@ -3,10 +3,9 @@ import {
   MeasurementSet,
   MeasurementTypes,
 } from "../configurator-types";
-import { Device } from "../onshape-types";
 import { Profile } from "../profile-types";
-import { Loading, StateSlice } from "./utils";
-import { mockDevices } from "../stores/devices";
+import { StateSlice } from "./utils";
+import { mockDevices } from "./devices";
 
 let mockArm: MeasurementSet = {
   id: "123",
@@ -92,7 +91,7 @@ const mockProfiles = (): Profile[] => [
 ];
 
 export type ProfileStore = {
-  profiles: Profile[] | Loading;
+  profiles: Profile[];
 };
 
 export const createProfilesSlice: StateSlice<ProfileStore> = () => {

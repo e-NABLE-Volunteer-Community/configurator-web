@@ -12,7 +12,6 @@ import {
 } from "@ionic/react";
 import { Device } from "../../core/onshape-types";
 import { useHistory } from "react-router-dom";
-import { isLoading } from "../../core/stores/utils";
 
 const DeviceListItem: VFC<Device> = (device) => {
   const history = useHistory();
@@ -42,7 +41,6 @@ const DeviceListItem: VFC<Device> = (device) => {
 
 const DeviceList: VFC = () => {
   const devices = useDevices();
-  if (isLoading(devices)) return <>Loading...</>; // TODO: Loading
 
   return (
     <>

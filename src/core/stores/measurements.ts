@@ -5,7 +5,7 @@ import {
 } from "../configurator-types";
 import * as R from "ramda";
 import faker from "faker";
-import { isLoading, Loading, StateSlice } from "./utils";
+import { StateSlice } from "./utils";
 
 //<editor-fold desc="Mock Data">
 const sample = <T>(ts: T[]): T => ts[Math.floor(Math.random() * ts.length)];
@@ -20,7 +20,6 @@ const makeMockMeasurements = (n: number) =>
       modifiedAt: faker.date.recent(),
       data: [],
       associatedDevices: [],
-
     };
   }, n);
 //</editor-fold>
@@ -35,7 +34,7 @@ const sortMeasurementsByCreatedAtMostRecentFirst = (
 };
 
 export type MeasurementsSlice = {
-  measurementSets: MeasurementSet[] | Loading;
+  measurementSets: MeasurementSet[];
   submitNewMeasurementSet: (measurements: MeasurementSet) => void;
   removeMeasurementSet: (id: MeasurementSetId) => void;
   updateNewMeasurementSet: (newValue?: Partial<MeasurementSet>) => void;
@@ -46,8 +45,6 @@ export const createMeasurementsSlice: StateSlice<MeasurementsSlice> = (set) => {
 
   const submitNewMeasurementSet = (measurements: MeasurementSet) =>
     set(({ measurementSets }) => {
-      if (isLoading(measurementSets))
-        throw new Error("Cannot add while loading");
       const newSet = R.append(measurements, measurementSets);
       newSet.sort(sortMeasurementsByCreatedAtMostRecentFirst);
       return { measurementSets: newSet };
@@ -55,8 +52,6 @@ export const createMeasurementsSlice: StateSlice<MeasurementsSlice> = (set) => {
 
   const removeMeasurementSet = (id: MeasurementSetId) =>
     set(({ measurementSets }) => {
-      if (isLoading(measurementSets))
-        throw new Error("Cannot remove while loading");
       const filteredSets = measurementSets.filter((item) => item.id !== id);
       return { measurementSets: filteredSets };
     });

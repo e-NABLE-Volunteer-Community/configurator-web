@@ -26,7 +26,6 @@ import {
 
 import { Profile } from "../../../core/profile-types";
 import { useHistory } from "react-router-dom";
-import { isLoading } from "../../../core/stores/utils";
 import { addOutline } from "ionicons/icons";
 import "../ProfileList/profile-list.scss";
 import ProfileItem from "../../../components/profile-item/ProfileItem";
@@ -69,7 +68,6 @@ const ProfileListPage: VFC = () => {
     history.push(profileUrl + profile.profileId);
 
   const onNewProfileClick = () => history.push(newProfileUrl);
-  if (isLoading(profiles)) return <>Loading...</>; // TODO: Loading
 
   return (
     <IonPage id="profile-list-page">
