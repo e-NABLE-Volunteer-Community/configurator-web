@@ -1,15 +1,12 @@
 import { useState, VFC } from "react";
 import {
-  IonBackButton,
   IonButton,
-  IonButtons,
   IonCard,
   IonCardContent,
   IonCardHeader,
   IonCardSubtitle,
   IonCardTitle,
   IonContent,
-  IonHeader,
   IonInput,
   IonItem,
   IonLabel,
@@ -17,18 +14,13 @@ import {
   IonPage,
   IonRadio,
   IonRadioGroup,
-  IonTitle,
-  IonToolbar,
 } from "@ionic/react";
 import { Profile } from "../../../core/profile-types";
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Calendar from "react-calendar";
-import SubmitItemComponent from "../../MeasurementsPage/NewMeasurements/Submit/submit-item";
 import "./new-profile.scss";
-import Header from "../../../components/header/header-small";
 import "react-calendar/dist/Calendar.css";
-import HeaderSmall from "../../../components/header/header-small";
+import HeaderSmall from "../../../components/header/HeaderSmall";
 
 const NewProfilePage: VFC = () => {
   const newProfile: Partial<Profile> = {};

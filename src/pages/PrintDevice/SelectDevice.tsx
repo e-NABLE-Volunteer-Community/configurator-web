@@ -2,10 +2,10 @@ import { IonContent, IonPage } from "@ionic/react";
 import { VFC } from "react";
 import { useHistory } from "react-router";
 import DeviceItem from "../../components/device-item/device-item";
-import HeaderSmall from "../../components/header/header-small";
 import { Device } from "../../core/onshape-types";
 import { useDevices } from "../../core/stores/app";
 import { isLoading } from "../../core/stores/utils";
+import HeaderSmall from "../../components/header/HeaderSmall";
 
 const PrintDeviceSelectDevice: VFC = () => {
   const devices = useDevices();
@@ -27,7 +27,7 @@ const PrintDeviceSelectDevice: VFC = () => {
             <DeviceItem
               device={d}
               onDeviceItemClick={() => onDevDetailsClick(d)}
-            ></DeviceItem>
+            />
           </div>
         ))}
       </IonContent>

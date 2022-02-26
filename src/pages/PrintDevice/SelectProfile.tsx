@@ -6,8 +6,7 @@ import { useProfiles } from "../../core/stores/app";
 import { isLoading } from "../../core/stores/utils";
 import "../PrintDevice/print-device.scss";
 import ProfileItemCompact from "../../components/profile-item-compact/ProfileItem";
-import HeaderSmall from "../../components/header/header-small";
-import HeaderBig from "../../components/header/header-big";
+import HeaderSmall from "../../components/header/HeaderSmall";
 
 const PrintDeviceSelectProfile: VFC = () => {
   const history = useHistory();

@@ -2,13 +2,14 @@ import { IonButton, IonPage } from "@ionic/react";
 import { VFC } from "react";
 import { Route, useHistory } from "react-router-dom";
 import DeviceItem from "../../../components/device-item/device-item";
-import Header from "../../../components/header/header-small";
 import MeasurementItem from "../../../components/measurement-item/measurement-item";
 import { MeasurementSet } from "../../../core/configurator-types";
 import { useProfileMeasurementSet } from "../../../core/hooks/measurements";
 import { useActiveProfile } from "../../../core/hooks/profiles";
 import { isLoading, Loading } from "../../../core/stores/utils";
 import "../MeasurementSetDetails/measurement-set-details.scss";
+import HeaderSmall from "../../../components/header/HeaderSmall";
+import { profilesPath } from "../../../routes";
 
 const MeasurementSetDetailsPage: VFC<MeasurementSet> = () => {
   const profileMeasurementSet = useProfileMeasurementSet();
@@ -28,13 +29,13 @@ const MeasurementSetDetailsPage: VFC<MeasurementSet> = () => {
 
   return (
     <IonPage>
-      <Header
+      <HeaderSmall
         title={activeProfile.name + "'s " + profileMeasurementSet.name}
-        backUrl="/profiles"
-      ></Header>
+        backUrl={profilesPath}
+      />
 
       <div className="measurement-set-items-container">
-        <div className="titlez ">
+        <div className="titlez">
           Measurements for {profileMeasurementSet.name}
         </div>
         <IonButton

@@ -15,6 +15,8 @@ import {
   IonToolbar,
   IonInput,
   IonPage,
+  IonFabButton,
+  IonFab,
 } from "@ionic/react";
 import {
   arrowBackOutline,
@@ -28,7 +30,7 @@ import { isLoading } from "../../../core/stores/utils";
 import { addOutline } from "ionicons/icons";
 import "../ProfileList/profile-list.scss";
 import ProfileItem from "../../../components/profile-item/ProfileItem";
-import HeaderBig from "../../../components/header/header-big";
+import HeaderBig from "../../../components/header/HeaderBig";
 
 const NewProfileItem: VFC = () => {
   const history = useHistory();
@@ -70,32 +72,24 @@ const ProfileListPage: VFC = () => {
   if (isLoading(profiles)) return <>Loading...</>; // TODO: Loading
 
   return (
-    <IonPage>
+    <IonPage id="profile-list-page">
       <HeaderBig title="People" />
-
       <IonContent className="profile-list__">
-        <div className="list-container">
-          <IonList lines="inset">
-            {profiles.map((profile) => (
-              <div key={profile.profileId}>
-                <ProfileItem
-                  profile={profile}
-                  onProfileClick={() => onProfileClick(profile)}
-                />
-              </div>
-            ))}
-          </IonList>
-        </div>
-        <div className="list-spacer"></div>
-        {/* the heck does that spacer do? nothing happens if I remove it... */}
-        <IonButton
-          fill="solid"
-          color="tertiary"
-          className="add-new-person"
-          onClick={onNewProfileClick}
-        >
-          + add new person
-        </IonButton>
+        <IonList lines="inset">
+          {profiles.map((profile) => (
+            <div key={profile.profileId}>
+              <ProfileItem
+                profile={profile}
+                onProfileClick={() => onProfileClick(profile)}
+              />
+            </div>
+          ))}
+        </IonList>
+        <IonFab slot="fixed" vertical="bottom" horizontal="end">
+          <IonFabButton onClick={onNewProfileClick} color="primary">
+            <IonIcon icon={addOutline} />
+          </IonFabButton>
+        </IonFab>
       </IonContent>
     </IonPage>
   );

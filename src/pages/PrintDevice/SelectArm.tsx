@@ -1,11 +1,11 @@
 import { IonContent, IonPage } from "@ionic/react";
 import { VFC } from "react";
 import { useHistory } from "react-router";
-import HeaderSmall from "../../components/header/header-small";
 import MeasurementSetItem from "../../components/measurement-set-item/measurement-set-item";
 import { MeasurementSet } from "../../core/configurator-types";
 import { useProfilePrintDevice } from "../../core/hooks/profiles";
 import { isLoading } from "../../core/stores/utils";
+import HeaderSmall from "../../components/header/HeaderSmall";
 
 const PrintDeviceSelectArm: VFC = () => {
   const profile = useProfilePrintDevice();

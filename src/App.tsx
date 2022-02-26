@@ -29,6 +29,7 @@ import "@ionic/react/css/display.css";
 
 /* Theme variables */
 import "./theme/variables.css";
+import "./theme/design-system.scss";
 import DevicesTab from "./pages/DevicesPage";
 import MeasurementsTab from "./pages/MeasurementsPage";
 import { homeOutline, peopleOutline, printOutline } from "ionicons/icons";

@@ -6,7 +6,7 @@ import "../PrintDevice/print-device.scss";
 import DeviceDetails from "../../components/device-details/DeviceDetails";
 import { useActiveDevice } from "../../core/hooks/devices";
 import { Device } from "../../core/onshape-types";
-import HeaderSmall from "../../components/header/header-small";
+import HeaderSmall from "../../components/header/HeaderSmall";
 
 const PrintDeviceDeviceDetails: VFC = () => {
   const device = useActiveDevice();
@@ -15,13 +15,13 @@ const PrintDeviceDeviceDetails: VFC = () => {
   if (isLoading(device) || !device) return <div>loading...</div>;
   return (
     <IonPage>
-      <HeaderSmall backUrl="/home" />
+      <HeaderSmall />
       <IonContent>
         <h1>Confirm Device</h1>
         <DeviceDetails
           device={device}
           onDeviceDetailsClick={() => onDeviceDetailsClick(device)}
-        ></DeviceDetails>
+        />
       </IonContent>
     </IonPage>
   );
