@@ -26,7 +26,7 @@ import DeviceItem from "../../../components/device-item/device-item";
 import MeasurementSetItem from "../../../components/measurement-set-item/measurement-set-item";
 import HeaderSmall from "../../../components/header/header-small";
 
-const ProfileDetails: VFC = () => {
+const ProfileDetailsPage: VFC = () => {
   const history = useHistory();
   const onNewMeasurementClick = () => history.push("/measurements");
   const onNewDeviceClick = () => history.push("/devices");
@@ -103,7 +103,7 @@ const ProfileDetails: VFC = () => {
   );
 };
 
-export default ProfileDetails;
+export default ProfileDetailsPage;
 // function MeasurementSetItem(
 //   MeasurementSetItem: any
 // ):

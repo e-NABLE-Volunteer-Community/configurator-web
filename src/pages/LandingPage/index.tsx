@@ -6,17 +6,7 @@ import LandingBase from "./LandingBase";
 const LandingPage: VFC = () => {
   return (
     <IonPage>
-      <IfNotMobile>
-        <IonContent>
-          <LandingBase></LandingBase>
-        </IonContent>
-      </IfNotMobile>
-
-      <IfMobile>
-        <IonContent>
-          <LandingBase></LandingBase>
-        </IonContent>
-      </IfMobile>
+      <LandingBase></LandingBase>
     </IonPage>
   );
 };

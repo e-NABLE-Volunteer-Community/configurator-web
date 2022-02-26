@@ -30,14 +30,14 @@ import Header from "../../../components/header/header-small";
 import "react-calendar/dist/Calendar.css";
 import HeaderSmall from "../../../components/header/header-small";
 
-const NewProfile: VFC = () => {
+const NewProfilePage: VFC = () => {
   const newProfile: Partial<Profile> = {};
 
   return (
-    <IonContent>
-      <HeaderSmall title="Create New Profile" backUrl="/"></HeaderSmall>
-      <NewProfileSwiper></NewProfileSwiper>
-    </IonContent>
+    <IonPage>
+      <HeaderSmall title="Create New Profile" backUrl="/" />
+      <NewProfileSwiper />
+    </IonPage>
   );
 };
 
@@ -150,4 +150,4 @@ const NewProfileSwiper: VFC = () => {
     </IonContent>
   );
 };
-export default NewProfile;
+export default NewProfilePage;

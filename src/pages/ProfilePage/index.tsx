@@ -1,32 +1,30 @@
-import { VFC } from "react";
-import { IonContent, IonPage } from "@ionic/react";
-import ProfileList from "./ProfileList/ProfileList";
-import NewProfile from "./NewProfile/NewProfile";
-import ProfileDetails from "./ProfileDetails/ProfileDetails";
-import MeasurementSetDetails from "../MeasurementsPage/MeasurementSetDetails/index";
+import React, { VFC } from "react";
+import { IonContent, IonPage, IonRouterOutlet } from "@ionic/react";
+import ProfileListPage from "./ProfileList/ProfileListPage";
+import NewProfilePage from "./NewProfile/NewProfilePage";
+import ProfileDetailsPage from "./ProfileDetails/ProfileDetailsPage";
+import MeasurementSetDetailsPage from "../MeasurementsPage/MeasurementSetDetails";
 import { Route, Switch } from "react-router";
+import {
+  measurementSetDetailsPath,
+  newProfilePath,
+  profileDetailsPath,
+  profilesPath,
+} from "../../routes";
 
 const ProfilePage: VFC = () => {
   return (
     <>
-      <IonPage>
-        <IonContent>
-          <Switch>
-            <Route path="/profiles" exact component={ProfileList} />
-            <Route path="/profiles/new" exact component={NewProfile} />
-            <Route
-              path="/profiles/p/:profileId"
-              exact
-              component={ProfileDetails}
-            />
-            <Route
-              path="/profiles/p/:profileId/m/:measurementSetId"
-              exact
-              component={MeasurementSetDetails}
-            />
-          </Switch>
-        </IonContent>
-      </IonPage>
+      <IonRouterOutlet>
+        <Route path={profilesPath} exact component={ProfileListPage} />
+        <Route path={newProfilePath} exact component={NewProfilePage} />
+        <Route path={profileDetailsPath} exact component={ProfileDetailsPage} />
+        <Route
+          path={measurementSetDetailsPath}
+          exact
+          component={MeasurementSetDetailsPage}
+        />
+      </IonRouterOutlet>
     </>
   );
 };

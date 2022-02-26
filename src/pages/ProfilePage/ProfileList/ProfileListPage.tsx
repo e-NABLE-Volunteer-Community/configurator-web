@@ -14,6 +14,7 @@ import {
   IonTitle,
   IonToolbar,
   IonInput,
+  IonPage,
 } from "@ionic/react";
 import {
   arrowBackOutline,
@@ -57,23 +58,20 @@ const NewProfileItem: VFC = () => {
   );
 };
 
-const ProfileList: VFC = () => {
+const ProfileListPage: VFC = () => {
   const profiles = useProfiles();
   const history = useHistory();
   const newProfileUrl = "/profiles/new";
-  const homeUrl = "/home";
-  const newProfile = `/profiles/new`;
   const profileUrl = "/profiles/p/";
   const onProfileClick = (profile: Profile) =>
     history.push(profileUrl + profile.profileId);
 
   const onNewProfileClick = () => history.push(newProfileUrl);
-  const onHomeClick = () => history.push(homeUrl);
   if (isLoading(profiles)) return <>Loading...</>; // TODO: Loading
 
   return (
-    <>
-      <HeaderBig title="People" backUrl="homeUrl" />
+    <IonPage>
+      <HeaderBig title="People" />
 
       <IonContent className="profile-list__">
         <div className="list-container">
@@ -99,7 +97,7 @@ const ProfileList: VFC = () => {
           + add new person
         </IonButton>
       </IonContent>
-    </>
+    </IonPage>
   );
 };
-export default ProfileList;
+export default ProfileListPage;

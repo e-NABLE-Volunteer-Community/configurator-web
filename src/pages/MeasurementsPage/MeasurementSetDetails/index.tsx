@@ -1,4 +1,4 @@
-import { IonButton } from "@ionic/react";
+import { IonButton, IonPage } from "@ionic/react";
 import { VFC } from "react";
 import { Route, useHistory } from "react-router-dom";
 import DeviceItem from "../../../components/device-item/device-item";
@@ -10,7 +10,7 @@ import { useActiveProfile } from "../../../core/hooks/profiles";
 import { isLoading, Loading } from "../../../core/stores/utils";
 import "../MeasurementSetDetails/measurement-set-details.scss";
 
-const MeasurementSetDetails: VFC<MeasurementSet> = () => {
+const MeasurementSetDetailsPage: VFC<MeasurementSet> = () => {
   const profileMeasurementSet = useProfileMeasurementSet();
   const activeProfile = useActiveProfile();
   const history = useHistory();
@@ -27,7 +27,7 @@ const MeasurementSetDetails: VFC<MeasurementSet> = () => {
     return <div>loading</div>;
 
   return (
-    <div>
+    <IonPage>
       <Header
         title={activeProfile.name + "'s " + profileMeasurementSet.name}
         backUrl="/profiles"
@@ -68,8 +68,8 @@ const MeasurementSetDetails: VFC<MeasurementSet> = () => {
           />
         ))}
       </div>
-    </div>
+    </IonPage>
   );
 };
 
-export default MeasurementSetDetails;
+export default MeasurementSetDetailsPage;

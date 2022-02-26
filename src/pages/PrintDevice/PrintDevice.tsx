@@ -1,30 +1,34 @@
 import { VFC } from "react";
 import { Route } from "react-router";
 import "../PrintDevice/print-device.scss";
-import PrintDeviceSelectDevice from "./SelectDevice";
-import PrintDeviceSelectArm from "./SelectArm";
-import PrintDeviceDeviceDetails from "./DeviceDetails";
-import PrintDeviceSelectProfile from "./SelectProfile";
+import PrintDeviceSelectDevicePage from "./SelectDevice";
+import PrintDeviceSelectArmPage from "./SelectArm";
+import PrintDeviceDeviceDetailsPage from "./DeviceDetails";
+import PrintDeviceSelectProfilePage from "./SelectProfile";
 
 const PrintDevice: VFC = () => {
   return (
     <>
-      <Route path="/print-device" exact component={PrintDeviceSelectProfile} />
+      <Route
+        path="/print-device"
+        exact
+        component={PrintDeviceSelectProfilePage}
+      />
       <Route
         path="/print-device/p/:profileId"
         exact
-        component={PrintDeviceSelectArm}
+        component={PrintDeviceSelectArmPage}
       />
       {/* this is all conditional rendering based on ID using hooks, don't F with them yet */}
       <Route
         path="/print-device/p/:profileId/m/:measSetId"
         exact
-        component={PrintDeviceSelectDevice}
+        component={PrintDeviceSelectDevicePage}
       />
       <Route
         path="/print-device/p/:profileId/m/:measSetId/d/:deviceId"
         exact
-        component={PrintDeviceDeviceDetails}
+        component={PrintDeviceDeviceDetailsPage}
       />
     </>
   );

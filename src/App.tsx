@@ -29,34 +29,37 @@ import "@ionic/react/css/display.css";
 
 /* Theme variables */
 import "./theme/variables.css";
-import DevicesPage from "./pages/DevicesPage";
-import MeasurementsPage from "./pages/MeasurementsPage";
-import {
-  apertureOutline,
-  handLeft,
-  homeOutline,
-  peopleOutline,
-  printOutline,
-} from "ionicons/icons";
-import ProfilePage from "./pages/ProfilePage";
+import DevicesTab from "./pages/DevicesPage";
+import MeasurementsTab from "./pages/MeasurementsPage";
+import { homeOutline, peopleOutline, printOutline } from "ionicons/icons";
+import ProfileTab from "./pages/ProfilePage";
 
 // Swiper bundle styles
 import "swiper/swiper-bundle.min.css";
 // Import Swiper core and required modules, install modules
 import SwiperCore, { Navigation } from "swiper";
-import LandingPage from "./pages/LandingPage";
-import PrintDevice from "./pages/PrintDevice/PrintDevice";
+import LandingTab from "./pages/LandingPage";
+import PrintDeviceTab from "./pages/PrintDevice/PrintDevice";
+import {
+  devicesPath,
+  homePath,
+  measurementsPath,
+  printDevicePath,
+  profilesPath,
+  tabifyPath,
+} from "./routes";
 
 SwiperCore.use([Navigation]);
 
 const Routes: VFC = () => {
   return (
     <>
-      <Route key={1} path="/:tab(devices)" component={DevicesPage} />
-      <Route key={2} path="/:tab(measurements)" component={MeasurementsPage} />
-      <Route key={5} path="/:tab(profiles)" component={ProfilePage} />
-      <Route key={4} path="/:tab(print-device)" component={PrintDevice} />
-      <Route key={3} path="/:tab(home)" component={LandingPage} />
+      <Route path={tabifyPath(profilesPath)} component={ProfileTab} />
+      <Route path={tabifyPath(printDevicePath)} component={PrintDeviceTab} />
+      <Route path={tabifyPath(homePath)} component={LandingTab} />
+      <Route>
+        <Redirect to={homePath} />
+      </Route>
     </>
   );
 };
@@ -70,28 +73,14 @@ const App: FC = () => {
             <Routes />
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
-            {/* <IonTabButton tab="devices" href="/devices">
-              <IonIcon icon={handLeft} />
-              <IonLabel>Devices</IonLabel>
-            </IonTabButton> */}
-            {/* <IonTabButton tab="measurements" href="/measurements">
-              <IonIcon icon={peopleOutline} />
-              <IonLabel>Measurements</IonLabel>
-            </IonTabButton> */}
-            {/* <IonTabButton tab="profiles" href="/profiles">
-              <IonLabel>Profiles</IonLabel>
-            </IonTabButton> */}
-            <IonTabButton tab="home" href="/home">
+            <IonTabButton tab="home" href={homePath}>
               <IonIcon icon={homeOutline} />
-              <IonLabel></IonLabel>
             </IonTabButton>
-            <IonTabButton tab="profiles" href="/profiles">
+            <IonTabButton tab="profiles" href={profilesPath}>
               <IonIcon icon={peopleOutline} />
-              <IonLabel></IonLabel>
             </IonTabButton>
-            <IonTabButton tab="print-device" href="/print-device">
+            <IonTabButton tab="print-device" href={printDevicePath}>
               <IonIcon icon={printOutline} />
-              <IonLabel></IonLabel>
             </IonTabButton>
           </IonTabBar>
         </IonTabs>
