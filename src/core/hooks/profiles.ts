@@ -3,23 +3,27 @@ import * as R from "ramda";
 
 import { Profile, ProfileId } from "../profile-types";
 import { useProfiles } from "../stores/app";
+import { profileDetailsPath } from "../../routes";
+import { useState } from "react";
 
-export const useActiveProfile = (): Profile | undefined =>
-  useMaybeProfileWithIds(useMatchProfileRouteWithSuffix());
+export const useActiveProfile = (): Profile => {
+  const [id] = useState(useMatchProfileRoute());
+  if (!id) throw new Error("No profile ID in route");
+  const profile = useMaybeProfileWithIds(id);
+  if (!profile) throw new Error("No profile with ID " + id);
+  return profile;
+};
 
-const route = "/profiles/p/:profileId";
-const useMatchProfileRouteWithSuffix = (suffix?: string) =>
-  useRouteMatch<ProfileId>(route + (suffix ?? ""))?.params;
+const useMatchProfileRoute = (): string | undefined =>
+  useRouteMatch<ProfileId>(profileDetailsPath)?.params.profileId;
 
 const objPropsMatch = (subset: Record<string, unknown>) =>
   R.allPass(R.map(([k, v]) => R.propEq(k, v), R.toPairs(subset)));
 
-const useMaybeProfileWithIds = (
-  ids: ProfileId | undefined
-): Profile | undefined => {
+const useMaybeProfileWithIds = (id: string): Profile | undefined => {
   const profiles = useProfiles();
-  if (!ids) return undefined;
-  return profiles.find(objPropsMatch(ids));
+  if (!id) return undefined;
+  return profiles.find(objPropsMatch({ profileId: id }));
 };
 
 export const useProfilePrintDevice = (): Profile | undefined => {

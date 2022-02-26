@@ -40,9 +40,12 @@ let mockArm: MeasurementSet = {
 };
 const mockProfiles = (): Profile[] => [
   {
-    name: "Jack Robinson",
+    name: "Jacky Robinson",
     profileId: "123",
     profileImageUrl: "https://i.pravatar.cc/512?img=1",
+    location: "San Fransisco",
+    created: new Date(),
+
     measurements: [mockArm],
     devices: mockDevices(),
   },
@@ -50,6 +53,9 @@ const mockProfiles = (): Profile[] => [
     name: "Bigsby Smith",
     profileId: "5627",
     profileImageUrl: "https://i.pravatar.cc/512?img=2",
+    location: "San Fransisco",
+    created: new Date(),
+
     measurements: [mockArm],
     devices: mockDevices(),
   },
@@ -57,6 +63,9 @@ const mockProfiles = (): Profile[] => [
     name: "Bil Bless",
     profileId: "1233",
     profileImageUrl: "https://i.pravatar.cc/512?img=3",
+
+    created: new Date(),
+
     measurements: [mockArm],
     devices: mockDevices(),
   },
@@ -64,6 +73,9 @@ const mockProfiles = (): Profile[] => [
     name: "Hudson Lee",
     profileId: "5647",
     profileImageUrl: "https://i.pravatar.cc/512?img=4",
+    location: "San Fransisco",
+    created: new Date(),
+
     measurements: [mockArm],
     devices: mockDevices(),
   },
@@ -71,6 +83,9 @@ const mockProfiles = (): Profile[] => [
     name: "Alix Perez",
     profileId: "1253",
     profileImageUrl: "https://i.pravatar.cc/512?img=5",
+
+    created: new Date(),
+
     measurements: [mockArm],
     devices: mockDevices(),
   },
@@ -78,6 +93,9 @@ const mockProfiles = (): Profile[] => [
     name: "Greg Jones",
     profileId: "5667",
     profileImageUrl: "https://i.pravatar.cc/512?img=6",
+    location: "San Fransisco",
+    created: new Date(),
+
     measurements: [mockArm],
     devices: mockDevices(),
   },
@@ -85,6 +103,9 @@ const mockProfiles = (): Profile[] => [
     name: "DJ Derick",
     profileId: "56657",
     profileImageUrl: "https://i.pravatar.cc/512?img=5",
+    location: "San Fransisco",
+    created: new Date(),
+
     measurements: [mockArm],
     devices: mockDevices(),
   },

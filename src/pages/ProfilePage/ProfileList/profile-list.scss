@@ -6,6 +6,10 @@
     flex-direction: column;
   }
 
+  ion-list {
+    padding: 16px;
+  }
+
   .home-container {
     height: 4vh;
     padding-top: 15px;
@@ -36,20 +40,6 @@
     color: black;
   }
 
-  .sort-filter-row {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin: 10px;
-    font-size: 1.375rem;
-  }
-
-  .sort-filter-item {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
   .add-new-person {
     border: solid 1px lightgrey;
     position: fixed;
@@ -68,44 +58,3 @@
     height: 50px;
   }
 }
-
-// .profile-list-item {
-//   background-color: var(--ion-color-tertiary-tint);
-//   display: flex;
-//   flex-direction: row;
-//   align-items: center;
-//   margin-top: 10px;
-//   height: 100px;
-//   width: 100%;
-//   border-radius: 10px;
-// }
-
-// .profile-image {
-//   height: 100px;
-//   width: 100px;
-//   padding: 10px;
-//   display: flex;
-// }
-
-// .profile-info {
-//   width: 100%;
-//   height: 90px;
-//   display: flex;
-//   flex-direction: column;
-// }
-
-// .profile-measurement-count {
-//   font-size: smaller;
-// }
-
-// .profile-location {
-//   font-size: small;
-//   font-weight: lighter;
-// }
-
-// .profile-item-card {
-//   margin: 10px;
-//   min-height: 50px;
-//   background-color: var(--ion-color-tertiary-tint);
-//   border-radius: 5px;
-// }

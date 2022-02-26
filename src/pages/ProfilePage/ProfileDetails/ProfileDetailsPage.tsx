@@ -25,7 +25,7 @@ const ProfileDetailsPage: VFC = () => {
 
   return (
     <IonPage>
-      <HeaderSmall title={activeProfile.name} backUrl="/profiles" />
+      <HeaderSmall backUrl="/profiles" />
       <IonContent className="profile-details__">
         <div className="profile-info-container">
           <div className="profile-image">
@@ -33,28 +33,28 @@ const ProfileDetailsPage: VFC = () => {
           </div>
           <div className="info-container">
             <div className="info-item">
-              <div className="info-header">Location</div>
-              <div className="info-text">$location</div>
+              <p className="info">Name</p>
+              <div className="info-text">{activeProfile.name}</div>
             </div>
+            {activeProfile.location && (
+              <div className="info-item">
+                <p className="info">Location</p>
+                <div className="info-text">{activeProfile.location}</div>
+              </div>
+            )}
             <div className="info-item">
-              <div className="info-header">Date Created</div>
-              <div className="info-text">$date created</div>
+              <p className="info">Date Created</p>
+              <div className="info-text">
+                {activeProfile.created.toDateString()}
+              </div>
             </div>
           </div>
         </div>
+
+        <div className="divider" />
+
         <div className="items-container">
-          <div className="profile-item-header">Measurements</div>
-          <IonButton
-            fill="solid"
-            color="tertiary"
-            className="profile-item-button"
-            routerLink={newMeasurementSetPathForProfile(
-              activeProfile.profileId
-            )}
-            routerDirection="forward"
-          >
-            add new measurement set
-          </IonButton>
+          <h2>Measurement sets</h2>
           {activeProfile.measurements.map((measSet) => (
             <MeasurementSetItem
               key={measSet.id}
@@ -62,12 +62,27 @@ const ProfileDetailsPage: VFC = () => {
               onMeasSetClick={() => onMeasSetClick}
             />
           ))}
-        </div>
-        <div className="items-container">
-          <div className="profile-item-header">Prosthetic Devices</div>
           <IonButton
             fill="solid"
-            color="tertiary"
+            color="primary"
+            className="profile-item-button"
+            routerLink={newMeasurementSetPathForProfile(
+              activeProfile.profileId
+            )}
+            routerDirection="forward"
+            expand="full"
+          >
+            add new measurement set
+          </IonButton>
+        </div>
+
+        <div className="divider" />
+
+        <div className="items-container">
+          <h2>Prosthetic Devices</h2>
+          <IonButton
+            fill="solid"
+            color="primary"
             className="profile-item-button"
             onClick={onNewDeviceClick}
           >

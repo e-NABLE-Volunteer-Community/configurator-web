@@ -4,32 +4,21 @@ import {
   IonButton,
   IonButtons,
   IonContent,
-  IonHeader,
+  IonFab,
+  IonFabButton,
   IonIcon,
   IonImg,
   IonItem,
   IonLabel,
   IonList,
-  IonText,
-  IonTitle,
-  IonToolbar,
-  IonInput,
   IonPage,
-  IonFabButton,
-  IonFab,
+  IonToolbar,
 } from "@ionic/react";
-import {
-  arrowBackOutline,
-  funnelOutline,
-  filterCircleOutline,
-} from "ionicons/icons";
-
-import { Profile } from "../../../core/profile-types";
-import { useHistory } from "react-router-dom";
 import { addOutline } from "ionicons/icons";
+import { useHistory } from "react-router-dom";
 import "../ProfileList/profile-list.scss";
-import ProfileItem from "../../../components/profile-item/ProfileItem";
 import HeaderBig from "../../../components/header/HeaderBig";
+import ProfileItem from "./ProfileItem";
 
 const NewProfileItem: VFC = () => {
   const history = useHistory();
@@ -64,23 +53,18 @@ const ProfileListPage: VFC = () => {
   const history = useHistory();
   const newProfileUrl = "/profiles/new";
   const profileUrl = "/profiles/p/";
-  const onProfileClick = (profile: Profile) =>
-    history.push(profileUrl + profile.profileId);
-
   const onNewProfileClick = () => history.push(newProfileUrl);
 
   return (
     <IonPage id="profile-list-page">
-      <HeaderBig title="People" />
+      <HeaderBig
+        title="People"
+        subtitle="View and create people in order to add and edit measurements"
+      />
       <IonContent className="profile-list__">
         <IonList lines="inset">
           {profiles.map((profile) => (
-            <div key={profile.profileId}>
-              <ProfileItem
-                profile={profile}
-                onProfileClick={() => onProfileClick(profile)}
-              />
-            </div>
+            <ProfileItem profile={profile} key={profile.profileId} />
           ))}
         </IonList>
         <IonFab slot="fixed" vertical="bottom" horizontal="end">

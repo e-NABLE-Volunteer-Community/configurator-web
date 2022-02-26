@@ -22,7 +22,7 @@ const HeaderSmall: VFC<{
       <IonButtons slot="start" className="button">
         <IonBackButton defaultHref={homePath} />
       </IonButtons>
-      <IonTitle>{title}</IonTitle>
+      {title && <IonTitle>{title}</IonTitle>}
     </IonToolbar>
   </IonHeader>
 );

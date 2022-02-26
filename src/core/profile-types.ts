@@ -5,6 +5,8 @@ export type Profile = {
   name: string;
   profileId: string;
   profileImageUrl: string;
+  location?: string;
+  created: Date;
   measurements: MeasurementSet[];
   devices: Device[];
 };

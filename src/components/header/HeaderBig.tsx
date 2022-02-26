@@ -1,13 +1,12 @@
 import {
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonButtons,
   IonBackButton,
+  IonButtons,
+  IonHeader,
   IonIcon,
   IonSearchbar,
+  IonToolbar,
 } from "@ionic/react";
-import { filterCircleOutline, funnelOutline } from "ionicons/icons";
+import { filterOutline, funnelOutline } from "ionicons/icons";
 import React, { VFC } from "react";
 import { homePath } from "../../routes";
 import "./header.scss";
@@ -21,21 +20,21 @@ const HeaderBig: VFC<{ title?: string; subtitle?: string }> = ({
       <IonButtons>
         <IonBackButton defaultHref={homePath} />
       </IonButtons>
-      <div>
+      <div className="header-text">
         <h1>{title}</h1>
-        <h2>{subtitle}</h2>
+        <p className="body-medium">{subtitle}</p>
       </div>
     </IonToolbar>
     <IonToolbar>
       <IonSearchbar />
       <div className="sort-filter-row">
         <div className="sort-filter-item">
+          <p className="body-medium">Sort</p>
           <IonIcon icon={funnelOutline} />
-          <div>Sort</div>
         </div>
         <div className="sort-filter-item">
-          <IonIcon icon={filterCircleOutline} />
-          <div>Filter</div>
+          <p className="body-medium">Filter your search</p>
+          <IonIcon icon={filterOutline} />
         </div>
       </div>
     </IonToolbar>
