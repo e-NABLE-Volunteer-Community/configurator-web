@@ -39,10 +39,14 @@ import LandingPage from "./pages/LandingPage";
 import {
   homePath,
   measurementSetDetailsPath,
+  newMeasurementsPath,
   newProfilePath,
   printDevicePath,
   profileDetailsPath,
   profilesPath,
+  selectDeviceForPrintPath,
+  selectMeasSetForPrintPath,
+  selectProfileForPrintPath,
 } from "./routes";
 import ProfileListPage from "./pages/ProfilePage/ProfileList/ProfileListPage";
 import NewProfilePage from "./pages/ProfilePage/NewProfile/NewProfilePage";
@@ -52,67 +56,71 @@ import PrintDeviceSelectProfilePage from "./pages/PrintDevice/SelectProfile";
 import PrintDeviceSelectArmPage from "./pages/PrintDevice/SelectArm";
 import PrintDeviceSelectDevicePage from "./pages/PrintDevice/SelectDevice";
 import PrintDeviceDeviceDetailsPage from "./pages/PrintDevice/DeviceDetails";
+import NewMeasurementsPage from "./pages/MeasurementsPage/NewMeasurementsPage";
 
 SwiperCore.use([Navigation]);
 
-const App: FC = () => {
-  return (
-    <IonApp>
-      <IonReactRouter>
-        <IonTabs>
-          <IonRouterOutlet id="main">
-            <Route path={homePath} component={LandingPage} />
-            <Route path={profilesPath} exact component={ProfileListPage} />
-            <Route path={newProfilePath} exact component={NewProfilePage} />
-            <Route
-              path={profileDetailsPath}
-              exact
-              component={ProfileDetailsPage}
-            />
-            <Route
-              path={measurementSetDetailsPath}
-              exact
-              component={MeasurementSetDetailsPage}
-            />
-            <Route
-              path={printDevicePath}
-              exact
-              component={PrintDeviceSelectProfilePage}
-            />
-            <Route
-              path="/print-device/p/:profileId"
-              exact
-              component={PrintDeviceSelectArmPage}
-            />
-            <Route
-              path="/print-device/p/:profileId/m/:measSetId"
-              exact
-              component={PrintDeviceSelectDevicePage}
-            />
-            <Route
-              path="/print-device/p/:profileId/m/:measSetId/d/:deviceId"
-              exact
-              component={PrintDeviceDeviceDetailsPage}
-            />
-            <Route>
-              <Redirect to={homePath} />
-            </Route>
-          </IonRouterOutlet>
-          <IonTabBar slot="bottom">
-            <IonTabButton tab="home" href={homePath}>
-              <IonIcon icon={homeOutline} />
-            </IonTabButton>
-            <IonTabButton tab="profiles" href={profilesPath}>
-              <IonIcon icon={peopleOutline} />
-            </IonTabButton>
-            <IonTabButton tab="print-device" href={printDevicePath}>
-              <IonIcon icon={printOutline} />
-            </IonTabButton>
-          </IonTabBar>
-        </IonTabs>
-      </IonReactRouter>
-    </IonApp>
-  );
-};
+const App: FC = () => (
+  <IonApp>
+    <IonReactRouter>
+      <IonTabs>
+        <IonRouterOutlet id="main">
+          <Route exact path={homePath} component={LandingPage} />
+          <Route exact path={profilesPath} component={ProfileListPage} />
+          <Route exact path={newProfilePath} component={NewProfilePage} />
+          <Route
+            exact
+            path={newMeasurementsPath}
+            component={NewMeasurementsPage}
+          />
+          <Route
+            exact
+            path={profileDetailsPath}
+            component={ProfileDetailsPage}
+          />
+          <Route
+            exact
+            path={measurementSetDetailsPath}
+            component={MeasurementSetDetailsPage}
+          />
+          <Route
+            exact
+            path={printDevicePath}
+            component={PrintDeviceSelectProfilePage}
+          />
+          <Route
+            exact
+            path={selectProfileForPrintPath}
+            component={PrintDeviceSelectArmPage}
+          />
+          <Route
+            exact
+            path={selectMeasSetForPrintPath}
+            component={PrintDeviceSelectDevicePage}
+          />
+          <Route
+            exact
+            path={selectDeviceForPrintPath}
+            component={PrintDeviceDeviceDetailsPage}
+          />
+          <Route>
+            <Redirect to={homePath} />
+          </Route>
+        </IonRouterOutlet>
+        <IonTabBar slot="bottom">
+          <IonTabButton tab="home" href={homePath}>
+            <IonIcon icon={homeOutline} />
+          </IonTabButton>
+          <IonTabButton tab="profiles" href={profilesPath}>
+            <IonIcon icon={peopleOutline} />
+          </IonTabButton>
+          <IonTabButton tab="print-device" href={printDevicePath}>
+            <IonIcon icon={printOutline} />
+          </IonTabButton>
+        </IonTabBar>
+      </IonTabs>
+    </IonReactRouter>
+  </IonApp>
+);
 
 export default App;

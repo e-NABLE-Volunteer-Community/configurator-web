@@ -16,7 +16,7 @@ import { useActiveMeasurementSet } from "../../core/hooks/measurements";
 import { Switch, useLocation } from "react-router";
 import { MeasurementsList } from "./MeasurementsList";
 import { isLoading } from "../../core/stores/utils";
-import NewMeasurements from "./NewMeasurements";
+import NewMeasurements from "./NewMeasurementsPage";
 
 const MeasurementsDetails: VFC = () => {
   const activeMeasurementSet = useActiveMeasurementSet();

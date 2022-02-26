@@ -18,6 +18,7 @@ import {
   IonCardSubtitle,
   IonCardTitle,
   IonContent,
+  IonPage,
 } from "@ionic/react";
 import SubmitItemComponent from "./Submit/submit-item";
 import { ViewMeasurement } from "../../../core/view-measurement-types";
@@ -102,29 +103,33 @@ const InputSlideBody: VFC<{ viewMeasurement: ViewMeasurement; index: number }> =
     </IonContent>
   );
 
-const NewMeasurements: VFC = () => {
+const NewMeasurementsPage: VFC = () => {
   const viewMeasurements = useViewMeasurements();
 
   // TODO: Loading spinner
   if (isLoading(viewMeasurements)) return <div>loading...</div>;
 
   return (
-    <Swiper
-      spaceBetween={50}
-      slidesPerView={1}
-      onSlideChange={() => void {}}
-      onSwiper={() => void {}}
-      className="base-container"
-    >
-      {viewMeasurements.map((viewMeasurement, index) => (
-        <SwiperSlide key={viewMeasurement.measurementName}>
-          <InputSlideBody viewMeasurement={viewMeasurement} index={index} />
-        </SwiperSlide>
-      ))}
-      <SwiperSlide key="submit">
-        <SubmitSlideBody />
-      </SwiperSlide>
-    </Swiper>
+    <IonPage>
+      <IonContent>
+        <Swiper
+          spaceBetween={50}
+          slidesPerView={1}
+          onSlideChange={() => void {}}
+          onSwiper={() => void {}}
+          className="base-container"
+        >
+          {viewMeasurements.map((viewMeasurement, index) => (
+            <SwiperSlide key={viewMeasurement.measurementName}>
+              <InputSlideBody viewMeasurement={viewMeasurement} index={index} />
+            </SwiperSlide>
+          ))}
+          <SwiperSlide key="submit">
+            <SubmitSlideBody />
+          </SwiperSlide>
+        </Swiper>
+      </IonContent>
+    </IonPage>
   );
 };
-export default NewMeasurements;
+export default NewMeasurementsPage;

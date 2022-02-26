@@ -1,11 +1,42 @@
-export const tabifyPath = (path: string): string =>
-  `/:tab(${path.replace(/^\//, "")})`;
-export const devicesPath = "/devices";
-export const measurementsPath = "/measurements";
-export const profilesPath = "/profiles";
-export const printDevicePath = "/print-device";
+import { Profile } from "./core/profile-types";
+import { MeasurementSet } from "./core/configurator-types";
+
+const idFromProfileOrId = (profileOrId: Profile | string): string =>
+  typeof profileOrId === "string" ? profileOrId : profileOrId.profileId;
+const idFromMeasurementSetOrId = (
+  measSetOrId: MeasurementSet | string
+): string => (typeof measSetOrId === "string" ? measSetOrId : measSetOrId.id);
+
 export const homePath = "/home";
 
+/* Profiles */
+export const profilesPath = "/profiles";
 export const newProfilePath = `${profilesPath}/new`;
+
 export const profileDetailsPath = `${profilesPath}/p/:profileId`;
+export const profileDetailsPathForProfile = (
+  profileOrId: Profile | string
+): string => `${profilesPath}/p/${idFromProfileOrId(profileOrId)}`;
+
+export const measurementSetsForProfilePath = `${profileDetailsPath}/m`;
 export const measurementSetDetailsPath = `${profileDetailsPath}/m/:measurementSetId`;
+export const measurementSetDetailsPathForProfileAndMeasSet = (
+  profileOrId: Profile | string,
+  measSetOrId: MeasurementSet | string
+): string =>
+  `${profileDetailsPathForProfile(profileOrId)}/m/${idFromMeasurementSetOrId(
+    measSetOrId
+  )}`;
+export const newMeasurementsPath = `${measurementSetsForProfilePath}/new`;
+export const newMeasurementSetPathForProfile = (
+  profileOrId: Profile | string
+): string => `${profileDetailsPathForProfile(profileOrId)}/m/new`;
+
+/* Devices */
+export const devicesPath = "/devices";
+
+/* Printing */
+export const printDevicePath = "/print-device";
+export const selectProfileForPrintPath = `${printDevicePath}/p/:profileId`;
+export const selectMeasSetForPrintPath = `${selectProfileForPrintPath}/m/:measSetId`;
+export const selectDeviceForPrintPath = `${selectMeasSetForPrintPath}/d/:deviceId`;

@@ -11,10 +11,11 @@ import { useHistory } from "react-router";
 import DeviceItem from "../../../components/device-item/device-item";
 import MeasurementSetItem from "../../../components/measurement-set-item/measurement-set-item";
 import HeaderSmall from "../../../components/header/HeaderSmall";
+import { newMeasurementSetPathForProfile } from "../../../routes";
 
 const ProfileDetailsPage: VFC = () => {
   const history = useHistory();
-  const onNewMeasurementClick = () => history.push("/measurements");
+
   const onNewDeviceClick = () => history.push("/devices");
 
   const onMeasSetClick = (measurementSet: MeasurementSet) =>
@@ -48,7 +49,10 @@ const ProfileDetailsPage: VFC = () => {
             fill="solid"
             color="tertiary"
             className="profile-item-button"
-            onClick={onNewMeasurementClick}
+            routerLink={newMeasurementSetPathForProfile(
+              activeProfile.profileId
+            )}
+            routerDirection="forward"
           >
             add new measurement set
           </IonButton>
