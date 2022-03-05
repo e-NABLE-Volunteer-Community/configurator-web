@@ -1,0 +1,21 @@
+.measurement-card {
+  color: #000;
+  position: relative;
+  display: flex;
+  flex-grow: 1;
+  aspect-ratio: 1/1;
+  margin: 8px;
+
+  ion-checkbox {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+
+  ion-card-content {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}

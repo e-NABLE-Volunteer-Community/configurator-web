@@ -1,14 +1,25 @@
-import { IonButton, IonPage } from "@ionic/react";
+import {
+  IonButton,
+  IonCol,
+  IonContent,
+  IonGrid,
+  IonIcon,
+  IonPage,
+  IonRow,
+} from "@ionic/react";
 import { VFC } from "react";
 import { Route, useHistory } from "react-router-dom";
 import DeviceItem from "../../../components/device-item/device-item";
-import MeasurementItem from "../../../components/measurement-item/measurement-item";
 import { MeasurementSet } from "../../../core/configurator-types";
 import { useProfileMeasurementSet } from "../../../core/hooks/measurements";
 import { useActiveProfile } from "../../../core/hooks/profiles";
 import "../MeasurementSetDetails/measurement-set-details.scss";
 import HeaderSmall from "../../../components/header/HeaderSmall";
-import { profilesPath } from "../../../routes";
+import { profileDetailsPathForProfile, profilesPath } from "../../../routes";
+import * as R from "ramda";
+import MeasurementCard from "../../../components/measurement-card/MeasurementCard";
+import MeasurementGrid from "../../../components/measurement-grid/MeasurementGrid";
+import { arrowForward } from "ionicons/icons";
 
 const MeasurementSetDetailsPage: VFC<MeasurementSet> = () => {
   const profileMeasurementSet = useProfileMeasurementSet();
@@ -23,46 +34,50 @@ const MeasurementSetDetailsPage: VFC<MeasurementSet> = () => {
 
   return (
     <IonPage>
-      <HeaderSmall
-        title={activeProfile.name + "'s " + profileMeasurementSet.name}
-        backUrl={profilesPath}
-      />
-
-      <div className="measurement-set-items-container">
-        <div className="titlez">
-          Measurements for {profileMeasurementSet.name}
-        </div>
-        <IonButton
-          fill="solid"
-          color="tertiary"
-          className="profile-item-button"
-          onClick={onNewMeasurementClick}
-        >
-          add new measurement
-        </IonButton>
-        {profileMeasurementSet.data.map((measurementItem) => (
-          <MeasurementItem {...measurementItem} key={measurementItem.id} />
-        ))}
-      </div>
-      <div className="measurement-set-items-container">
-        <div className="title">
-          Prosthetic devices for {profileMeasurementSet.name}
-        </div>
-        <IonButton
-          fill="solid"
-          color="tertiary"
-          className="profile-item-button"
-        >
-          add new device
-        </IonButton>
-        {profileMeasurementSet.associatedDevices.map((ad) => (
-          <DeviceItem
-            device={ad.device}
-            onDeviceItemClick={onDeviceItemClick}
-            key={ad.device.documentId}
+      <HeaderSmall backUrl={profileDetailsPathForProfile(activeProfile)} />
+      <IonContent>
+        <div className="measurement-set-details-container">
+          <h2>Measurements for {profileMeasurementSet.name}</h2>
+          {/*TODO: Handle no measurements*/}
+          <MeasurementGrid
+            measurements={profileMeasurementSet.data.slice(0, 2)}
           />
-        ))}
-      </div>
+          {profileMeasurementSet.data.length > 2 && (
+            <div className="view-all">
+              <IonButton fill="clear">
+                View all
+                <IonIcon icon={arrowForward} slot="end" />
+              </IonButton>
+            </div>
+          )}
+          <IonButton
+            fill="solid"
+            color="primary"
+            className="profile-item-button"
+            onClick={onNewMeasurementClick}
+            expand="full"
+          >
+            add new measurement
+          </IonButton>
+
+          <h2>Prosthetic devices for {profileMeasurementSet.name}</h2>
+          {profileMeasurementSet.associatedDevices.map((ad) => (
+            <DeviceItem
+              device={ad.device}
+              onDeviceItemClick={onDeviceItemClick}
+              key={ad.device.documentId}
+            />
+          ))}
+          <IonButton
+            fill="solid"
+            color="primary"
+            className="profile-item-button"
+            expand="full"
+          >
+            add new device
+          </IonButton>
+        </div>
+      </IonContent>
     </IonPage>
   );
 };

@@ -16,13 +16,14 @@ const HeaderSmall: VFC<{
 }> = ({
   title,
   subtitle, // refactor this with better names.
+  backUrl,
 }) => (
   <IonHeader className="header-small__">
     <IonToolbar>
       <IonButtons slot="start" className="button">
-        <IonBackButton defaultHref={homePath} />
+        <IonBackButton defaultHref={backUrl ?? homePath} />
       </IonButtons>
-      {title && <IonTitle>{title}</IonTitle>}
+      {title && <IonTitle size="small">{title}</IonTitle>}
     </IonToolbar>
   </IonHeader>
 );

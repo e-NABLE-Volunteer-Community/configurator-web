@@ -30,12 +30,15 @@ ion-toolbar {
 
   .header-text,
   .sort-filter-row {
-    .md & {
-      padding: 0 7px;
-    }
+    padding: 0 16px;
+  }
 
+  ion-searchbar {
+    .md & {
+      padding: 0 16px;
+    }
     .ios & {
-      padding: 0 12px;
+      padding: 0 16px;
     }
   }
 

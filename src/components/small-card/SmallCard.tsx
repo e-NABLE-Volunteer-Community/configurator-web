@@ -7,7 +7,7 @@ type SmallCardProps = {
   routerLink: string;
   imgSrc?: string;
   primary: string;
-  secondary: string;
+  secondary?: string;
   tertiary?: string;
 };
 const SmallCard: VFC<SmallCardProps> = ({
@@ -26,13 +26,12 @@ const SmallCard: VFC<SmallCardProps> = ({
         {imgSrc && <IonImg src={imgSrc} />}
         <div className="text">
           <p className="body-large">{primary}</p>
-          <p className="body-small">{secondary}</p>
+          {secondary && <p className="body-small">{secondary}</p>}
           {tertiary && <h4>{tertiary}</h4>}
         </div>
       </div>
     </IonLabel>
-
-    <IonIcon icon={chevronForwardOutline} />
+    {/*<IonIcon icon={chevronForwardOutline} />*/}
   </IonItem>
 );
 export default SmallCard;

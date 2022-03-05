@@ -2,6 +2,8 @@ import { MouseEventHandler, VFC } from "react";
 import { Device } from "../../core/onshape-types";
 import { capitalizeFirstLetter } from "../../core/util/string-manipulation";
 import "../device-item/device-item.scss";
+import { profileDetailsPathForProfile } from "../../routes";
+import SmallCard from "../small-card/SmallCard";
 
 export type DeviceItem = {
   device: Device;
