@@ -61,6 +61,7 @@ export type BillOfMaterialsParameters = Record<ParameterName, string>;
 
 export type Device = {
   name: string;
+  description: string;
   documentId: DocumentId;
   workspaceId: WorkspaceId;
   billOfMaterials: BillOfMaterials;

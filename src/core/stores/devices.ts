@@ -8,12 +8,14 @@ import { ExportId } from "./export-status";
 export const mockDevices = (): Device[] => [
   {
     name: "Phoenix v3",
+    description: "Lorem ipsem etc etc this is a prosthetic than you can print",
     billOfMaterials: phoenixBom as OnshapeBom,
     documentId: phoenixBom.location.documentId,
     workspaceId: phoenixBom.location.workspaceId,
   },
   {
     name: "Fusion Test",
+    description: "Lorem ipsem etc etc this is a prosthetic than you can print",
     billOfMaterials: fusionBom as Fusion360Bom,
     documentId: "1234",
     workspaceId: "5678",
