@@ -2,9 +2,8 @@ import { Device, DocumentAndWorkspaceIds } from "../onshape-types";
 import { useRouteMatch } from "react-router-dom";
 import * as R from "ramda";
 import { useDevices } from "../stores/app";
-import { isLoading, Loading } from "../stores/utils";
 
-export const useActivePrintDevice = (): Device | Loading | undefined => {
+export const useActivePrintDevice = (): Device | undefined => {
   const printDeviceRoute =
     "/print-device/p/:profileId/m/:measurementSetId/d/:documentId";
   const devices = useDevices();
@@ -14,8 +13,6 @@ export const useActivePrintDevice = (): Device | Loading | undefined => {
     documentId: string;
   }>(printDeviceRoute);
 
-  if (isLoading(devices)) return Loading;
-
   const activeProfileId = routeMatch?.params.profileId;
   const activeMeasurementId = routeMatch?.params.measurementSetId;
   const documentId = routeMatch?.params.documentId;
@@ -24,10 +21,10 @@ export const useActivePrintDevice = (): Device | Loading | undefined => {
   return devices.find(R.propEq("documentId", documentId));
 };
 
-export const useActiveDevice = (): Device | Loading | undefined =>
+export const useActiveDevice = (): Device | undefined =>
   useMaybeDeviceWithIds(useMatchDeviceRouteWithSuffix());
 
-export const useGeneratingDevice = (): Device | Loading =>
+export const useGeneratingDevice = (): Device =>
   useAlwaysDeviceWithIds(useMatchDeviceRouteWithSuffix("/generate"));
 
 const route = "/devices/d/:documentId/w/:workspaceId";
@@ -39,16 +36,15 @@ const objPropsMatch = (subset: Record<string, unknown>) =>
 
 const useMaybeDeviceWithIds = (
   ids: DocumentAndWorkspaceIds | undefined
-): Device | Loading | undefined => {
+): Device | undefined => {
   const devices = useDevices();
-  if (isLoading(devices)) return Loading;
   if (!ids) return undefined;
   return devices.find(objPropsMatch(ids));
 };
 
 const useAlwaysDeviceWithIds = (
   ids: DocumentAndWorkspaceIds | undefined
-): Device | Loading => {
+): Device => {
   const device = useMaybeDeviceWithIds(ids);
   if (!device) throw new Error("No device with IDs: " + JSON.stringify(ids));
   return device;
