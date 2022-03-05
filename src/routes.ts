@@ -40,3 +40,11 @@ export const printDevicePath = "/print-device";
 export const selectProfileForPrintPath = `${printDevicePath}/p/:profileId`;
 export const selectMeasSetForPrintPath = `${selectProfileForPrintPath}/m/:measSetId`;
 export const selectDeviceForPrintPath = `${selectMeasSetForPrintPath}/d/:deviceId`;
+export const printDeviceMeasurementCheck = `${selectDeviceForPrintPath}/meas-check`;
+
+export const printDeviceDetailsForPrintPath = (
+  profileId: string,
+  measSetId: string,
+  deviceId: string
+): string =>
+  `${printDevicePath}/p/${profileId}/m/${measSetId}/d/${deviceId}/meas-check`;

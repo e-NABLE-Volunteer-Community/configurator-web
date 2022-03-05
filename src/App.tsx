@@ -41,6 +41,7 @@ import {
   measurementSetDetailsPath,
   newMeasurementsPath,
   newProfilePath,
+  printDeviceMeasurementCheck,
   printDevicePath,
   profileDetailsPath,
   profilesPath,
@@ -57,6 +58,7 @@ import PrintDeviceSelectArmPage from "./pages/PrintDevice/SelectArm";
 import PrintDeviceSelectDevicePage from "./pages/PrintDevice/SelectDevice";
 import PrintDeviceDeviceDetailsPage from "./pages/PrintDevice/DeviceDetails";
 import NewMeasurementsPage from "./pages/MeasurementsPage/NewMeasurementsPage";
+import MeasurementCheck from "./pages/PrintDevice/MeasurementCheck";
 
 SwiperCore.use([Navigation]);
 
@@ -102,6 +104,11 @@ const App: FC = () => (
             exact
             path={selectDeviceForPrintPath}
             component={PrintDeviceDeviceDetailsPage}
+          />
+          <Route
+            path={printDeviceMeasurementCheck}
+            exact
+            component={MeasurementCheck}
           />
           <Route>
             <Redirect to={homePath} />

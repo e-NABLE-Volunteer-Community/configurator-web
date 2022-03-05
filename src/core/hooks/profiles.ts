@@ -29,8 +29,9 @@ const useMaybeProfileWithIds = (id: string): Profile | undefined => {
 export const useProfilePrintDevice = (): Profile | undefined => {
   const profiles = useProfiles();
   const path = "/print-device/p/:profileId";
-  const routeMatch =
-    useRouteMatch<{ profileId: string; measurementSetId: string }>(path);
+  const [routeMatch] = useState(
+    useRouteMatch<{ profileId: string; measurementSetId: string }>(path)
+  );
 
   const activeProfileId = routeMatch?.params.profileId;
 
