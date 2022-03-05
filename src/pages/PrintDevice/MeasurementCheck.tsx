@@ -11,7 +11,7 @@ import {
 import { Device } from "../../core/onshape-types";
 import HeaderSmall from "../../components/header/header-small";
 
-const PrintDeviceDeviceDetails: VFC = () => {
+const MeasurementCheck: VFC = () => {
   const device = useActivePrintDevice();
   const history = useHistory();
   const onDeviceDetailsClick = (device: Device) => history.push("123123");
@@ -22,13 +22,7 @@ const PrintDeviceDeviceDetails: VFC = () => {
     <IonPage>
       <HeaderSmall backUrl="/home" />
       <IonContent className="device-details-container">
-        <h1 className="device-content">{device.name}</h1>
-        <p className="device-content">{device.description}</p>
-        <div className="image-container"></div>
-        <h5 className="device-content">Materials</h5>
-        <p className="device-content"> lorem i[sepomsdg;lsdgf;ljsg</p>
-        <h5 className="device-content">Designers</h5>
-        <p className="device-content">ben and jeff and some other guys</p>
+        <h1 className="device-content">Checking Measurements...</h1>
         <div className="device-next-button-container">
           <IonButton
             className="device-next-button"
@@ -43,4 +37,4 @@ const PrintDeviceDeviceDetails: VFC = () => {
   );
 };
 
-export default PrintDeviceDeviceDetails;
+export default MeasurementCheck;

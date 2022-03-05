@@ -9,4 +9,14 @@
     border: dashed;
     height: 150px;
   }
+
+  .device-next-button-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .device-next-button {
+    width: 80%;
+  }
 }

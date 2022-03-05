@@ -5,6 +5,7 @@ import PrintDeviceSelectDevice from "./SelectDevice";
 import PrintDeviceSelectArm from "./SelectArm";
 import PrintDeviceDeviceDetails from "./DeviceDetails";
 import PrintDeviceSelectProfile from "./SelectProfile";
+import MeasurementCheck from "./MeasurementCheck";
 
 const PrintDevice: VFC = () => {
   return (
@@ -30,6 +31,11 @@ const PrintDevice: VFC = () => {
           path="/print-device/p/:profileId/m/:measSetId/d/:deviceId"
           exact
           component={PrintDeviceDeviceDetails}
+        />
+        <Route
+          path="/print-device/p/:profileId/m/:measSetId/d/:deviceId/meas-check"
+          exact
+          component={MeasurementCheck}
         />
       </div>
     </>
