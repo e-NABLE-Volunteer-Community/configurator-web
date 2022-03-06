@@ -1,5 +1,5 @@
 import { MeasurementSet } from "./configurator-types";
-import { Device } from "./onshape-types";
+import { Device } from "./types/bill-of-materials.types.new";
 
 export type Profile = {
   name: string;

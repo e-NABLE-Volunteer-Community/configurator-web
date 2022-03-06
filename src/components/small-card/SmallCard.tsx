@@ -1,6 +1,5 @@
 import { VFC } from "react";
-import { IonIcon, IonImg, IonItem, IonLabel } from "@ionic/react";
-import { chevronForwardOutline } from "ionicons/icons";
+import { IonImg, IonItem, IonLabel } from "@ionic/react";
 import "./small-card.scss";
 
 type SmallCardProps = {
@@ -20,8 +19,9 @@ const SmallCard: VFC<SmallCardProps> = ({
   <IonItem
     routerLink={routerLink}
     className="small-card ion-no-padding ion-no-margin"
+    lines="none"
   >
-    <IonLabel>
+    <IonLabel className="ion-no-padding ion-no-margin">
       <div>
         {imgSrc && <IonImg src={imgSrc} />}
         <div className="text">

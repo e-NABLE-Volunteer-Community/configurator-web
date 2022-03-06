@@ -1,29 +1,26 @@
-import { MouseEventHandler, VFC } from "react";
-import { Device } from "../../core/onshape-types";
+import { VFC } from "react";
 import { capitalizeFirstLetter } from "../../core/util/string-manipulation";
 import "../device-item/device-item.scss";
-import { profileDetailsPathForProfile } from "../../routes";
+import { devicePathForProfileAndDevice } from "../../routes";
 import SmallCard from "../small-card/SmallCard";
+import { useActiveProfile } from "../../core/hooks/profiles";
+import { Device } from "../../core/types/bill-of-materials.types.new";
 
 export type DeviceItem = {
   device: Device;
-  onDeviceItemClick: MouseEventHandler;
 };
 
-const DeviceItem: VFC<DeviceItem> = ({ device, onDeviceItemClick }) => {
+const DeviceItem: VFC<DeviceItem> = ({ device }) => {
+  const profile = useActiveProfile();
+  const url = devicePathForProfileAndDevice(profile, device);
   return (
-    <div
+    <SmallCard
       key={device.documentId}
-      className="item-card"
-      onClick={onDeviceItemClick}
-    >
-      <div className="item-image">img</div>
-      <div className="card-details">
-        <div className="detail-title">{capitalizeFirstLetter(device.name)}</div>
-        <div className="detail-text">$deviceNote</div>
-      </div>
-      <div className="item-date">$modifiedDate</div>
-    </div>
+      imgSrc={"https://picsum.photos/200"}
+      primary={capitalizeFirstLetter(device.name)}
+      secondary={device.description}
+      routerLink={url}
+    />
   );
 };
 

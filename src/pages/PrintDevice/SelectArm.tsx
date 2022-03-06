@@ -23,10 +23,7 @@ const PrintDeviceSelectArm: VFC = () => {
       <IonContent>
         {profile.measurements.map((measSet) => (
           <div key={measSet.id}>
-            <MeasurementSetItem
-              measurementSet={measSet}
-              onMeasSetClick={() => onMeasSetClick}
-            />
+            <MeasurementSetItem measurementSet={measSet} />
           </div>
         ))}
       </IonContent>

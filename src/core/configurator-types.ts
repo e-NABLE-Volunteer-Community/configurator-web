@@ -1,4 +1,4 @@
-import { ProfileDevice } from "./onshape-types";
+import { ProfileDevice } from "./types/bill-of-materials.types.new";
 
 export type MeasurementSetId = string;
 export enum MeasurementSetType {

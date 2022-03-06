@@ -1,27 +1,28 @@
-import { Device, DocumentAndWorkspaceIds } from "../onshape-types";
+import { DocumentAndWorkspaceIds } from "../onshape-types";
 import { useRouteMatch } from "react-router-dom";
 import * as R from "ramda";
 import { useDevices } from "../stores/app";
 import { useState } from "react";
+import { Device } from "../types/bill-of-materials.types.new";
 
 export const useActivePrintDevice = (): Device | undefined => {
   const printDeviceRoute =
-    "/print-device/p/:profileId/m/:measurementSetId/d/:documentId";
+    "/print-device/p/:profileId/m/:measurementSetId/d/:deviceId";
   const devices = useDevices();
   const [routeMatch] = useState(
     useRouteMatch<{
       profileId: string;
       measurementSetId: string;
-      documentId: string;
+      deviceId: string;
     }>(printDeviceRoute)
   );
 
   const activeProfileId = routeMatch?.params.profileId;
   const activeMeasurementId = routeMatch?.params.measurementSetId;
-  const documentId = routeMatch?.params.documentId;
+  const documentId = routeMatch?.params.deviceId;
 
   if (!activeProfileId || !activeMeasurementId || !documentId) return undefined;
-  return devices.find(R.propEq("documentId", documentId));
+  return devices.find(R.propEq("id", documentId));
 };
 
 export const useActiveDevice = (): Device | undefined =>

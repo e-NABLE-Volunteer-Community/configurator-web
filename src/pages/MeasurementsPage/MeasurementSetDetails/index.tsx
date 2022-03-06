@@ -62,11 +62,7 @@ const MeasurementSetDetailsPage: VFC<MeasurementSet> = () => {
 
           <h2>Prosthetic devices for {profileMeasurementSet.name}</h2>
           {profileMeasurementSet.associatedDevices.map((ad) => (
-            <DeviceItem
-              device={ad.device}
-              onDeviceItemClick={onDeviceItemClick}
-              key={ad.device.documentId}
-            />
+            <DeviceItem device={ad.device} key={ad.device.documentId} />
           ))}
           <IonButton
             fill="solid"

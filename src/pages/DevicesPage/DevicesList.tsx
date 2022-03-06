@@ -10,8 +10,8 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
-import { Device } from "../../core/onshape-types";
 import { useHistory } from "react-router-dom";
+import { Device } from "../../core/types/bill-of-materials.types.new";
 
 const DeviceListItem: VFC<Device> = (device) => {
   const history = useHistory();

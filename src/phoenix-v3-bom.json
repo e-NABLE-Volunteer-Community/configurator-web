@@ -1,5 +1,9 @@
 {
   "name": "Phoenix v3",
+  "authorization": {
+    "accessToken": "foo",
+    "refreshToken": "bar"
+  },
   "location": {
     "type": "Onshape",
     "documentId": "4e6716f856bd5bd0d01da59c",

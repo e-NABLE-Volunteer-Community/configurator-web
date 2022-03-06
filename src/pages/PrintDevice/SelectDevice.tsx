@@ -22,10 +22,7 @@ const PrintDeviceSelectDevice: VFC = () => {
       <IonContent>
         {devices.map((d) => (
           <div key={d.documentId}>
-            <DeviceItem
-              device={d}
-              onDeviceItemClick={() => onDevDetailsClick(d)}
-            />
+            <DeviceItem device={d} />
           </div>
         ))}
       </IonContent>

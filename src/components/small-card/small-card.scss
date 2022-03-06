@@ -1,8 +1,22 @@
 .small-card {
   position: relative;
-  margin: 0 0 16px 0;
+  padding-bottom: 16px;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid
+      var(--ion-border-color, var(--border-color, var(--ion-color-shade, #000)));
+  }
+
+  h4 {
+    margin: 0;
+  }
+
+  .small-card + & {
+    margin-top: 16px;
+  }
 
   ion-img {
+    flex: none;
     border-radius: 2px;
     overflow: hidden;
     height: 66px;
@@ -12,7 +26,7 @@
   }
 
   ion-label {
-    margin: 0 0 16px 0;
+    //margin: 0 0 16px 0;
 
     & > div {
       gap: 1rem;

@@ -62,11 +62,11 @@ const ConfirmGenerate: VFC<ConfirmGenerateProps> = ({
   const watchExport = useWatchExportStatus();
   const history = useHistory();
   const generate = async () => {
-    const exportId = await exportDevice(device);
-    watchExport(exportId);
-    history.push(
-      `/devices/d/${device.documentId}/w/${device.workspaceId}/status`
-    );
+    // const exportId = await exportDevice(device);
+    // watchExport(exportId);
+    // history.push(
+    //   `/devices/d/${device.documentId}/w/${device.workspaceId}/status`
+    // );
   };
 
   const measurementSet = measurementSets.find(R.propEq("id", measurementSetId));
@@ -110,10 +110,11 @@ const GenerateDeviceStls: VFC = () => {
   const history = useHistory();
   const device = useGeneratingDevice();
   const params = new URLSearchParams(history.location.search);
+  return <></>; // TODO
   const measurementSetId = params.get("m");
-  if (!measurementSetId) return <SelectMeasurements device={device} />;
-  return (
-    <ConfirmGenerate device={device} measurementSetId={measurementSetId} />
-  );
+  // if (!measurementSetId) return <SelectMeasurements device={device} />;
+  // return (
+  //   <ConfirmGenerate device={device} measurementSetId={measurementSetId} />
+  // );
 };
 export default GenerateDeviceStls;

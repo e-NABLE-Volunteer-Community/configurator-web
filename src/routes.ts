@@ -1,11 +1,14 @@
 import { Profile } from "./core/profile-types";
 import { MeasurementSet } from "./core/configurator-types";
+import { Device } from "./core/types/bill-of-materials.types.new";
 
 const idFromProfileOrId = (profileOrId: Profile | string): string =>
   typeof profileOrId === "string" ? profileOrId : profileOrId.profileId;
 const idFromMeasurementSetOrId = (
   measSetOrId: MeasurementSet | string
 ): string => (typeof measSetOrId === "string" ? measSetOrId : measSetOrId.id);
+const idFromDeviceOrId = (deviceOrId: Device | string): string =>
+  typeof deviceOrId === "string" ? deviceOrId : deviceOrId.id.toString();
 
 export const homePath = "/home";
 
@@ -31,6 +34,15 @@ export const newMeasurementsPath = `${measurementSetsForProfilePath}/new`;
 export const newMeasurementSetPathForProfile = (
   profileOrId: Profile | string
 ): string => `${profileDetailsPathForProfile(profileOrId)}/m/new`;
+
+export const deviceDetailsForProfilePath = `${profilesPath}/d/:deviceId`;
+export const devicePathForProfileAndDevice = (
+  profileOrId: Profile | string,
+  deviceOrId: Device | string
+) =>
+  `${profileDetailsPathForProfile(profileOrId)}/d/${idFromDeviceOrId(
+    deviceOrId
+  )}`;
 
 /* Devices */
 export const devicesPath = "/devices";
