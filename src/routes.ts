@@ -41,6 +41,14 @@ export const selectProfileForPrintPath = `${printDevicePath}/p/:profileId`;
 export const selectMeasSetForPrintPath = `${selectProfileForPrintPath}/m/:measSetId`;
 export const selectDeviceForPrintPath = `${selectMeasSetForPrintPath}/d/:deviceId`;
 export const printDeviceMeasurementCheck = `${selectDeviceForPrintPath}/meas-check`;
+export const exportDevicePath = `${selectDeviceForPrintPath}/export`;
+
+export const exportDeviceForPrintPath = (
+  profileId: string,
+  measSetId: string,
+  deviceId: string
+): string =>
+  `${printDevicePath}/p/${profileId}/m/${measSetId}/d/${deviceId}/export`;
 
 export const printDeviceDetailsForPrintPath = (
   profileId: string,

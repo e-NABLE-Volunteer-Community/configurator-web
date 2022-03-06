@@ -34,10 +34,11 @@ const PrintDeviceDeviceDetails: VFC = () => {
           <IonButton
             className="device-next-button"
             color="primary"
-            routerLink={printDeviceDetailsForPrintPath("5627", "123", "1234")}
-            onClick={() =>
-              console.log(printDeviceDetailsForPrintPath("5627", "123", "1234"))
-            }
+            routerLink={printDeviceDetailsForPrintPath(
+              "5627",
+              "123",
+              device.documentId
+            )}
           >
             Next
           </IonButton>

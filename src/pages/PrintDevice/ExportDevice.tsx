@@ -4,12 +4,12 @@ import HeaderSmall from "../../components/header/HeaderSmall";
 import { exportDevicePath } from "../../routes";
 import "../PrintDevice/print-device.scss";
 
-const MeasurementCheck: VFC = () => {
+const ExportDevice: VFC = () => {
   return (
     <IonPage className="print-device__">
       <HeaderSmall></HeaderSmall>
       <IonContent className="device-details-container">
-        <h1 className="device-content">Checking Measurements...</h1>
+        <h1 className="device-content">Exporting....</h1>
         <div className="device-next-button-container">
           <IonButton
             className="device-next-button"
@@ -24,4 +24,4 @@ const MeasurementCheck: VFC = () => {
   );
 };
 
-export default MeasurementCheck;
+export default ExportDevice;

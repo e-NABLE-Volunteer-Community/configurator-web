@@ -37,6 +37,7 @@ import "swiper/swiper-bundle.min.css";
 import SwiperCore, { Navigation } from "swiper";
 import LandingPage from "./pages/LandingPage";
 import {
+  exportDevicePath,
   homePath,
   measurementSetDetailsPath,
   newMeasurementsPath,
@@ -59,6 +60,7 @@ import PrintDeviceSelectDevicePage from "./pages/PrintDevice/SelectDevice";
 import PrintDeviceDeviceDetailsPage from "./pages/PrintDevice/DeviceDetails";
 import NewMeasurementsPage from "./pages/MeasurementsPage/NewMeasurementsPage";
 import MeasurementCheck from "./pages/PrintDevice/MeasurementCheck";
+import ExportDevice from "./pages/PrintDevice/ExportDevice";
 
 SwiperCore.use([Navigation]);
 
@@ -110,6 +112,7 @@ const App: FC = () => (
             exact
             component={MeasurementCheck}
           />
+          <Route path={exportDevicePath} exact component={ExportDevice} />
           <Route>
             <Redirect to={homePath} />
           </Route>
